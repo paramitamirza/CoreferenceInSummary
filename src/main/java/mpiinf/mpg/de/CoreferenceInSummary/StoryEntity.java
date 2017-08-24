@@ -94,7 +94,8 @@ public class StoryEntity {
 				&& family.contains(familyName)) {
 			return true;
 		
-		} else if (family.contains(familyName + "s")) {
+		} else if (family.equalsIgnoreCase("the " + familyName + "s")
+				|| family.equalsIgnoreCase("the " + familyName + "s '")) {
 			return true;
 		}
 		return false;
@@ -118,7 +119,7 @@ public class StoryEntity {
 	
 	public String toString() {
 		String entity = id + ": " + name + " (" + gender + ") also known as ";
-		for (String alias : aliases) entity += alias + ", ";
+		for (String alias : aliases) entity += alias + "; ";
 		return entity;
 	}
 
