@@ -172,6 +172,8 @@ public class ResolveCoreference {
 					for (StoryEntity ent: entities) {
 						if (ent.containedInMention(sentIdx, m.startIndex, m.endIndex)
 								|| ent.isBelongToFamilyMention(m.mentionSpan)) {
+							addAlias(entities, ent.getId(), m.mentionSpan);
+							addMention(entities, ent.getId(), sentIdx, m.startIndex, m.endIndex);
 							corefEntities.add(ent.getId());
 						
 						} else {
