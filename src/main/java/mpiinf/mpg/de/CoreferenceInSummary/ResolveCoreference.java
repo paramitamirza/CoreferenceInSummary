@@ -153,7 +153,8 @@ public class ResolveCoreference {
 		int sentIdx = 1;
 		for (Sentence sent : doc.sentences()) {
 			
-			System.out.println("-------- Sentence " + sentIdx + " -------- " + sent.text());
+			System.out.println("-------- Sentence " + sentIdx + " -------- ");
+			System.out.println(sent.text());
 			
 			Annotation document = new Annotation(sent.text());
 //			Annotation document = new Annotation(summary);
@@ -380,16 +381,87 @@ public class ResolveCoreference {
 				}
 			}
 			
+			Map<String, List<String>> mentions = new HashMap<String, List<String>>();
+			for (StoryEntity entity : entities) {
+				if (entity.getMentions().containsKey(sentIdx)) {
+					for (EntityMention em : entity.getMentions().get(sentIdx)) {
+						if (!mentions.containsKey(em.toString())) mentions.put(em.toString(), new ArrayList<String>());
+						mentions.get(em.toString()).add(entity.getId());
+					}
+				}
+			}
+//			System.out.println(mentions);
+			
 			List<CoreLabel> tokens = sentences.get(0).get(TokensAnnotation.class);
 			CoreLabel token;
+			List<String> coreferenceSent = new ArrayList<String>();
+			for (int i=0; i<tokens.size(); i++) {
+				coreferenceSent.add(tokens.get(i).word());
+			}
 			for (int i=0; i<tokens.size(); i++) {
 				token = tokens.get(i);
-				System.out.println(token + " ");
+				for (String span : mentions.keySet()) {
+					if (mentions.get(span).size() == 1) {
+						int startIdx = Integer.parseInt(span.split("-")[0]);
+						if (i+1 == startIdx) {
+							String replace = mentions.get(span).get(0);
+							if (token.word().equalsIgnoreCase("his")
+									|| token.word().equalsIgnoreCase("her")
+									|| token.word().equalsIgnoreCase("its")) {
+								replace += " 's";
+							}
+							coreferenceSent.set(i, replace);
+							
+						} else if (isIndexInSpan(i+1, span)) {
+							if (!token.word().equals("'s")) {
+								coreferenceSent.set(i, "NULL");
+							}
+						} 
+					}
+				}
+				
+				for (String span : mentions.keySet()) {
+					if (mentions.get(span).size() > 1) {
+						int startIdx = Integer.parseInt(span.split("-")[0]);
+						if (i+1 == startIdx) {
+							String replace = "";
+							for (String s : mentions.get(span)) {
+								replace += s + "-";
+							}
+							replace = replace.substring(0, replace.length()-1);
+							if (token.word().equalsIgnoreCase("their")) {
+								replace += " 's";
+							}
+							coreferenceSent.set(i, replace);
+							
+						} else if (isIndexInSpan(i+1, span)) {
+							if (!token.word().equals("'s")) {
+								coreferenceSent.set(i, null);
+							}
+						} 
+					}
+				}
 			}
+			
+			String coreferenceSentStr = "";
+			for (String w : coreferenceSent) {
+				if (w != null) coreferenceSentStr += w + " ";
+			}
+			coreferenceSentStr = coreferenceSentStr.substring(0, coreferenceSentStr.length()-1);
+			System.out.println(coreferenceSentStr);
 			
 			sentIdx ++;
 		}
 	}
+	
+	private boolean isIndexInSpan (int idx, String span) {
+		int startIdx = Integer.parseInt(span.split("-")[0]);
+		int endIdx = Integer.parseInt(span.split("-")[1]);
+		if (idx >= startIdx && idx < endIdx) return true;
+		else return false;
+	}
+	
+	
 	
 	public static void main(String[] args) throws Exception {
 		ResolveCoreference sa = new ResolveCoreference();
