@@ -78,9 +78,75 @@ public class ResolveCoreference {
 		if (!entity.getAliases().contains(alias)) {
 			entity.getAliases().add(alias);
 		}
+	} 
+	
+	public void inferFacts(StoryEntity subj, StoryEntity obj, String pred) {
+		if (pred.equals("son") || pred.equals("daughter") || pred.equals("child") || pred.equals("baby")) {
+			if (subj.getGender() == Gender.MALE) obj.getFacts().add(new Fact(obj.getId(), "father", subj.getId()));
+			else if (subj.getGender() == Gender.FEMALE) obj.getFacts().add(new Fact(obj.getId(), "mother", subj.getId()));
+		} else if (pred.equals("mother") || pred.equals("father") || pred.equals("parent")) {
+			if (obj.getGender() == Gender.MALE) obj.getFacts().add(new Fact(obj.getId(), "son", subj.getId()));
+			else if (obj.getGender() == Gender.FEMALE) obj.getFacts().add(new Fact(obj.getId(), "daughter", subj.getId()));
+		} else if (pred.equals("sister") || pred.equals("brother") || pred.equals("sibling")) {
+			if (obj.getGender() == Gender.MALE) obj.getFacts().add(new Fact(obj.getId(), "brother", subj.getId()));
+			else if (obj.getGender() == Gender.FEMALE) obj.getFacts().add(new Fact(obj.getId(), "sister", subj.getId()));
+		} else if (pred.equals("grandson") || pred.equals("granddaughter") || pred.equals("grandchild")) {
+			if (subj.getGender() == Gender.MALE) obj.getFacts().add(new Fact(obj.getId(), "grandfather", subj.getId()));
+			else if (subj.getGender() == Gender.FEMALE) obj.getFacts().add(new Fact(obj.getId(), "grandmother", subj.getId()));
+		} else if (pred.equals("grandmother") || pred.equals("grandfather") || pred.equals("grandparent")) {
+			if (obj.getGender() == Gender.MALE) obj.getFacts().add(new Fact(obj.getId(), "grandson", subj.getId()));
+			else if (obj.getGender() == Gender.FEMALE) obj.getFacts().add(new Fact(obj.getId(), "granddaughter", subj.getId()));
+		} 
 	}
 	
-	public void annotate(String summary, List<StoryEntity> entities, List<Fact> extractedFacts) {
+	public void addFacts(int sentIdx, int subjStartIdx, int subjEndIdx
+			, int objStartIdx, int objEndIdx
+			, String word, String pos
+			, List<StoryEntity> entities
+			, List<String> corefEntities
+			) {
+		String objId = "", pred = "";
+		List<String> subj = new ArrayList<String>();
+		
+		String[] words = word.split(" ");
+		String[] poss = pos.split("-");
+		String lastWord = words[words.length-1];
+		
+		for (StoryEntity ent: entities) {
+			if (ent.containedInMention(sentIdx, objStartIdx, objEndIdx)) {
+				objId = ent.getId();			
+			} else if (ent.isSimilar(lastWord)) {
+				addAlias(entities, ent.getId(), lastWord);
+				addMention(entities, ent.getId(), sentIdx, objStartIdx, objEndIdx);								
+				corefEntities.add(ent.getId());
+				objId = ent.getId();
+			}
+			
+			if (ent.containedInMention(sentIdx, subjStartIdx, subjEndIdx)) {
+				subj.add(ent.getId());
+			}
+		}
+		
+		pred = "";
+		for (int k=0 ; k<poss.length; k++) {
+			if (poss[k].equals("NN")) pred += words[k] + "_";
+		}
+		pred = pred.substring(0, pred.length()-1);
+		
+		for (String subjId : subj) {
+			StoryEntity subjEntity = getEntityById(subjId, entities);
+			StoryEntity objEntity = getEntityById(objId, entities);
+			
+			if (!subjId.equals(objId)) {
+				subjEntity.getFacts().add(new Fact(subjId, pred, objId));
+				inferFacts(subjEntity, objEntity, pred);
+			} else {
+				objEntity.removeMention(sentIdx, subjStartIdx, subjEndIdx);
+			}
+		}
+	}
+	
+	public void annotate(String summary, List<StoryEntity> entities) {
 		
 		Document doc = new Document(summary);        
 		
@@ -117,12 +183,16 @@ public class ResolveCoreference {
 					
 					//Named Entity or a collection of Named Entities					
 					for (StoryEntity ent: entities) {
-						if (ent.containedInMention(sentIdx, m.startIndex+1, m.endIndex+1)
-								|| ent.isBelongToFamilyMention(word)) {
-							addAlias(entities, ent.getId(), word);
-							addMention(entities, ent.getId(), sentIdx, m.startIndex, m.endIndex);
+						if (ent.containedInMention(sentIdx, m.startIndex+1, m.endIndex+1)) {
+//							addAlias(entities, ent.getId(), word);
+//							addMention(entities, ent.getId(), sentIdx, m.startIndex+1, m.endIndex+1);
 							corefEntities.add(ent.getId());
 						
+						} else if (ent.isBelongToFamilyMention(word)) {
+//							addAlias(entities, ent.getId(), word);
+							addMention(entities, ent.getId(), sentIdx, m.startIndex+1, m.endIndex+1);
+							corefEntities.add(ent.getId());
+							
 						} else {
 							String poss = pos+"-";
 							if (pos.endsWith("POS")
@@ -174,7 +244,7 @@ public class ResolveCoreference {
 					for (StoryEntity ent: entities) {
 						if (ent.containedInMention(sentIdx, m.startIndex, m.endIndex)
 								|| ent.isBelongToFamilyMention(m.mentionSpan)) {
-							addAlias(entities, ent.getId(), m.mentionSpan);
+//							addAlias(entities, ent.getId(), m.mentionSpan);
 							addMention(entities, ent.getId(), sentIdx, m.startIndex, m.endIndex);
 							corefEntities.add(ent.getId());
 						
@@ -275,60 +345,22 @@ public class ResolveCoreference {
 				} else if (pos.startsWith("PRP$")
 						&& pos.endsWith("NN-NNP")) {	//possessive pronoun + common noun + proper noun
 					
-					String subjId = "", pred = "";
-					List<String> obj = new ArrayList<String>();
-					
-					String[] words = word.split(" ");
-					String lastWord = words[words.length-1];
-					
-					for (StoryEntity ent: entities) {
-						if (ent.containedInMention(sentIdx, m.endIndex, m.endIndex+1)) {
-							subjId = ent.getId();
-						} else if (ent.isSimilar(lastWord)) {
-							addAlias(entities, ent.getId(), lastWord);
-							addMention(entities, ent.getId(), sentIdx, m.endIndex, m.endIndex+1);								
-							corefEntities.add(ent.getId());
-							subjId = ent.getId();
-						}
-						if (ent.containedInMention(sentIdx, m.startIndex+1, m.startIndex+2)) {
-							obj.add(ent.getId());
-						}
-					}
-					
-					pred = String.join("_", Arrays.asList(words).subList(1, words.length-1)) + "_of";
-					
-					for (String objId : obj) {
-						extractedFacts.add(new Fact(subjId, pred, objId));
-					}
+					addFacts(sentIdx, m.startIndex+1, m.startIndex+2
+							, m.endIndex, m.endIndex+1
+							, word, pos
+							, entities
+							, corefEntities
+							);
 				
 				} else if (pos.startsWith("NNP-POS")
 						&& pos.endsWith("NN-NNP")) {	//proper noun + 's + common noun + proper noun
 					
-					String subjId = "", pred = "";
-					List<String> obj = new ArrayList<String>();
-					
-					String[] words = word.split(" ");
-					String lastWord = words[words.length-1];
-					
-					for (StoryEntity ent: entities) {
-						if (ent.containedInMention(sentIdx, m.endIndex, m.endIndex+1)) {
-							subjId = ent.getId();
-						} else if (ent.isSimilar(lastWord)) {
-							addAlias(entities, ent.getId(), lastWord);
-							addMention(entities, ent.getId(), sentIdx, m.endIndex, m.endIndex+1);								
-							corefEntities.add(ent.getId());
-							subjId = ent.getId();
-						}
-						if (ent.containedInMention(sentIdx, m.startIndex+1, m.startIndex+3)) {
-							obj.add(ent.getId());
-						}
-					}
-					
-					pred = String.join("_", Arrays.asList(words).subList(2, words.length-1)) + "_of";
-					
-					for (String objId : obj) {
-						extractedFacts.add(new Fact(subjId, pred, objId));
-					}
+					addFacts(sentIdx, m.startIndex+1, m.startIndex+3
+							, m.endIndex, m.endIndex+1
+							, word, pos
+							, entities
+							, corefEntities
+							);
 				
 				}
 				
@@ -348,6 +380,13 @@ public class ResolveCoreference {
 				}
 			}
 			
+			List<CoreLabel> tokens = sentences.get(0).get(TokensAnnotation.class);
+			CoreLabel token;
+			for (int i=0; i<tokens.size(); i++) {
+				token = tokens.get(i);
+				System.out.println(token + " ");
+			}
+			
 			sentIdx ++;
 		}
 	}
@@ -361,11 +400,13 @@ public class ResolveCoreference {
 		vernon.setId("vernon_dursley");
 		vernon.setGender(Gender.MALE);
 		vernon.setName("Vernon Dursley");
+		vernon.getAliases().add("Mr. Dursley");
 		
 		StoryEntity petunia = new StoryEntity();
 		petunia.setId("petunia_dursley");
 		petunia.setGender(Gender.FEMALE);
 		petunia.setName("Petunia Dursley");
+		petunia.getAliases().add("Mrs. Dursley");
 		
 		StoryEntity dudley = new StoryEntity();
 		dudley.setId("dudley_dursley");
@@ -376,11 +417,13 @@ public class ResolveCoreference {
 		james.setId("james_potter");
 		james.setGender(Gender.MALE);
 		james.setName("James Potter");
+		james.getAliases().add("Mr. Potter");
 		
 		StoryEntity lily = new StoryEntity();
 		lily.setId("lily_potter");
 		lily.setGender(Gender.FEMALE);
 		lily.setName("Lily Potter");
+		lily.getAliases().add("Mrs. Potter");
 		
 		StoryEntity harry = new StoryEntity();
 		harry.setId("harry_potter");
@@ -394,10 +437,7 @@ public class ResolveCoreference {
 		entities.add(lily);
 		entities.add(harry);
 		
-		
-		List<Fact> extractedFacts = new ArrayList<Fact>();
-		
-		String document = ""
+		String document1 = ""
 				+ "Vernon and Petunia Dursley, with their one-year-old son Dudley, are proud to say that they are the most normal people possible. "
 				+ "They happily occupy 4 Privet Drive, located in the Surrey County town of Little Whinging. "
 				+ "Vernon is the director of a drill company called Grunnings, while Petunia does housework and looks after Dudley, yet she always spends so much time craning over garden fence to spy on the neighbours. "
@@ -415,24 +455,17 @@ public class ResolveCoreference {
 				+ "Vernon doesn't know what a Muggle is, but is offended that the man called him one.";
 		
 		String document2 = ""
-				+ "The Dursleys are a well-to-do, status-conscious family living in Surrey, England. "
-				+ "Eager to keep up proper appearances, they are embarrassed by Mrs. Dursley’s eccentric sister, Mrs. Potter, whom for years Mrs. Dursley has pretended not to know. "
-				+ "On his way to work one ordinary morning, Mr. Dursley notices a cat reading a map. "
-				+ "He is unsettled, but tells himself that he has only imagined it. "
-				+ "Then, as Mr. Dursley is waiting in traffic, he notices people dressed in brightly colored cloaks. "
-				+ "Walking past a bakery later that day, he overhears people talking in an excited manner about his sister-in-law’s family, the Potters, and the Potters’ one-year-old son, Harry. "
-				+ "Disturbed but still not sure anything is wrong, Mr. Dursley decides not to say anything to his wife. "
-				+ "On the way home, he bumps into a strangely dressed man who gleefully exclaims that someone named “You-Know-Who” has finally gone and that even a “Muggle” like Mr. Dursley should rejoice. "
-				+ "Meanwhile, the news is full of unusual reports of shooting stars and owls flying during the day.";
+				+ "That night, when Vernon arrives at home, he turns on the news and becomes suspicious when the newsman states that owls have been seen everywhere earlier in the day, and that fireworks have been spotted in Kent. "
+				+ "Vernon asks Petunia if she and her sister have been in touch, but she becomes angry and denies it as she does not like to talk about her. "
+				+ "When the Dursleys go to bed, a long bearded old man in a purple cloak appears out of nowhere outside of their home.";
 		
-	    sa.annotate(document2, entities, extractedFacts);
+	    sa.annotate(document1, entities);
 	    
 	    for (StoryEntity ent : entities) {
 	    	System.out.println(ent.toString());
 	    	System.out.println(ent.getMentions());
 	    	System.out.println();
 	    }
-	    System.out.println(extractedFacts);
 	}
 
 }

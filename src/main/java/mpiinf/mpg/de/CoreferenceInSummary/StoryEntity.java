@@ -14,11 +14,13 @@ public class StoryEntity {
 	private String name;
 	private Gender gender;
 	private List<String> aliases;
+	private List<Fact> facts;
 	
 	private Map<Integer, List<EntityMention>> mentions;
 	
 	public StoryEntity() {
 		aliases = new ArrayList<String>();
+		facts = new ArrayList<Fact>();
 		mentions = new HashMap<Integer, List<EntityMention>>();
 	}
 		
@@ -57,6 +59,9 @@ public class StoryEntity {
 		} else if (mention.split(" ")[0].equals(name.split(" ")[0])) {
 			return true;
 			
+		} else if (aliases.contains(mention)) {
+			return true;
+		
 		} else {
 			return false;
 		}
@@ -84,6 +89,20 @@ public class StoryEntity {
 			}
 		}
 		return false;
+	}
+	
+	public void removeMention(int sent, int start, int end) {
+		if (mentions.containsKey(sent)) {
+			int removeIdx = -1;
+			for (int i=0; i<mentions.get(sent).size(); i++) {
+				if (mentions.get(sent).get(i).getStartIdx() == start 
+						&& mentions.get(sent).get(i).getEndIdx() == end) {
+					removeIdx = i;
+					break;
+				}
+			}
+			mentions.get(sent).remove(removeIdx);
+		}
 	}
 	
 	public boolean isBelongToFamilyMention(String family) {
@@ -116,10 +135,20 @@ public class StoryEntity {
 	public void setMentions(Map<Integer, List<EntityMention>> mentions) {
 		this.mentions = mentions;
 	}
+
+	public List<Fact> getFacts() {
+		return facts;
+	}
+
+	public void setFacts(List<Fact> facts) {
+		this.facts = facts;
+	}
 	
 	public String toString() {
 		String entity = id + ": " + name + " (" + gender + ") also known as ";
 		for (String alias : aliases) entity += alias + "; ";
+		entity += "\nFacts: ";
+		for (Fact fact : facts) entity += fact.toString() + "; ";
 		return entity;
 	}
 
