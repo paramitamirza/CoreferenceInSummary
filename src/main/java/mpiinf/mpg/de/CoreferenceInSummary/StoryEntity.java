@@ -8,6 +8,8 @@ import java.util.Map;
 import edu.stanford.nlp.coref.data.Dictionaries.Gender;
 import edu.stanford.nlp.simple.*;
 
+import org.apache.commons.lang3.StringUtils;  
+
 public class StoryEntity {
 	
 	private String id;
@@ -50,14 +52,25 @@ public class StoryEntity {
 	
 	public boolean isSimilar(String mention) {
 		Sentence sent = new Sentence(mention);
-		if (mention.equals(name)) {
+		
+		String firstName = "", lastName = "", firstMention = "", lastMention = ""; 
+		firstName = name.split(" ")[0];
+		if (name.split(" ").length > 1) lastName = name.split(" ")[1];
+		firstMention = mention.split(" ")[0];
+		if (mention.split(" ").length > 1) lastMention = mention.split(" ")[1];
+		
+		if (mention.equals(name)) {	//full name matches perfectly
 			return true;
 			
-		} else if (mention.equals(name.split(" ")[0])) {
+		} else if (compareStrings(firstName, firstMention) >= 0.9
+				|| firstName.toLowerCase().contains(firstMention.toLowerCase())) {	//first name is similar
 			return true;
 			
-		} else if (mention.split(" ")[0].equals(name.split(" ")[0])) {
-			return true;
+		} else if (compareStrings(lastName, lastMention) >= 0.9) {	//only last name is similar
+			if (gender == getGenderTitle(firstMention))
+				return true;
+			else
+				return false;
 			
 		} else if (aliases.contains(mention)) {
 			return true;
@@ -113,11 +126,28 @@ public class StoryEntity {
 				&& family.contains(familyName)) {
 			return true;
 		
-		} else if (family.equalsIgnoreCase("the " + familyName + "s")
-				|| family.equalsIgnoreCase("the " + familyName + "s '")) {
+		} else if ((family.toLowerCase().startsWith("the") || family.toLowerCase().startsWith("all"))
+				&& (family.endsWith(familyName + "s") || family.endsWith(familyName + "s '"))
+				) {
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean isBelongToAGroup(String group) {
+		String groupStr = "";
+		boolean found = false;
+		Sentence sent = new Sentence(group);
+		for (int i=0; i<sent.words().size(); i++) {
+			if (sent.word(i).equals(id)) found = true;
+			if (!sent.posTag(i).equals("NNP") 
+					&& !sent.word(i).equals("and") 
+					&& !sent.word(i).equals(",")) {
+				groupStr += sent.word(i);
+			}
+		}
+		if (found && groupStr.trim().isEmpty()) return true;
+		else return false;
 	}
 
 	public List<String> getAliases() {
@@ -150,6 +180,22 @@ public class StoryEntity {
 		entity += "\nFacts: ";
 		for (Fact fact : facts) entity += fact.toString() + "; ";
 		return entity;
+	}
+	
+	public double compareStrings(String stringA, String stringB) {
+	    return StringUtils.getJaroWinklerDistance(stringA, stringB);
+	}
+	
+	public Gender getGenderTitle(String name) {
+		if (name.equalsIgnoreCase("Mr.")) {
+			return Gender.MALE;
+		} else if (name.equalsIgnoreCase("Mrs.")
+				|| name.equalsIgnoreCase("Miss.")
+				|| name.equalsIgnoreCase("Ms.")) {
+			return Gender.FEMALE;
+		} else {
+			return null;
+		}
 	}
 
 }

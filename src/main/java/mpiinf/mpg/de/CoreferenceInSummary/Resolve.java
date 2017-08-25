@@ -9,6 +9,7 @@ import edu.stanford.nlp.coref.CorefCoreAnnotations;
 import edu.stanford.nlp.coref.data.CorefChain;
 import edu.stanford.nlp.coref.data.CorefChain.CorefMention;
 import edu.stanford.nlp.coref.data.Dictionaries.Gender;
+import edu.stanford.nlp.coref.data.Dictionaries.MentionType;
 import edu.stanford.nlp.coref.data.Mention;
 import edu.stanford.nlp.ling.*;
 import edu.stanford.nlp.ling.CoreAnnotations.*;
@@ -17,7 +18,9 @@ import edu.stanford.nlp.util.CoreMap;
 import edu.stanford.nlp.simple.*;
 import edu.stanford.nlp.simple.Document;
 
-public class ResolveCoreference {
+import org.apache.commons.lang3.StringUtils;  
+
+public class Resolve {
 	
 	private StanfordCoreNLP pipeline;
 	private Map<String, String> characters;
@@ -28,7 +31,7 @@ public class ResolveCoreference {
 	private String currentNeutralSingular;
 	private List<String> nonReferentEntity;
 	
-	public ResolveCoreference() {
+	public Resolve() {
 		Properties props = new Properties();
 	    props.setProperty("annotators", "tokenize,ssplit,pos,lemma,ner,parse,mention,coref");
 	    props.setProperty("coref.algorithm", "neural");
@@ -78,7 +81,8 @@ public class ResolveCoreference {
 	
 	public void addAlias(List<StoryEntity> entities, String entityId, String alias) {
 		StoryEntity entity = getEntityById(entityId, entities);
-		if (!entity.getAliases().contains(alias)) {
+		if (!entity.getAliases().contains(alias)
+				&& !alias.equals(entity.getId() + " 's")) {
 			entity.getAliases().add(alias);
 		}
 	} 
@@ -149,248 +153,179 @@ public class ResolveCoreference {
 		}
 	}
 	
-	public void annotate(String summary, List<StoryEntity> entities) {
+	public List<String> linkEntities(String summary, List<StoryEntity> entities) {
 		
-		Document doc = new Document(summary);    
+		List<String> output = new ArrayList<String>();
+		String linkedSummary = "";
+		String unlinkedEntities = "";
 		
-		Annotation document = new Annotation(summary);
-		pipeline.annotate(document);
-		
-		int sentIdx = 1;
+		Document doc = new Document(summary);
 		for (Sentence sent : doc.sentences()) {
 			
-			System.out.println("-------- Sentence " + sentIdx + " -------- ");
-			System.out.println(sent.text());
+			List<String> words = new ArrayList<String>();
+			words.addAll(sent.words());
 			
-//			Annotation document = new Annotation(sent.text());
-//			pipeline.annotate(document);
-			
-			List<CoreMap> sentences = document.get(SentencesAnnotation.class);
-			
-//			//First of all, take care of proper nouns...
-//			for (Mention m : sentences.get(sentIdx-1).get(CorefCoreAnnotations.CorefMentionsAnnotation.class)) {
-//				
-//				List<String> corefEntities = new ArrayList<String>();
-//				
-//				CoreLabel token;
-//				String word = "", pos = "", ner = "";
-//				for (int idx = m.startIndex; idx < m.endIndex; idx ++) {
-//					token = sentences.get(m.sentNum).get(TokensAnnotation.class).get(idx);
-//					pos += token.get(PartOfSpeechAnnotation.class) + "-";
-//					ner += token.get(NamedEntityTagAnnotation.class) + "-";
-//				}
-//				pos = pos.substring(0, pos.length()-1);
-//				ner = ner.substring(0, ner.length()-1);
-//				
-//				word = m.spanToString();
-//				
-//				if (pos.contains("NNP")) {
-//					
-////					System.out.println(word);
-//					
-//					//Named Entity or a collection of Named Entities					
-//					for (StoryEntity ent: entities) {
-//						if (ent.containedInMention(sentIdx, m.startIndex+1, m.endIndex+1)) {
-////							addAlias(entities, ent.getId(), word);
-////							addMention(entities, ent.getId(), sentIdx, m.startIndex+1, m.endIndex+1);
-//							corefEntities.add(ent.getId());
-//						
-//						} else if (ent.isBelongToFamilyMention(word)) {
-////							addAlias(entities, ent.getId(), word);
-//							addMention(entities, ent.getId(), sentIdx, m.startIndex+1, m.endIndex+1);
-//							corefEntities.add(ent.getId());
-//							
-//						} else {
-//							String poss = pos+"-";
-//							if (pos.endsWith("POS")
-//									|| poss.replaceAll("NNP-", "").equals("")) {
-//								if (word.endsWith("'s")) word = word.replace("'s", "").trim();
-//								if (ent.isSimilar(word)) {
-//									addAlias(entities, ent.getId(), word);
-//									addMention(entities, ent.getId(), sentIdx, m.startIndex+1, m.endIndex+1);								
-//									corefEntities.add(ent.getId());
-//									break;
-//								}
-//							}
-//						}
-//						
-//					}
-//				}
-//				
-//				if (corefEntities.size() > 1) {
-//					currentPlural = corefEntities;
-//					
-//				} else if (corefEntities.size() == 1) {
-//					if (getEntityById(corefEntities.get(0), entities).getGender() == Gender.MALE) {
-//						currentMaleSingular = corefEntities.get(0);
-//						
-//					} else if (getEntityById(corefEntities.get(0), entities).getGender() == Gender.FEMALE) {
-//						currentFemaleSingular = corefEntities.get(0);
-//						
-//					} else {
-//						currentNeutralSingular = corefEntities.get(0);
-//					}
-//				}
-//			}
-			
-			//Then, take care of coreference chains...
-			for (CorefChain cc : document.get(CorefCoreAnnotations.CorefChainAnnotation.class).values()) {
-								
-				List<String> corefEntities = new ArrayList<String>();
+			String currNNP = "";
+			List<Integer> currIdx = new ArrayList<Integer>();
+			for (int i=0; i<sent.words().size(); i++) {
+				if (sent.posTag(i).equals("NNP")) {
+					currNNP += sent.word(i) + " ";
+					currIdx.add(i);
 				
-				System.out.println("\t" + cc);
-//				System.out.println(corefEntities);
-//				System.out.println(currentPlural);
-//				System.out.println(currentMaleSingular);
-//				System.out.println(currentFemaleSingular);
-//				System.out.println(currentNeutralSingular);
-				
-				for (CorefMention m : cc.getMentionsInTextualOrder()) {
-					
-					//Named Entity or a collection of Named Entities
-					for (StoryEntity ent: entities) {
-						if (ent.containedInMention(m.sentNum, m.startIndex, m.endIndex)
-								|| ent.isBelongToFamilyMention(m.mentionSpan)) {
-//							addAlias(entities, ent.getId(), m.mentionSpan);
-							addMention(entities, ent.getId(), m.sentNum, m.startIndex, m.endIndex);
-							corefEntities.add(ent.getId());
+				} else {
+					if (!currNNP.isEmpty()) {
 						
-						} else {
-							if (ent.isSimilar(m.mentionSpan)) {
-								addAlias(entities, ent.getId(), m.mentionSpan);
-								addMention(entities, ent.getId(), m.sentNum, m.startIndex, m.endIndex);
-								corefEntities.add(ent.getId());
+						//Link with entities if possible
+						boolean linked = false;
+						for (StoryEntity ent : entities) {
+							if (ent.isSimilar(currNNP)) {	//similar to an entity, link them!
+								words.set(currIdx.get(0), ent.getId());
+								if (currIdx.size() > 1) {
+									for (int j=1; j<currIdx.size(); j++) {
+										words.set(currIdx.get(j), null);
+									}
+								}
+								linked = true;
 								break;
 							}
 						}
-						
+						if (!linked) unlinkedEntities += currNNP + ";";
 					}
-					break;
+					currNNP = "";
+					currIdx.clear();
 				}
+			}
+			
+			//Remove null from sentence
+			for (String w : words) if (w != null) linkedSummary += w + " ";
+		}
+		
+		//output list contains: linked summary and list of unlinked entities (in string form)
+		output.add(linkedSummary.trim());
+		output.add(unlinkedEntities);
+		
+		return output;
+	}
+	
+	public void annotate(String summary, List<StoryEntity> entities) {
+		
+		String newSummary = linkEntities(summary, entities).get(0);
+		List<String> unlinkedEntities = Arrays.asList(linkEntities(summary, entities).get(1).split(";"));
+		
+		Annotation document = new Annotation(newSummary);
+		pipeline.annotate(document);
+		
+		List<Integer> resolvedMentions = new ArrayList<Integer>();
+		List<Integer> wronglyResolved = new ArrayList<Integer>();
+		
+		////////////////////////// Resolve coreference chains ///////////////////////////
+		for (CorefChain cc : document.get(CorefCoreAnnotations.CorefChainAnnotation.class).values()) {
+							
+			List<String> corefEntities = new ArrayList<String>();
+			Gender corefGender = Gender.UNKNOWN;
+			
+			System.out.println("\t" + cc);
+			
+			CorefMention rep = cc.getRepresentativeMention();
+			for (StoryEntity ent: entities) {
+				if (rep.mentionSpan.equals(ent.getId())
+						|| rep.mentionSpan.equals(ent.getId() + " 's")) {	//single entity
+					addAlias(entities, ent.getId(), rep.mentionSpan);
+					addMention(entities, ent.getId(), rep.sentNum, rep.startIndex, rep.endIndex);
+					resolvedMentions.add(rep.mentionID);
+					corefEntities.add(ent.getId());
+					corefGender = ent.getGender();
+					break;
 				
-				Gender chainGender = Gender.NEUTRAL;
-				if (corefEntities.size() == 1) chainGender = getEntityById(corefEntities.get(0), entities).getGender();
-				
-				for (CorefMention m : cc.getMentionsInTextualOrder()) {
-					CoreLabel token;
-					String word = "", pos = "", ner = "";
-					for (int idx = m.startIndex-1; idx < m.endIndex-1; idx ++) {
-						token = sentences.get(m.sentNum-1).get(TokensAnnotation.class).get(idx);
-						pos += token.get(PartOfSpeechAnnotation.class) + "-";
-						ner += token.get(NamedEntityTagAnnotation.class) + "-";
+				} else {
+					if (ent.isBelongToAGroup(rep.mentionSpan)
+							|| ent.isBelongToFamilyMention(rep.mentionSpan)) {	//a group of entities (connected by other words, or belong to the same family)
+						addMention(entities, ent.getId(), rep.sentNum, rep.startIndex, rep.endIndex);
+						resolvedMentions.add(rep.mentionID);
+						corefEntities.add(ent.getId());
 					}
-					pos = pos.substring(0, pos.length()-1);
-					ner = ner.substring(0, ner.length()-1);
+				}
+			}
+			
+			for (CorefMention m : cc.getMentionsInTextualOrder()) {
+				if (!corefEntities.isEmpty()) {	//linked to Entities
+					if (m.mentionID != rep.mentionID) {
+						if (m.mentionType == MentionType.PROPER) {
+							resolvedMentions.add(m.mentionID);
+							//Add proper mentions to entities
+							for (String e : corefEntities) {
+								addMention(entities, e, m.sentNum, m.startIndex, m.endIndex);
+							}
+							
+						} else if (m.mentionType == MentionType.PRONOMINAL) {
+							resolvedMentions.add(m.mentionID);
+							if (m.gender == corefGender) {
+								//Add pronominal mentions to entities
+								for (String e : corefEntities) {
+									addMention(entities, e, m.sentNum, m.startIndex, m.endIndex);
+								}
+							} else {
+								wronglyResolved.add(m.mentionID);
+							}
+						} 					
+					}
+				} else {	//not linked to any Entities
+					//do nothing for now
+				}
+			}
+			
+	    }
+		
+		////////////////////////// Resolve all other mentions ///////////////////////////
+		//List all possible mentions
+		for (CoreMap sentence : document.get(CoreAnnotations.SentencesAnnotation.class)) {
+			for (Mention m : sentence.get(CorefCoreAnnotations.CorefMentionsAnnotation.class)) {
+				if (!resolvedMentions.contains(m.mentionID)
+						|| wronglyResolved.contains(m.mentionID)) {
 					
-					word = m.mentionSpan;
-				
-					if (pos.equals("PRP")
-							|| pos.equals("PRP$")) {	//pronouns
+					for (StoryEntity ent: entities) {
+						if (m.spanToString().equals(ent.getId())
+								|| m.spanToString().equals(ent.getId() + " 's")) {	//single entity
+							addAlias(entities, ent.getId(), m.spanToString());
+							addMention(entities, ent.getId(), m.sentNum, m.startIndex, m.endIndex);
+							resolvedMentions.add(m.mentionID);
+							break;
 						
-						if (matchGender(word, chainGender) || chainGender == Gender.NEUTRAL) {
-							for (String entId : corefEntities) {
-								addMention(entities, entId, sentIdx, m.startIndex, m.endIndex);
+						} else {
+							if (ent.isBelongToAGroup(m.spanToString())
+									|| ent.isBelongToFamilyMention(m.spanToString())) {	//a group of entities (connected by other words, or belong to the same family)
+								addMention(entities, ent.getId(), m.sentNum, m.startIndex, m.endIndex);
+								resolvedMentions.add(m.mentionID);
 							}
 						}
 					}
 				}
+			}
+		}
+		for (CoreMap sentence : document.get(CoreAnnotations.SentencesAnnotation.class)) {
+			List<Mention> ms = sentence.get(CorefCoreAnnotations.CorefMentionsAnnotation.class);
+			for (int i=0; i<ms.size(); i++) {
+//			for (int i=ms.size()-1; i>=0; i--) {
+//				if (i == 0 || (i > 0 && !ms.get(i).includedIn(ms.get(i-1)))) {
+					if (!resolvedMentions.contains(ms.get(i).mentionID)
+							|| wronglyResolved.contains(ms.get(i).mentionID)) {
+						
+						System.out.println("\t" + ms.get(i).spanToString() + "-" + ms.get(i).sentNum + "-" + ms.get(i).corefClusterID + "-" + ms.get(i).mentionID);
 				
-				if (corefEntities.size() > 1) {
-					currentPlural = corefEntities;
-					
-				} else if (corefEntities.size() == 1) {
-					if (getEntityById(corefEntities.get(0), entities).getGender() == Gender.MALE) {
-						currentMaleSingular = corefEntities.get(0);
-						
-					} else if (getEntityById(corefEntities.get(0), entities).getGender() == Gender.FEMALE) {
-						currentFemaleSingular = corefEntities.get(0);
-						
-					} else {
-						currentNeutralSingular = corefEntities.get(0);
 					}
-				}
-		    }
-			
-//			//Finally, take care of unresolved pronouns and other stuff...
-//			for (Mention m : sentences.get(sentIdx-1).get(CorefCoreAnnotations.CorefMentionsAnnotation.class)) {
-//				
-//				List<String> corefEntities = new ArrayList<String>();
-//				
-//				CoreLabel token;
-//				String word = "", pos = "", ner = "";
-//				for (int idx = m.startIndex; idx < m.endIndex; idx ++) {
-//					token = sentences.get(m.sentNum).get(TokensAnnotation.class).get(idx);
-//					pos += token.get(PartOfSpeechAnnotation.class) + "-";
-//					ner += token.get(NamedEntityTagAnnotation.class) + "-";
 //				}
-//				pos = pos.substring(0, pos.length()-1);
-//				ner = ner.substring(0, ner.length()-1);
-//				
-//				word = m.spanToString();
-//				
-//				//Personal or Possessive pronouns
-//				if (pos.equals("PRP")
-//						|| pos.equals("PRP$")) {	//pronouns
-//					
-//					if (word.equalsIgnoreCase("they") || word.equalsIgnoreCase("them") || word.equalsIgnoreCase("their") || word.equalsIgnoreCase("themselves")) {
-//						for (String entId : currentPlural) {
-//							addMention(entities, entId, sentIdx, m.startIndex+1, m.endIndex+1);
-//						}
-//					
-//					} else if (word.equalsIgnoreCase("he") || word.equalsIgnoreCase("him") || word.equalsIgnoreCase("his") || word.equalsIgnoreCase("himself")) {
-//						if (currentMaleSingular != null) addMention(entities, currentMaleSingular, sentIdx, m.startIndex+1, m.endIndex+1);
-//					
-//					} else if (word.equalsIgnoreCase("she") || word.equalsIgnoreCase("her") || word.equalsIgnoreCase("her") || word.equalsIgnoreCase("herself")) {
-//						if (currentFemaleSingular != null) addMention(entities, currentFemaleSingular, sentIdx, m.startIndex+1, m.endIndex+1);
-//					
-//					} else if (word.equalsIgnoreCase("it") || word.equalsIgnoreCase("it") || word.equalsIgnoreCase("its") || word.equalsIgnoreCase("itself")) {
-//						if (currentNeutralSingular != null) addMention(entities, currentNeutralSingular, sentIdx, m.startIndex+1, m.endIndex+1);
-//					}
-//					
-//					
-//					
-//				} else if (pos.startsWith("PRP$")
-//						&& pos.endsWith("NN-NNP")) {	//possessive pronoun + common noun + proper noun
-//					
-//					addFacts(sentIdx, m.startIndex+1, m.startIndex+2
-//							, m.endIndex, m.endIndex+1
-//							, word, pos
-//							, entities
-//							, corefEntities
-//							);
-//				
-//				} else if ((pos.startsWith("NNP-POS") || pos.startsWith("NNP-NNP-POS")) 
-//						&& pos.endsWith("NN-NNP") || pos.endsWith("NN-NNP-NNP")) {	//proper noun + 's + common noun + proper noun
-//					
-//					addFacts(sentIdx, m.startIndex+1, m.startIndex+3
-//							, m.endIndex, m.endIndex+1
-//							, word, pos
-//							, entities
-//							, corefEntities
-//							);
-//				
-//				}
-//				
-//				if (corefEntities.size() > 1) {
-//					currentPlural = corefEntities;
-//					
-//				} else if (corefEntities.size() == 1) {
-//					if (getEntityById(corefEntities.get(0), entities).getGender() == Gender.MALE) {
-//						currentMaleSingular = corefEntities.get(0);
-//						
-//					} else if (getEntityById(corefEntities.get(0), entities).getGender() == Gender.FEMALE) {
-//						currentFemaleSingular = corefEntities.get(0);
-//						
-//					} else {
-//						currentNeutralSingular = corefEntities.get(0);
-//					}
-//				}
-//			}
+			}
+		}
+		
+		////////////////////////// Write new sentences ///////////////////////////
+		Document doc = new Document(newSummary);
+		for (Sentence sent : doc.sentences()) {
+			System.out.println((sent.sentenceIndex()+1) + "-" + sent.text());
 			
 			Map<String, List<String>> mentions = new HashMap<String, List<String>>();
 			for (StoryEntity entity : entities) {
-				if (entity.getMentions().containsKey(sentIdx)) {
-					for (EntityMention em : entity.getMentions().get(sentIdx)) {
+				if (entity.getMentions().containsKey(sent.sentenceIndex()+1)) {
+					for (EntityMention em : entity.getMentions().get(sent.sentenceIndex()+1)) {
 						if (!mentions.containsKey(em.toString())) mentions.put(em.toString(), new ArrayList<String>());
 						mentions.get(em.toString()).add(entity.getId());
 					}
@@ -398,28 +333,24 @@ public class ResolveCoreference {
 			}
 //			System.out.println(mentions);
 			
-			List<CoreLabel> tokens = sentences.get(sentIdx-1).get(TokensAnnotation.class);
-			CoreLabel token;
 			List<String> coreferenceSent = new ArrayList<String>();
-			for (int i=0; i<tokens.size(); i++) {
-				coreferenceSent.add(tokens.get(i).word());
-			}
-			for (int i=0; i<tokens.size(); i++) {
-				token = tokens.get(i);
+			coreferenceSent.addAll(sent.words());
+			
+			for (int i=0; i<sent.words().size(); i++) {
 				for (String span : mentions.keySet()) {
 					if (mentions.get(span).size() == 1) {
 						int startIdx = Integer.parseInt(span.split("-")[0]);
 						if (i+1 == startIdx) {
 							String replace = mentions.get(span).get(0);
-							if (token.word().equalsIgnoreCase("his")
-									|| token.word().equalsIgnoreCase("her")
-									|| token.word().equalsIgnoreCase("its")) {
+							if (sent.word(i).equalsIgnoreCase("his")
+									|| sent.word(i).equalsIgnoreCase("her")
+									|| sent.word(i).equalsIgnoreCase("its")) {
 								replace += " 's";
 							}
 							coreferenceSent.set(i, replace);
 							
 						} else if (isIndexInSpan(i+1, span)) {
-							if (!token.word().equals("'s")) {
+							if (!sent.word(i).equals("'s")) {
 								coreferenceSent.set(i, null);
 							}
 						} 
@@ -435,13 +366,13 @@ public class ResolveCoreference {
 								replace += s + "-";
 							}
 							replace = replace.substring(0, replace.length()-1);
-							if (token.word().equalsIgnoreCase("their")) {
+							if (sent.word(i).equalsIgnoreCase("their")) {
 								replace += " 's";
 							}
 							coreferenceSent.set(i, replace);
 							
 						} else if (isIndexInSpan(i+1, span)) {
-							if (!token.word().equals("'s")) {
+							if (!sent.word(i).equals("'s")) {
 								coreferenceSent.set(i, null);
 							}
 						} 
@@ -454,9 +385,7 @@ public class ResolveCoreference {
 				if (w != null) coreferenceSentStr += w + " ";
 			}
 			coreferenceSentStr = coreferenceSentStr.substring(0, coreferenceSentStr.length()-1);
-			System.out.println(coreferenceSentStr);
-			
-			sentIdx ++;
+			System.out.println((sent.sentenceIndex()+1) + "-" + coreferenceSentStr + "\n");
 		}
 	}
 	
@@ -470,41 +399,41 @@ public class ResolveCoreference {
 	
 	
 	public static void main(String[] args) throws Exception {
-		ResolveCoreference sa = new ResolveCoreference();
+		Resolve sa = new Resolve();
 		
 		List<StoryEntity> entities = new ArrayList<StoryEntity>();
 		
 		StoryEntity vernon = new StoryEntity();
-		vernon.setId("vernon_dursley");
+		vernon.setId("Vernon");
 		vernon.setGender(Gender.MALE);
 		vernon.setName("Vernon Dursley");
 		vernon.getAliases().add("Mr. Dursley");
 		
 		StoryEntity petunia = new StoryEntity();
-		petunia.setId("petunia_dursley");
+		petunia.setId("Petunia");
 		petunia.setGender(Gender.FEMALE);
 		petunia.setName("Petunia Dursley");
 		petunia.getAliases().add("Mrs. Dursley");
 		
 		StoryEntity dudley = new StoryEntity();
-		dudley.setId("dudley_dursley");
+		dudley.setId("Dudley");
 		dudley.setGender(Gender.MALE);
 		dudley.setName("Dudley Dursley");
 		
 		StoryEntity james = new StoryEntity();
-		james.setId("james_potter");
+		james.setId("James");
 		james.setGender(Gender.MALE);
 		james.setName("James Potter");
 		james.getAliases().add("Mr. Potter");
 		
 		StoryEntity lily = new StoryEntity();
-		lily.setId("lily_potter");
+		lily.setId("Lily");
 		lily.setGender(Gender.FEMALE);
 		lily.setName("Lily Potter");
 		lily.getAliases().add("Mrs. Potter");
 		
 		StoryEntity harry = new StoryEntity();
-		harry.setId("harry_potter");
+		harry.setId("Harry");
 		harry.setGender(Gender.MALE);
 		harry.setName("Harry Potter");
 		
