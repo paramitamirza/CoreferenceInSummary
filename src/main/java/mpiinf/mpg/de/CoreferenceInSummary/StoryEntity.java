@@ -108,13 +108,14 @@ public class StoryEntity {
 		if (mentions.containsKey(sent)) {
 			int removeIdx = -1;
 			for (int i=0; i<mentions.get(sent).size(); i++) {
+				System.out.println(mentions.get(sent) + ":" + start + "-" + end);
 				if (mentions.get(sent).get(i).getStartIdx() == start 
 						&& mentions.get(sent).get(i).getEndIdx() == end) {
 					removeIdx = i;
 					break;
 				}
 			}
-			mentions.get(sent).remove(removeIdx);
+			if (removeIdx > 0) mentions.get(sent).remove(removeIdx);
 		}
 	}
 	
@@ -134,12 +135,13 @@ public class StoryEntity {
 		return false;
 	}
 	
-	public boolean isBelongToAGroup(String group) {
+	public boolean isBelongToAGroup(String group, int sentIdx, int startIdx, int endIdx) {
 		String groupStr = "";
 		boolean found = false;
 		Sentence sent = new Sentence(group);
 		for (int i=0; i<sent.words().size(); i++) {
 			if (sent.word(i).equals(id)) found = true;
+			else if (containedInMention(sentIdx, startIdx, endIdx)) found = true;
 			if (!sent.posTag(i).equals("NNP") 
 					&& !sent.word(i).equals("and") 
 					&& !sent.word(i).equals(",")) {
