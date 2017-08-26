@@ -110,45 +110,69 @@ public class Resolve {
 			, int objStartIdx, int objEndIdx
 			, String word, String pos
 			, List<StoryEntity> entities
-			, List<String> corefEntities
+//			, List<String> corefEntities
 			) {
-		String objId = "", pred = "";
-		List<String> subj = new ArrayList<String>();
 		
-		String[] words = word.split(" ");
-		String[] poss = pos.split("-");
-		String lastWord = words[words.length-1];
+		String posCheck = pos + "-";
+		posCheck = posCheck.replaceAll("PRP-", "");
+		posCheck = posCheck.replaceAll("PRP\\$-", "");
+		posCheck = posCheck.replaceAll("POS-", "");
+		posCheck = posCheck.replaceAll("NN-", "");
+		posCheck = posCheck.replaceAll("NNP-", "");
+		posCheck = posCheck.replaceAll("DT-NNS-", "");
+		posCheck = posCheck.replaceAll("JJ-", "");
+		posCheck = posCheck.replaceAll(",-", "");
 		
-		for (StoryEntity ent: entities) {
-			if (ent.containedInMention(sentIdx, objStartIdx, objEndIdx)) {
-				objId = ent.getId();			
-			} else if (ent.isSimilar(lastWord)) {
-				addAlias(entities, ent.getId(), lastWord);
-				addMention(entities, ent.getId(), sentIdx, objStartIdx, objEndIdx);								
-				corefEntities.add(ent.getId());
-				objId = ent.getId();
+		if (posCheck.trim().isEmpty()) {
+		
+			String objId = "", pred = "";
+			List<String> subj = new ArrayList<String>();
+			String[] words = word.split(" ");
+			String[] poss = pos.split("-");
+			
+//			System.out.println(word + ":" + subjStartIdx + ":" + subjEndIdx + ":" + objStartIdx + ":" + objEndIdx);
+			
+			String objStr = "";
+			for (int x=objStartIdx-subjStartIdx; x<objEndIdx-subjStartIdx; x++) {
+				objStr += words[x] + " ";
 			}
 			
-			if (ent.containedInMention(sentIdx, subjStartIdx, subjEndIdx)) {
-				subj.add(ent.getId());
+			for (StoryEntity ent: entities) {
+				
+				if (ent.getId().equals(objStr)
+						|| ent.isSimilar(objStr)) {
+					addAlias(entities, ent.getId(), objStr);
+					addMention(entities, ent.getId(), sentIdx, subjStartIdx, objEndIdx);
+					objId = ent.getId();
+				} 
+				
+				if (ent.containedInMention(sentIdx, subjStartIdx, subjEndIdx)) {
+					subj.add(ent.getId());
+					
+				}
 			}
-		}
-		
-		pred = "";
-		for (int k=0 ; k<poss.length; k++) {
-			if (poss[k].equals("NN")) pred += words[k] + "_";
-		}
-		pred = pred.substring(0, pred.length()-1);
-		
-		for (String subjId : subj) {
-			StoryEntity subjEntity = getEntityById(subjId, entities);
-			StoryEntity objEntity = getEntityById(objId, entities);
 			
-			if (!subjId.equals(objId)) {
-				subjEntity.getFacts().add(new Fact(subjId, pred, objId));
-				inferFacts(subjEntity, objEntity, pred);
-			} else {
-				objEntity.removeMention(sentIdx, subjStartIdx, subjEndIdx);
+			pred = "";
+			for (int k=0 ; k<poss.length; k++) {
+				if (poss[k].equals("NN")) pred += words[k] + "_";
+			}
+			pred = pred.substring(0, pred.length()-1);
+			
+			for (String subjId : subj) {
+				StoryEntity subjEntity = getEntityById(subjId, entities);
+				StoryEntity objEntity = getEntityById(objId, entities);
+				
+				if (!subjId.equals(objId)) {
+					subjEntity.getFacts().add(new Fact(subjId, pred, objId));
+					inferFacts(subjEntity, objEntity, pred);
+					
+					subjEntity.removeMention(sentIdx, subjStartIdx, subjEndIdx);
+					System.out.println(objId + "-" + sentIdx + "-"+ objStartIdx + "-" + objEndIdx);
+					objEntity.removeMention(sentIdx, objStartIdx, objEndIdx);
+				
+				} else {
+					objEntity.removeMention(sentIdx, subjStartIdx, subjEndIdx);
+				}
 			}
 		}
 	}
@@ -215,7 +239,7 @@ public class Resolve {
 		Annotation document = new Annotation(newSummary);
 		pipeline.annotate(document);
 		
-		List<Integer> resolvedMentions = new ArrayList<Integer>();
+		Map<Integer, Set<Integer>> resolvedTokens = new HashMap<Integer, Set<Integer>>();
 		List<Integer> wronglyResolved = new ArrayList<Integer>();
 		
 		////////////////////////// Resolve coreference chains ///////////////////////////
@@ -224,7 +248,7 @@ public class Resolve {
 			List<String> corefEntities = new ArrayList<String>();
 			Gender corefGender = Gender.UNKNOWN;
 			
-			System.out.println("\t" + cc);
+//			System.out.println("\t" + cc);
 			
 			CorefMention rep = cc.getRepresentativeMention();
 			for (StoryEntity ent: entities) {
@@ -232,16 +256,22 @@ public class Resolve {
 						|| rep.mentionSpan.equals(ent.getId() + " 's")) {	//single entity
 					addAlias(entities, ent.getId(), rep.mentionSpan);
 					addMention(entities, ent.getId(), rep.sentNum, rep.startIndex, rep.endIndex);
-					resolvedMentions.add(rep.mentionID);
+					
+					if (!resolvedTokens.containsKey(rep.sentNum)) resolvedTokens.put(rep.sentNum, new HashSet<Integer>());
+					for (int x=rep.startIndex; x<rep.endIndex; x++) resolvedTokens.get(rep.sentNum).add(x);
+					
 					corefEntities.add(ent.getId());
 					corefGender = ent.getGender();
 					break;
 				
 				} else {
-					if (ent.isBelongToAGroup(rep.mentionSpan)
+					if (ent.isBelongToAGroup(rep.mentionSpan, rep.sentNum, rep.startIndex, rep.endIndex)
 							|| ent.isBelongToFamilyMention(rep.mentionSpan)) {	//a group of entities (connected by other words, or belong to the same family)
 						addMention(entities, ent.getId(), rep.sentNum, rep.startIndex, rep.endIndex);
-						resolvedMentions.add(rep.mentionID);
+						
+						if (!resolvedTokens.containsKey(rep.sentNum)) resolvedTokens.put(rep.sentNum, new HashSet<Integer>());
+						for (int x=rep.startIndex; x<rep.endIndex; x++) resolvedTokens.get(rep.sentNum).add(x);
+						
 						corefEntities.add(ent.getId());
 					}
 				}
@@ -251,14 +281,20 @@ public class Resolve {
 				if (!corefEntities.isEmpty()) {	//linked to Entities
 					if (m.mentionID != rep.mentionID) {
 						if (m.mentionType == MentionType.PROPER) {
-							resolvedMentions.add(m.mentionID);
+							
+							if (!resolvedTokens.containsKey(m.sentNum)) resolvedTokens.put(m.sentNum, new HashSet<Integer>());
+							for (int x=m.startIndex; x<m.endIndex; x++) resolvedTokens.get(m.sentNum).add(x);
+							
 							//Add proper mentions to entities
 							for (String e : corefEntities) {
 								addMention(entities, e, m.sentNum, m.startIndex, m.endIndex);
 							}
 							
 						} else if (m.mentionType == MentionType.PRONOMINAL) {
-							resolvedMentions.add(m.mentionID);
+							
+							if (!resolvedTokens.containsKey(m.sentNum)) resolvedTokens.put(m.sentNum, new HashSet<Integer>());
+							for (int x=m.startIndex; x<m.endIndex; x++) resolvedTokens.get(m.sentNum).add(x);
+							
 							if (m.gender == corefGender) {
 								//Add pronominal mentions to entities
 								for (String e : corefEntities) {
@@ -277,43 +313,309 @@ public class Resolve {
 	    }
 		
 		////////////////////////// Resolve all other mentions ///////////////////////////
-		//List all possible mentions
 		for (CoreMap sentence : document.get(CoreAnnotations.SentencesAnnotation.class)) {
-			for (Mention m : sentence.get(CorefCoreAnnotations.CorefMentionsAnnotation.class)) {
-				if (!resolvedMentions.contains(m.mentionID)
+			List<CoreLabel> tokens = sentence.get(TokensAnnotation.class);
+			List<Mention> ms = sentence.get(CorefCoreAnnotations.CorefMentionsAnnotation.class);
+			
+//			for (int i=0; i<ms.size(); i++) {
+			for (int i=ms.size()-1; i>=0; i--) {
+				
+				Mention m = ms.get(i);
+				
+				boolean includedInResolved = true;
+				if (resolvedTokens.containsKey((ms.get(i).sentNum+1))) {
+					for (int x=(ms.get(i).startIndex+1); x<(ms.get(i).endIndex+1); x++) {
+						includedInResolved = includedInResolved && resolvedTokens.get((ms.get(i).sentNum+1)).contains(x);
+					}
+				} else {
+					includedInResolved = false;
+				}
+				
+				if (!includedInResolved
 						|| wronglyResolved.contains(m.mentionID)) {
 					
-					for (StoryEntity ent: entities) {
-						if (m.spanToString().equals(ent.getId())
-								|| m.spanToString().equals(ent.getId() + " 's")) {	//single entity
-							addAlias(entities, ent.getId(), m.spanToString());
-							addMention(entities, ent.getId(), m.sentNum, m.startIndex, m.endIndex);
-							resolvedMentions.add(m.mentionID);
-							break;
+					String pos = "", word = "";
+					for (int x=m.startIndex; x<m.endIndex; x++) {
+						word += tokens.get(x).get(TextAnnotation.class) + " ";
+						pos += tokens.get(x).get(PartOfSpeechAnnotation.class) + "-";
+					}
+					pos = pos.substring(0, pos.length()-1);
+					
+					System.out.println("\t" + m.spanToString() + "-" + pos + "-" + (m.sentNum+1) + "-" + m.mentionType + "-" + (m.startIndex+1) + "-" + (m.endIndex+1));
+					
+					if (pos.startsWith("PRP$")) {	//possessive pronoun + common noun + (,) + proper noun
+						if (pos.endsWith("NN-NNP")
+								|| pos.endsWith("NN-,-NNP")) {
+							addFacts(m.sentNum+1
+									, m.startIndex+1, m.startIndex+2
+									, m.endIndex, m.endIndex+1
+									, word, pos
+									, entities
+//									, corefEntities
+									);
+							if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+							for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+							
+						} else if (pos.endsWith("NN-NNP-NNP")
+								|| pos.endsWith("NN-,-NNP-NNP")) {
+							addFacts(m.sentNum+1
+									, m.startIndex+1, m.startIndex+2
+									, m.endIndex-1, m.endIndex+1
+									, word, pos
+									, entities
+//									, corefEntities
+									);
+							if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+							for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
 						
-						} else {
-							if (ent.isBelongToAGroup(m.spanToString())
-									|| ent.isBelongToFamilyMention(m.spanToString())) {	//a group of entities (connected by other words, or belong to the same family)
-								addMention(entities, ent.getId(), m.sentNum, m.startIndex, m.endIndex);
-								resolvedMentions.add(m.mentionID);
+						} else if (pos.endsWith("NN")) {
+							if (tokens.get(m.endIndex).get(PartOfSpeechAnnotation.class).equals(",")) {
+								String proper = "", posss = "";
+								int endUpdated = m.endIndex;
+								for (int z=m.endIndex+1; z<tokens.size(); z++) {
+									if (tokens.get(z).get(PartOfSpeechAnnotation.class).equals("NNP")) {
+										proper += tokens.get(z).get(TextAnnotation.class) + " ";
+										posss += "NNP-";
+										endUpdated = z+1;
+									} else {
+										break;
+									}
+								}
+								if (!proper.isEmpty()) {
+									addFacts(m.sentNum+1
+											, m.startIndex+1, m.startIndex+2
+											, m.endIndex+2, endUpdated+1
+											, word.trim() + " , " + proper.substring(0, proper.length()-1), pos + "-,-" + posss.substring(0, posss.length()-1)
+											, entities
+	//										, corefEntities
+											);
+									if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+									for (int x=m.startIndex+1; x<endUpdated; x++) resolvedTokens.get(m.sentNum+1).add(x);
+								}
+							}
+						}
+						
+					} else if ((pos.startsWith("NNP-POS"))) {
+						if (pos.endsWith("NN-NNP")
+								|| pos.endsWith("NN-,-NNP")) {
+							addFacts(m.sentNum+1
+									, m.startIndex+1, m.startIndex+3
+									, m.endIndex, m.endIndex+1
+									, word, pos
+									, entities
+//									, corefEntities
+									);
+							if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+							for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+							
+						} else if (pos.endsWith("NN-NNP-NNP")
+								|| pos.endsWith("NN-,-NNP-NNP")) {
+							addFacts(m.sentNum+1
+									, m.startIndex+1, m.startIndex+3
+									, m.endIndex-1, m.endIndex+1
+									, word, pos
+									, entities
+//									, corefEntities
+									);
+							if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+							for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+							
+						} else if (pos.endsWith("NN")) {
+							if (tokens.get(m.endIndex).get(PartOfSpeechAnnotation.class).equals(",")) {
+								String proper = "", posss = "";
+								int endUpdated = m.endIndex;
+								for (int z=m.endIndex+1; z<tokens.size(); z++) {
+									if (tokens.get(z).get(PartOfSpeechAnnotation.class).equals("NNP")) {
+										proper += tokens.get(z).get(TextAnnotation.class) + " ";
+										posss += "NNP-";
+										endUpdated = z+1;
+									} else {
+										break;
+									}
+								}
+								if (!proper.isEmpty()) {
+									addFacts(m.sentNum+1
+											, m.startIndex+1, m.startIndex+3
+											, m.endIndex+2, endUpdated+1
+											, word.trim() + " , " + proper.substring(0, proper.length()-1), pos + "-,-" + posss.substring(0, posss.length()-1)
+											, entities
+	//										, corefEntities
+											);
+									if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+									for (int x=m.startIndex+1; x<endUpdated; x++) resolvedTokens.get(m.sentNum+1).add(x);
+								}
+							}
+						}
+					} else if ((pos.startsWith("NNP-NNP-POS"))) {
+						if (pos.endsWith("NN-NNP")
+								|| pos.endsWith("NN-,-NNP")) {
+							addFacts(m.sentNum+1
+									, m.startIndex+1, m.startIndex+4
+									, m.endIndex, m.endIndex+1
+									, word, pos
+									, entities
+//									, corefEntities
+									);
+							if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+							for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+							
+						} else if (pos.endsWith("NN-NNP-NNP")
+								|| pos.endsWith("NN-,-NNP-NNP")) {
+							addFacts(m.sentNum+1
+									, m.startIndex+1, m.startIndex+4
+									, m.endIndex-1, m.endIndex+1
+									, word, pos
+									, entities
+//									, corefEntities
+									);
+							if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+							for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+							
+						} else if (pos.endsWith("NN")) {
+							if (tokens.get(m.endIndex).get(PartOfSpeechAnnotation.class).equals(",")) {
+								String proper = "", posss = "";
+								int endUpdated = m.endIndex;
+								for (int z=m.endIndex+1; z<tokens.size(); z++) {
+									if (tokens.get(z).get(PartOfSpeechAnnotation.class).equals("NNP")) {
+										proper += tokens.get(z).get(TextAnnotation.class) + " ";
+										posss += "NNP-";
+										endUpdated = z+1;
+									} else {
+										break;
+									}
+								}
+								if (!proper.isEmpty()) {
+									addFacts(m.sentNum+1
+											, m.startIndex+1, m.startIndex+4
+											, m.endIndex+2, endUpdated+1
+											, word.trim() + " , " + proper.substring(0, proper.length()-1), pos + "-,-" + posss.substring(0, posss.length()-1)
+											, entities
+	//										, corefEntities
+											);
+									if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+									for (int x=m.startIndex+1; x<endUpdated; x++) resolvedTokens.get(m.sentNum+1).add(x);
+								}
+							}
+						}
+					} else if ((pos.startsWith("DT-NNS-POS"))) {
+						if (pos.endsWith("NN-NNP")
+								|| pos.endsWith("NN-,-NNP")) {
+							addFacts(m.sentNum+1
+									, m.startIndex+1, m.startIndex+4
+									, m.endIndex, m.endIndex+1
+									, word, pos
+									, entities
+//									, corefEntities
+									);
+							if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+							for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+							
+						} else if (pos.endsWith("NN-NNP-NNP")
+								|| pos.endsWith("NN-,-NNP-NNP")) {
+							addFacts(m.sentNum+1
+									, m.startIndex+1, m.startIndex+4
+									, m.endIndex-1, m.endIndex+1
+									, word, pos
+									, entities
+//									, corefEntities
+									);
+							if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+							for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+							
+						} else if (pos.endsWith("NN")) {
+							if (tokens.get(m.endIndex).get(PartOfSpeechAnnotation.class).equals(",")) {
+								String proper = "", posss = "";
+								int endUpdated = m.endIndex;
+								for (int z=m.endIndex+1; z<tokens.size(); z++) {
+									if (tokens.get(z).get(PartOfSpeechAnnotation.class).equals("NNP")) {
+										proper += tokens.get(z).get(TextAnnotation.class) + " ";
+										posss += "NNP-";
+										endUpdated = z+1;
+									} else {
+										break;
+									}
+								}
+								if (!proper.isEmpty()) {
+									addFacts(m.sentNum+1
+											, m.startIndex+1, m.startIndex+4
+											, m.endIndex+2, endUpdated+1
+											, word.trim() + " , " + proper.substring(0, proper.length()-1), pos + "-,-" + posss.substring(0, posss.length()-1)
+											, entities
+	//										, corefEntities
+											);
+									if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+									for (int x=m.startIndex+1; x<endUpdated; x++) resolvedTokens.get(m.sentNum+1).add(x);
+								}
 							}
 						}
 					}
-				}
+					
+					for (StoryEntity ent: entities) {
+						if (wronglyResolved.contains(m.mentionID)) {
+							//Find the correct entity!
+							if (ent.getMentions().containsKey(m.sentNum+1)
+									&& ent.getGender() == m.gender) {
+								addMention(entities, ent.getId(), m.sentNum+1, m.startIndex+1, m.endIndex+1);
+								
+								if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+								for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+								
+								break;
+							}
+						
+						} else {
+						
+							if (m.spanToString().equals(ent.getId())
+									|| m.spanToString().equals(ent.getId() + " 's")) {	//single entity
+								addAlias(entities, ent.getId(), m.spanToString());
+								addMention(entities, ent.getId(), m.sentNum+1, m.startIndex+1, m.endIndex+1);
+								
+								if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+								for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+								
+								break;
+							
+							} else {
+								if (ent.isBelongToAGroup(m.spanToString(), m.sentNum+1, m.startIndex+1, m.endIndex+1)
+										|| ent.isBelongToFamilyMention(m.spanToString())) {	//a group of entities (connected by other words, or belong to the same family)
+									
+									addMention(entities, ent.getId(), m.sentNum+1, m.startIndex+1, m.endIndex+1);
+									
+									if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+									for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+								}
+							}
+						}
+					}
+				
+				} 
 			}
 		}
+		
+		////////////////////////// Unlinked mentions (for printing purpose) /////////////////////////////
 		for (CoreMap sentence : document.get(CoreAnnotations.SentencesAnnotation.class)) {
+			List<CoreLabel> tokens = sentence.get(TokensAnnotation.class);
 			List<Mention> ms = sentence.get(CorefCoreAnnotations.CorefMentionsAnnotation.class);
-			for (int i=0; i<ms.size(); i++) {
-//			for (int i=ms.size()-1; i>=0; i--) {
-//				if (i == 0 || (i > 0 && !ms.get(i).includedIn(ms.get(i-1)))) {
-					if (!resolvedMentions.contains(ms.get(i).mentionID)
-							|| wronglyResolved.contains(ms.get(i).mentionID)) {
-						
-						System.out.println("\t" + ms.get(i).spanToString() + "-" + ms.get(i).sentNum + "-" + ms.get(i).corefClusterID + "-" + ms.get(i).mentionID);
+			
+//			for (int i=0; i<ms.size(); i++) {
+			for (int i=ms.size()-1; i>=0; i--) {
 				
+				Mention m = ms.get(i);
+				
+				boolean includedInResolved = true;
+				if (resolvedTokens.containsKey((ms.get(i).sentNum+1))) {
+					for (int x=(ms.get(i).startIndex+1); x<(ms.get(i).endIndex+1); x++) {
+						includedInResolved = includedInResolved && resolvedTokens.get((ms.get(i).sentNum+1)).contains(x);
 					}
-//				}
+				} else {
+					includedInResolved = false;
+				}
+				
+				if (!includedInResolved) {
+					
+//					System.out.println("\t" + m.spanToString() + "-" + (m.sentNum+1) + "-" + m.mentionType + "-" + (m.startIndex+1) + "-" + (m.endIndex+1));
+					
+				}
 			}
 		}
 		
@@ -350,7 +652,7 @@ public class Resolve {
 							coreferenceSent.set(i, replace);
 							
 						} else if (isIndexInSpan(i+1, span)) {
-							if (!sent.word(i).equals("'s")) {
+							if (!sent.posTag(i).equals("POS")) {
 								coreferenceSent.set(i, null);
 							}
 						} 
@@ -372,7 +674,7 @@ public class Resolve {
 							coreferenceSent.set(i, replace);
 							
 						} else if (isIndexInSpan(i+1, span)) {
-							if (!sent.word(i).equals("'s")) {
+							if (!sent.posTag(i).equals("POS")) {
 								coreferenceSent.set(i, null);
 							}
 						} 
@@ -444,11 +746,11 @@ public class Resolve {
 		entities.add(lily);
 		entities.add(harry);
 		
-		BufferedReader br = new BufferedReader(new FileReader(new File("./data/spark.harry.potter.book1.txt")));
-		String line, document = "";
-	    while ((line = br.readLine()) != null) {
-	    	document += line + "\n";
-	    }
+//		BufferedReader br = new BufferedReader(new FileReader(new File("./data/spark.harry.potter.book1.txt")));
+//		String line, document = "";
+//	    while ((line = br.readLine()) != null) {
+//	    	document += line + "\n";
+//	    }
 		
 		String document1 = ""
 				+ "Vernon and Petunia Dursley, with their one-year-old son, Dudley, are proud to say that they are the most normal people possible. "
@@ -466,13 +768,19 @@ public class Resolve {
 				+ "He and Petunia will be embarrassed if people find out that they are related to them, as the Potter family are very strange, in their opinion. "
 				+ "When he leaves his workplace at the end of the day, he bumps into a very small, cloaked man, who tells him that someone named \"You-Know-Who\" has been defeated, and that even Muggles like Vernon should be celebrating. "
 				+ "Vernon doesn't know what a Muggle is, but is offended that the man called him one.";
-//		
-//		String document2 = ""
-//				+ "That night, when Vernon arrives at home, he turns on the news and becomes suspicious when the newsman states that owls have been seen everywhere earlier in the day, and that fireworks have been spotted in Kent. "
-//				+ "Vernon asks Petunia if she and her sister have been in touch, but she becomes angry and denies it as she does not like to talk about her. "
-//				+ "When the Dursleys go to bed, a long bearded old man in a purple cloak appears out of nowhere outside of their home.";
 		
-	    sa.annotate(document1, entities);
+		String document2 = ""
+				+ "The Dursleys are a well-to-do, status-conscious family living in Surrey, England. "
+				+ "Eager to keep up proper appearances, they are embarrassed by Mrs. Dursley’s eccentric sister, Mrs. Potter, whom for years Mrs. Dursley has pretended not to know. "
+				+ "On his way to work one ordinary morning, Mr. Dursley notices a cat reading a map. "
+				+ "He is unsettled, but tells himself that he has only imagined it. "
+				+ "Then, as Mr. Dursley is waiting in traffic, he notices people dressed in brightly colored cloaks. "
+				+ "Walking past a bakery later that day, he overhears people talking in an excited manner about his sister-in-law’s family, the Potters, and the Potters’ one-year-old son, Harry. "
+				+ "Disturbed but still not sure anything is wrong, Mr. Dursley decides not to say anything to his wife. "
+				+ "On the way home, he bumps into a strangely dressed man who gleefully exclaims that someone named “You-Know-Who” has finally gone and that even a “Muggle” like Mr. Dursley should rejoice. "
+				+ "Meanwhile, the news is full of unusual reports of shooting stars and owls flying during the day.";
+		
+	    sa.annotate(document2, entities);
 	    
 	    for (StoryEntity ent : entities) {
 	    	System.out.println(ent.toString());
