@@ -5,6 +5,9 @@ http://harrypotter.wikia.com/api/v1/Articles/List?expand=1&category=Males&limit=
 http://wikis.wikia.com/wiki/List_of_Wikia_wikis
 http://starwars.wikia.com/wiki/Category:Individuals_by_gender
 
+http://harrypotter.wikia.com/api.php?action=query&prop=revisions&rvprop=content&format=xmlfm&titles=Harry_Potter&rvsection=0 --> infobox
+http://harrypotter.wikia.com/api.php?action=query&prop=revisions&rvprop=content&format=xmlfm&titles=Harry_Potter_and_the_Philosopher%27s_Stone&rvsection=3 --> plot
+
 url = "http://harrypotter.wikia.com/api.php?format=xml&action=query&titles=Harry_Potter&prop=revisions&rvprop=content"
 tree = lxml.etree.parse(urllib.urlopen(url))
 revs = tree.xpath('//rev')
@@ -13,6 +16,6 @@ print revs[-1].text
 url = "http://gameofthrones.wikia.com/api.php?format=xml&action=query&titles=Jon_Snow&prop=revisions&rvprop=content"
 tree = lxml.etree.parse(urllib.urlopen(url))
 revs = tree.xpath('//rev')
-print revs[-1].text
+print revs[0].text
 
 
