@@ -1,0 +1,18 @@
+http://harrypotter.wikia.com/api/v1/Articles/AsSimpleJson?id=63
+http://harrypotter.wikia.com/api/v1/Articles/List?expand=1&category=Females&limit=2000
+http://harrypotter.wikia.com/api/v1/Articles/List?expand=1&category=Males&limit=2000
+
+http://wikis.wikia.com/wiki/List_of_Wikia_wikis
+http://starwars.wikia.com/wiki/Category:Individuals_by_gender
+
+url = "http://harrypotter.wikia.com/api.php?format=xml&action=query&titles=Harry_Potter&prop=revisions&rvprop=content"
+tree = lxml.etree.parse(urllib.urlopen(url))
+revs = tree.xpath('//rev')
+print revs[-1].text
+
+url = "http://gameofthrones.wikia.com/api.php?format=xml&action=query&titles=Jon_Snow&prop=revisions&rvprop=content"
+tree = lxml.etree.parse(urllib.urlopen(url))
+revs = tree.xpath('//rev')
+print revs[-1].text
+
+
