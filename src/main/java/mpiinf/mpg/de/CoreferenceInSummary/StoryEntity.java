@@ -2,8 +2,11 @@ package mpiinf.mpg.de.CoreferenceInSummary;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import edu.stanford.nlp.coref.data.Dictionaries.Gender;
 import edu.stanford.nlp.simple.*;
@@ -15,15 +18,15 @@ public class StoryEntity {
 	private String id;
 	private String name;
 	private Gender gender;
-	private List<String> aliases;
+	private Set<String> aliases;
 	private List<Fact> facts;
 	
-	private Map<Integer, List<EntityMention>> mentions;
+	private Map<Integer, Map<Integer, List<EntityMention>>> mentions;
 	
 	public StoryEntity() {
-		aliases = new ArrayList<String>();
+		aliases = new HashSet<String>();
 		facts = new ArrayList<Fact>();
-		mentions = new HashMap<Integer, List<EntityMention>>();
+		mentions = new HashMap<Integer, Map<Integer, List<EntityMention>>>();
 	}
 		
 	public String getId() {
@@ -62,6 +65,9 @@ public class StoryEntity {
 		if (mention.equals(name)) {	//full name matches perfectly
 			return true;
 			
+		} else if (aliases.contains(mention)) {	//contained in the aliases list
+			return true;
+			
 		} else if (compareStrings(firstName, firstMention) >= 0.9
 				|| firstName.toLowerCase().contains(firstMention.toLowerCase())) {	//first name is similar
 			return true;
@@ -72,50 +78,66 @@ public class StoryEntity {
 			else
 				return false;
 			
-		} else if (aliases.contains(mention)) {
-			return true;
-		
 		} else {
 			return false;
 		}
 	}
 	
-	public boolean containedInMention(int sent, int start, int end) {
-		if (mentions.containsKey(sent)) {
-			for (EntityMention em : mentions.get(sent)) {
-				if (em.getStartIdx() >= start 
-						&& em.getEndIdx() <= end) {
-					return true;
+	public boolean containedInMention(int para, int sent, int start, int end) {
+		if (mentions.containsKey(para)) {
+			if (mentions.get(para).containsKey(sent)) {
+				for (EntityMention em : mentions.get(para).get(sent)) {
+					if (em.getStartIdx() >= start 
+							&& em.getEndIdx() <= end) {
+						return true;
+					}
 				}
 			}
 		}
 		return false;
 	}
 	
-	public boolean containMention(int sent, int start, int end) {
-		if (mentions.containsKey(sent)) {
-			for (EntityMention em : mentions.get(sent)) {
-				if (em.getStartIdx() == start 
-						&& em.getEndIdx() == end) {
-					return true;
+	public boolean containMention(int para, int sent, int start, int end) {
+		if (mentions.containsKey(para)) {
+			if (mentions.get(para).containsKey(sent)) {
+				for (EntityMention em : mentions.get(para).get(sent)) {
+					if (em.getStartIdx() <= start 
+							&& em.getEndIdx() >= end) {
+						return true;
+					}
 				}
 			}
 		}
 		return false;
 	}
 	
-	public void removeMention(int sent, int start, int end) {
-		if (mentions.containsKey(sent)) {
-			int removeIdx = -1;
-			for (int i=0; i<mentions.get(sent).size(); i++) {
-				System.out.println(mentions.get(sent) + ":" + start + "-" + end);
-				if (mentions.get(sent).get(i).getStartIdx() == start 
-						&& mentions.get(sent).get(i).getEndIdx() == end) {
-					removeIdx = i;
-					break;
+	public void removeIncludedMention(int para, int sent, int start, int end) {
+		if (mentions.containsKey(para)) {
+			if (mentions.get(para).containsKey(sent)) {
+				Iterator<EntityMention> it = mentions.get(para).get(sent).iterator();
+				while (it.hasNext()) {
+					EntityMention em = it.next();
+					if (em.getStartIdx() >= start
+				    		&& em.getEndIdx() <= end) {
+				        it.remove();
+				    }
 				}
 			}
-			if (removeIdx > 0) mentions.get(sent).remove(removeIdx);
+		}
+	}
+	
+	public void removeMention(int para, int sent, int start, int end) {
+		if (mentions.containsKey(para)) {
+			if (mentions.get(para).containsKey(sent)) {
+				Iterator<EntityMention> it = mentions.get(para).get(sent).iterator();
+				while (it.hasNext()) {
+					EntityMention em = it.next();
+					if (em.getStartIdx() == start
+				    		&& em.getEndIdx() == end) {
+				        it.remove();
+				    }
+				}
+			}
 		}
 	}
 	
@@ -135,13 +157,13 @@ public class StoryEntity {
 		return false;
 	}
 	
-	public boolean isBelongToAGroup(String group, int sentIdx, int startIdx, int endIdx) {
+	public boolean isBelongToAGroup(String group, int paraIdx, int sentIdx, int startIdx, int endIdx) {
 		String groupStr = "";
 		boolean found = false;
 		Sentence sent = new Sentence(group);
 		for (int i=0; i<sent.words().size(); i++) {
 			if (sent.word(i).equals(id)) found = true;
-			else if (containedInMention(sentIdx, startIdx, endIdx)) found = true;
+			else if (containedInMention(paraIdx, sentIdx, startIdx, endIdx)) found = true;
 			if (!sent.posTag(i).equals("NNP") 
 					&& !sent.word(i).equals("and") 
 					&& !sent.word(i).equals(",")) {
@@ -152,19 +174,19 @@ public class StoryEntity {
 		else return false;
 	}
 
-	public List<String> getAliases() {
+	public Set<String> getAliases() {
 		return aliases;
 	}
 
-	public void setAliases(List<String> aliases) {
+	public void setAliases(Set<String> aliases) {
 		this.aliases = aliases;
 	}
 
-	public Map<Integer, List<EntityMention>> getMentions() {
+	public Map<Integer, Map<Integer, List<EntityMention>>> getMentions() {
 		return mentions;
 	}
 
-	public void setMentions(Map<Integer, List<EntityMention>> mentions) {
+	public void setMentions(Map<Integer, Map<Integer, List<EntityMention>>> mentions) {
 		this.mentions = mentions;
 	}
 
@@ -179,6 +201,7 @@ public class StoryEntity {
 	public String toString() {
 		String entity = id + ": " + name + " (" + gender + ") also known as ";
 		for (String alias : aliases) entity += alias + "; ";
+		entity += "\nMentioned in (" + countMention() + " times): " + mentions;
 		entity += "\nFacts: ";
 		for (Fact fact : facts) entity += fact.toString() + "; ";
 		return entity;
@@ -189,15 +212,27 @@ public class StoryEntity {
 	}
 	
 	public Gender getGenderTitle(String name) {
-		if (name.equalsIgnoreCase("Mr.")) {
+		if (name.equalsIgnoreCase("Mr.")
+				|| name.equalsIgnoreCase("Sir")) {
 			return Gender.MALE;
 		} else if (name.equalsIgnoreCase("Mrs.")
 				|| name.equalsIgnoreCase("Miss.")
-				|| name.equalsIgnoreCase("Ms.")) {
+				|| name.equalsIgnoreCase("Ms.")
+				|| name.equalsIgnoreCase("Madam")) {
 			return Gender.FEMALE;
 		} else {
 			return null;
 		}
+	}
+	
+	public long countMention() {
+		int count = 0;
+		for (Integer paraIdx : mentions.keySet()) {
+			for (Integer sentIdx : mentions.get(paraIdx).keySet()) {
+				count += mentions.get(paraIdx).get(sentIdx).size();
+			}
+		}
+		return count;
 	}
 
 }

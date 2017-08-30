@@ -1,8 +1,13 @@
 package mpiinf.mpg.de.CoreferenceInSummary;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 import edu.stanford.nlp.coref.CorefCoreAnnotations;
@@ -69,19 +74,24 @@ public class Resolve {
 		}
 	}
 	
-	public void addMention(List<StoryEntity> entities, String entityId, int sentIdx, int startIdx, int endIdx) {
+	public void addMention(List<StoryEntity> entities, String entityId, int paraIdx, int sentIdx, int startIdx, int endIdx) {
 		StoryEntity entity = getEntityById(entityId, entities);
-		if (!entity.getMentions().containsKey(sentIdx)) {
-			entity.getMentions().put(sentIdx, new ArrayList<EntityMention>());
+		if (!entity.getMentions().containsKey(paraIdx)) {
+			entity.getMentions().put(paraIdx, new HashMap<Integer, List<EntityMention>>());
 		}
-		if (!entity.containMention(sentIdx, startIdx, endIdx)) {
-			entity.getMentions().get(sentIdx).add(new EntityMention(startIdx, endIdx));
+		if (!entity.getMentions().get(paraIdx).containsKey(sentIdx)) {
+			entity.getMentions().get(paraIdx).put(sentIdx, new ArrayList<EntityMention>());
 		}
+		if (!entity.containMention(paraIdx, sentIdx, startIdx, endIdx)) {
+//			entity.removeIncludedMention(paraIdx, sentIdx, startIdx, endIdx);
+			entity.getMentions().get(paraIdx).get(sentIdx).add(new EntityMention(startIdx, endIdx));
+		}		
 	}
 	
 	public void addAlias(List<StoryEntity> entities, String entityId, String alias) {
 		StoryEntity entity = getEntityById(entityId, entities);
-		if (!entity.getAliases().contains(alias)
+		if (!alias.equals(entity.getId())
+				&& !alias.equals(entity.getName())
 				&& !alias.equals(entity.getId() + " 's")) {
 			entity.getAliases().add(alias);
 		}
@@ -106,7 +116,8 @@ public class Resolve {
 		} 
 	}
 	
-	public void addFacts(int sentIdx, int subjStartIdx, int subjEndIdx
+	public void addFacts(int paraIdx, int sentIdx
+			, int subjStartIdx, int subjEndIdx
 			, int objStartIdx, int objEndIdx
 			, String word, String pos
 			, List<StoryEntity> entities
@@ -120,6 +131,7 @@ public class Resolve {
 		posCheck = posCheck.replaceAll("NN-", "");
 		posCheck = posCheck.replaceAll("NNP-", "");
 		posCheck = posCheck.replaceAll("DT-NNS-", "");
+		posCheck = posCheck.replaceAll("DT-NNPS-", "");
 		posCheck = posCheck.replaceAll("JJ-", "");
 		posCheck = posCheck.replaceAll(",-", "");
 		
@@ -142,11 +154,11 @@ public class Resolve {
 				if (ent.getId().equals(objStr)
 						|| ent.isSimilar(objStr)) {
 					addAlias(entities, ent.getId(), objStr);
-					addMention(entities, ent.getId(), sentIdx, subjStartIdx, objEndIdx);
+					addMention(entities, ent.getId(), paraIdx, sentIdx, subjStartIdx, objEndIdx);
 					objId = ent.getId();
 				} 
 				
-				if (ent.containedInMention(sentIdx, subjStartIdx, subjEndIdx)) {
+				if (ent.containedInMention(paraIdx, sentIdx, subjStartIdx, subjEndIdx)) {
 					subj.add(ent.getId());
 					
 				}
@@ -166,12 +178,11 @@ public class Resolve {
 					subjEntity.getFacts().add(new Fact(subjId, pred, objId));
 					inferFacts(subjEntity, objEntity, pred);
 					
-					subjEntity.removeMention(sentIdx, subjStartIdx, subjEndIdx);
-					System.out.println(objId + "-" + sentIdx + "-"+ objStartIdx + "-" + objEndIdx);
-					objEntity.removeMention(sentIdx, objStartIdx, objEndIdx);
+					subjEntity.removeMention(paraIdx, sentIdx, subjStartIdx, subjEndIdx);
+					objEntity.removeMention(paraIdx, sentIdx, objStartIdx, objEndIdx);
 				
 				} else {
-					objEntity.removeMention(sentIdx, subjStartIdx, subjEndIdx);
+					objEntity.removeMention(paraIdx, sentIdx, subjStartIdx, subjEndIdx);
 				}
 			}
 		}
@@ -198,6 +209,7 @@ public class Resolve {
 				
 				} else {
 					if (!currNNP.isEmpty()) {
+						currNNP = currNNP.trim();
 						
 						//Link with entities if possible
 						boolean linked = false;
@@ -231,7 +243,9 @@ public class Resolve {
 		return output;
 	}
 	
-	public void annotate(String summary, List<StoryEntity> entities) {
+	public String annotate(String docName, String summary, List<StoryEntity> entities, int paraIdx) throws IOException {
+		
+		StringBuilder sb = new StringBuilder();
 		
 		String newSummary = linkEntities(summary, entities).get(0);
 		List<String> unlinkedEntities = Arrays.asList(linkEntities(summary, entities).get(1).split(";"));
@@ -255,7 +269,7 @@ public class Resolve {
 				if (rep.mentionSpan.equals(ent.getId())
 						|| rep.mentionSpan.equals(ent.getId() + " 's")) {	//single entity
 					addAlias(entities, ent.getId(), rep.mentionSpan);
-					addMention(entities, ent.getId(), rep.sentNum, rep.startIndex, rep.endIndex);
+					addMention(entities, ent.getId(), paraIdx, rep.sentNum, rep.startIndex, rep.endIndex);
 					
 					if (!resolvedTokens.containsKey(rep.sentNum)) resolvedTokens.put(rep.sentNum, new HashSet<Integer>());
 					for (int x=rep.startIndex; x<rep.endIndex; x++) resolvedTokens.get(rep.sentNum).add(x);
@@ -265,9 +279,9 @@ public class Resolve {
 					break;
 				
 				} else {
-					if (ent.isBelongToAGroup(rep.mentionSpan, rep.sentNum, rep.startIndex, rep.endIndex)
+					if (ent.isBelongToAGroup(rep.mentionSpan, paraIdx, rep.sentNum, rep.startIndex, rep.endIndex)
 							|| ent.isBelongToFamilyMention(rep.mentionSpan)) {	//a group of entities (connected by other words, or belong to the same family)
-						addMention(entities, ent.getId(), rep.sentNum, rep.startIndex, rep.endIndex);
+						addMention(entities, ent.getId(), paraIdx, rep.sentNum, rep.startIndex, rep.endIndex);
 						
 						if (!resolvedTokens.containsKey(rep.sentNum)) resolvedTokens.put(rep.sentNum, new HashSet<Integer>());
 						for (int x=rep.startIndex; x<rep.endIndex; x++) resolvedTokens.get(rep.sentNum).add(x);
@@ -287,7 +301,7 @@ public class Resolve {
 							
 							//Add proper mentions to entities
 							for (String e : corefEntities) {
-								addMention(entities, e, m.sentNum, m.startIndex, m.endIndex);
+								addMention(entities, e, paraIdx, m.sentNum, m.startIndex, m.endIndex);
 							}
 							
 						} else if (m.mentionType == MentionType.PRONOMINAL) {
@@ -298,7 +312,7 @@ public class Resolve {
 							if (m.gender == corefGender) {
 								//Add pronominal mentions to entities
 								for (String e : corefEntities) {
-									addMention(entities, e, m.sentNum, m.startIndex, m.endIndex);
+									addMention(entities, e, paraIdx, m.sentNum, m.startIndex, m.endIndex);
 								}
 							} else {
 								wronglyResolved.add(m.mentionID);
@@ -341,12 +355,12 @@ public class Resolve {
 					}
 					pos = pos.substring(0, pos.length()-1);
 					
-					System.out.println("\t" + m.spanToString() + "-" + pos + "-" + (m.sentNum+1) + "-" + m.mentionType + "-" + (m.startIndex+1) + "-" + (m.endIndex+1));
+//					System.out.println("\"" + m.spanToString() + "\"" + "," + pos + "," + m.mentionType + "," + paraIdx + ":" + (m.sentNum+1) + ":" + (m.startIndex+1) + "-" + (m.endIndex+1));
 					
 					if (pos.startsWith("PRP$")) {	//possessive pronoun + common noun + (,) + proper noun
 						if (pos.endsWith("NN-NNP")
 								|| pos.endsWith("NN-,-NNP")) {
-							addFacts(m.sentNum+1
+							addFacts(paraIdx, m.sentNum+1
 									, m.startIndex+1, m.startIndex+2
 									, m.endIndex, m.endIndex+1
 									, word, pos
@@ -358,7 +372,7 @@ public class Resolve {
 							
 						} else if (pos.endsWith("NN-NNP-NNP")
 								|| pos.endsWith("NN-,-NNP-NNP")) {
-							addFacts(m.sentNum+1
+							addFacts(paraIdx, m.sentNum+1
 									, m.startIndex+1, m.startIndex+2
 									, m.endIndex-1, m.endIndex+1
 									, word, pos
@@ -382,7 +396,7 @@ public class Resolve {
 									}
 								}
 								if (!proper.isEmpty()) {
-									addFacts(m.sentNum+1
+									addFacts(paraIdx, m.sentNum+1
 											, m.startIndex+1, m.startIndex+2
 											, m.endIndex+2, endUpdated+1
 											, word.trim() + " , " + proper.substring(0, proper.length()-1), pos + "-,-" + posss.substring(0, posss.length()-1)
@@ -398,7 +412,7 @@ public class Resolve {
 					} else if ((pos.startsWith("NNP-POS"))) {
 						if (pos.endsWith("NN-NNP")
 								|| pos.endsWith("NN-,-NNP")) {
-							addFacts(m.sentNum+1
+							addFacts(paraIdx, m.sentNum+1
 									, m.startIndex+1, m.startIndex+3
 									, m.endIndex, m.endIndex+1
 									, word, pos
@@ -410,7 +424,7 @@ public class Resolve {
 							
 						} else if (pos.endsWith("NN-NNP-NNP")
 								|| pos.endsWith("NN-,-NNP-NNP")) {
-							addFacts(m.sentNum+1
+							addFacts(paraIdx, m.sentNum+1
 									, m.startIndex+1, m.startIndex+3
 									, m.endIndex-1, m.endIndex+1
 									, word, pos
@@ -434,7 +448,7 @@ public class Resolve {
 									}
 								}
 								if (!proper.isEmpty()) {
-									addFacts(m.sentNum+1
+									addFacts(paraIdx, m.sentNum+1
 											, m.startIndex+1, m.startIndex+3
 											, m.endIndex+2, endUpdated+1
 											, word.trim() + " , " + proper.substring(0, proper.length()-1), pos + "-,-" + posss.substring(0, posss.length()-1)
@@ -449,7 +463,7 @@ public class Resolve {
 					} else if ((pos.startsWith("NNP-NNP-POS"))) {
 						if (pos.endsWith("NN-NNP")
 								|| pos.endsWith("NN-,-NNP")) {
-							addFacts(m.sentNum+1
+							addFacts(paraIdx, m.sentNum+1
 									, m.startIndex+1, m.startIndex+4
 									, m.endIndex, m.endIndex+1
 									, word, pos
@@ -461,7 +475,7 @@ public class Resolve {
 							
 						} else if (pos.endsWith("NN-NNP-NNP")
 								|| pos.endsWith("NN-,-NNP-NNP")) {
-							addFacts(m.sentNum+1
+							addFacts(paraIdx, m.sentNum+1
 									, m.startIndex+1, m.startIndex+4
 									, m.endIndex-1, m.endIndex+1
 									, word, pos
@@ -485,7 +499,7 @@ public class Resolve {
 									}
 								}
 								if (!proper.isEmpty()) {
-									addFacts(m.sentNum+1
+									addFacts(paraIdx, m.sentNum+1
 											, m.startIndex+1, m.startIndex+4
 											, m.endIndex+2, endUpdated+1
 											, word.trim() + " , " + proper.substring(0, proper.length()-1), pos + "-,-" + posss.substring(0, posss.length()-1)
@@ -497,10 +511,10 @@ public class Resolve {
 								}
 							}
 						}
-					} else if ((pos.startsWith("DT-NNS-POS"))) {
+					} else if ((pos.startsWith("DT-NNS-POS") || pos.startsWith("DT-NNPS-POS"))) {
 						if (pos.endsWith("NN-NNP")
 								|| pos.endsWith("NN-,-NNP")) {
-							addFacts(m.sentNum+1
+							addFacts(paraIdx, m.sentNum+1
 									, m.startIndex+1, m.startIndex+4
 									, m.endIndex, m.endIndex+1
 									, word, pos
@@ -512,7 +526,7 @@ public class Resolve {
 							
 						} else if (pos.endsWith("NN-NNP-NNP")
 								|| pos.endsWith("NN-,-NNP-NNP")) {
-							addFacts(m.sentNum+1
+							addFacts(paraIdx, m.sentNum+1
 									, m.startIndex+1, m.startIndex+4
 									, m.endIndex-1, m.endIndex+1
 									, word, pos
@@ -536,7 +550,7 @@ public class Resolve {
 									}
 								}
 								if (!proper.isEmpty()) {
-									addFacts(m.sentNum+1
+									addFacts(paraIdx, m.sentNum+1
 											, m.startIndex+1, m.startIndex+4
 											, m.endIndex+2, endUpdated+1
 											, word.trim() + " , " + proper.substring(0, proper.length()-1), pos + "-,-" + posss.substring(0, posss.length()-1)
@@ -553,14 +567,16 @@ public class Resolve {
 					for (StoryEntity ent: entities) {
 						if (wronglyResolved.contains(m.mentionID)) {
 							//Find the correct entity!
-							if (ent.getMentions().containsKey(m.sentNum+1)
-									&& ent.getGender() == m.gender) {
-								addMention(entities, ent.getId(), m.sentNum+1, m.startIndex+1, m.endIndex+1);
-								
-								if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
-								for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
-								
-								break;
+							if (ent.getMentions().containsKey(paraIdx)) {
+								if (ent.getMentions().get(paraIdx).containsKey(m.sentNum+1)
+										&& ent.getGender() == m.gender) {
+									addMention(entities, ent.getId(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1);
+									
+									if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+									for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+									
+									break;
+								}
 							}
 						
 						} else {
@@ -568,7 +584,7 @@ public class Resolve {
 							if (m.spanToString().equals(ent.getId())
 									|| m.spanToString().equals(ent.getId() + " 's")) {	//single entity
 								addAlias(entities, ent.getId(), m.spanToString());
-								addMention(entities, ent.getId(), m.sentNum+1, m.startIndex+1, m.endIndex+1);
+								addMention(entities, ent.getId(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1);
 								
 								if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
 								for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
@@ -576,10 +592,10 @@ public class Resolve {
 								break;
 							
 							} else {
-								if (ent.isBelongToAGroup(m.spanToString(), m.sentNum+1, m.startIndex+1, m.endIndex+1)
+								if (ent.isBelongToAGroup(m.spanToString(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1)
 										|| ent.isBelongToFamilyMention(m.spanToString())) {	//a group of entities (connected by other words, or belong to the same family)
 									
-									addMention(entities, ent.getId(), m.sentNum+1, m.startIndex+1, m.endIndex+1);
+									addMention(entities, ent.getId(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1);
 									
 									if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
 									for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
@@ -592,7 +608,9 @@ public class Resolve {
 			}
 		}
 		
-		////////////////////////// Unlinked mentions (for printing purpose) /////////////////////////////
+		////////////////////////// Unlinked mentions (for logging purpose) /////////////////////////////
+		BufferedWriter bw = new BufferedWriter(new FileWriter("./output/" + docName + ".unlinked.csv", true));
+		
 		for (CoreMap sentence : document.get(CoreAnnotations.SentencesAnnotation.class)) {
 			List<CoreLabel> tokens = sentence.get(TokensAnnotation.class);
 			List<Mention> ms = sentence.get(CorefCoreAnnotations.CorefMentionsAnnotation.class);
@@ -612,24 +630,32 @@ public class Resolve {
 				}
 				
 				if (!includedInResolved) {
-					
-//					System.out.println("\t" + m.spanToString() + "-" + (m.sentNum+1) + "-" + m.mentionType + "-" + (m.startIndex+1) + "-" + (m.endIndex+1));
+					String pos = "";
+					for (int x=m.startIndex; x<m.endIndex; x++) {
+						pos += tokens.get(x).get(PartOfSpeechAnnotation.class) + "-";
+					}
+					pos = pos.substring(0, pos.length()-1);
+					bw.write("\"" + m.spanToString() + "\"" + "," + "\"" + pos + "\"" + "," + m.mentionType + "," + paraIdx + ":" + (m.sentNum+1) + ":" + (m.startIndex+1) + "-" + (m.endIndex+1) + "\n");
 					
 				}
 			}
 		}
 		
+		bw.close();
+		
 		////////////////////////// Write new sentences ///////////////////////////
+		bw = new BufferedWriter(new FileWriter("./output/" + docName + ".resolved.sentences.txt", true));
+		
 		Document doc = new Document(newSummary);
 		for (Sentence sent : doc.sentences()) {
-			System.out.println((sent.sentenceIndex()+1) + "-" + sent.text());
-			
 			Map<String, List<String>> mentions = new HashMap<String, List<String>>();
 			for (StoryEntity entity : entities) {
-				if (entity.getMentions().containsKey(sent.sentenceIndex()+1)) {
-					for (EntityMention em : entity.getMentions().get(sent.sentenceIndex()+1)) {
-						if (!mentions.containsKey(em.toString())) mentions.put(em.toString(), new ArrayList<String>());
-						mentions.get(em.toString()).add(entity.getId());
+				if (entity.getMentions().containsKey(paraIdx)) {
+					if (entity.getMentions().get(paraIdx).containsKey(sent.sentenceIndex()+1)) {
+						for (EntityMention em : entity.getMentions().get(paraIdx).get(sent.sentenceIndex()+1)) {
+							if (!mentions.containsKey(em.toString())) mentions.put(em.toString(), new ArrayList<String>());
+							mentions.get(em.toString()).add(entity.getId().replace(" ", "_"));
+						}
 					}
 				}
 			}
@@ -642,17 +668,24 @@ public class Resolve {
 				for (String span : mentions.keySet()) {
 					if (mentions.get(span).size() == 1) {
 						int startIdx = Integer.parseInt(span.split("-")[0]);
+						int endIdx = Integer.parseInt(span.split("-")[1]);
+						
 						if (i+1 == startIdx) {
 							String replace = mentions.get(span).get(0);
-							if (sent.word(i).equalsIgnoreCase("his")
-									|| sent.word(i).equalsIgnoreCase("her")
-									|| sent.word(i).equalsIgnoreCase("its")) {
-								replace += " 's";
+							if (!sent.posTag(endIdx-2).equals("NNP")) {
+								if (sent.posTag(i).equals("PRP$")
+										&& (sent.word(i).equals("his")
+												|| sent.word(i).equals("her")
+												|| sent.word(i).equals("its"))) {
+									replace += " 's";
+								}
 							}
 							coreferenceSent.set(i, replace);
 							
 						} else if (isIndexInSpan(i+1, span)) {
-							if (!sent.posTag(i).equals("POS")) {
+							if (i+1 == endIdx-1 && sent.posTag(i).equals("POS")) {
+								coreferenceSent.set(i, "'s");
+							} else {
 								coreferenceSent.set(i, null);
 							}
 						} 
@@ -662,19 +695,24 @@ public class Resolve {
 				for (String span : mentions.keySet()) {
 					if (mentions.get(span).size() > 1) {
 						int startIdx = Integer.parseInt(span.split("-")[0]);
+						int endIdx = Integer.parseInt(span.split("-")[1]);
+						
 						if (i+1 == startIdx) {
 							String replace = "";
 							for (String s : mentions.get(span)) {
 								replace += s + "-";
 							}
 							replace = replace.substring(0, replace.length()-1);
-							if (sent.word(i).equalsIgnoreCase("their")) {
+							if (sent.posTag(i).equals("PRP$")
+									&& (sent.word(i).equals("their"))) {
 								replace += " 's";
 							}
 							coreferenceSent.set(i, replace);
 							
 						} else if (isIndexInSpan(i+1, span)) {
-							if (!sent.posTag(i).equals("POS")) {
+							if (i+1 == endIdx-1 && sent.posTag(i).equals("POS")) {
+								coreferenceSent.set(i, "'s");
+							} else {
 								coreferenceSent.set(i, null);
 							}
 						} 
@@ -687,8 +725,14 @@ public class Resolve {
 				if (w != null) coreferenceSentStr += w + " ";
 			}
 			coreferenceSentStr = coreferenceSentStr.substring(0, coreferenceSentStr.length()-1);
-			System.out.println((sent.sentenceIndex()+1) + "-" + coreferenceSentStr + "\n");
+			bw.write(paraIdx + ":" + (sent.sentenceIndex()+1) + "-" + sent.text() + "\n");
+			bw.write(paraIdx + ":" + (sent.sentenceIndex()+1) + "-" + coreferenceSentStr + "\n\n");
+			
+			sb.append(coreferenceSentStr + "\n");
 		}
+		bw.close();
+		
+		return sb.toString();
 	}
 	
 	private boolean isIndexInSpan (int idx, String span) {
@@ -703,54 +747,60 @@ public class Resolve {
 	public static void main(String[] args) throws Exception {
 		Resolve sa = new Resolve();
 		
+		
+		////////////////////////// Read list of entities ///////////////////////////
 		List<StoryEntity> entities = new ArrayList<StoryEntity>();
+		Set<String> keys = new HashSet<String>();
+		BufferedReader br = new BufferedReader(new FileReader(new File("./data/spark.harry.potter.entities.csv")));
+		String line;
+		while ((line = br.readLine()) != null) {
+			String[] cols = line.split(",");
+			StoryEntity ent = new StoryEntity();
+			
+			if (cols[0].equals("M")) ent.setGender(Gender.MALE);
+			else if (cols[0].equals("F")) ent.setGender(Gender.FEMALE);
+			else if (cols[0].equals("N")) ent.setGender(Gender.NEUTRAL);
+			else ent.setGender(Gender.UNKNOWN);
+			
+			if (cols[1].split(" ").length > 1) {
+				String[] names = cols[1].split(" ");
+				String firstName = names[0];
+				String lastName = names[names.length-1];
+				if (!keys.contains(firstName)) {
+					ent.setId(firstName);
+					keys.add(firstName);
+				}
+				else ent.setId(firstName + lastName.substring(0, 2));
+			} else {
+				ent.setId(cols[1]);
+			}
+			ent.setName(cols[1]);
+			if (cols.length > 2) {
+				for (int i=2; i<cols.length; i++) {
+					ent.getAliases().add(cols[i]);
+				}
+			}
+			
+			entities.add(ent);
+	    }
 		
-		StoryEntity vernon = new StoryEntity();
-		vernon.setId("Vernon");
-		vernon.setGender(Gender.MALE);
-		vernon.setName("Vernon Dursley");
-		vernon.getAliases().add("Mr. Dursley");
-		
-		StoryEntity petunia = new StoryEntity();
-		petunia.setId("Petunia");
-		petunia.setGender(Gender.FEMALE);
-		petunia.setName("Petunia Dursley");
-		petunia.getAliases().add("Mrs. Dursley");
-		
-		StoryEntity dudley = new StoryEntity();
-		dudley.setId("Dudley");
-		dudley.setGender(Gender.MALE);
-		dudley.setName("Dudley Dursley");
-		
-		StoryEntity james = new StoryEntity();
-		james.setId("James");
-		james.setGender(Gender.MALE);
-		james.setName("James Potter");
-		james.getAliases().add("Mr. Potter");
-		
-		StoryEntity lily = new StoryEntity();
-		lily.setId("Lily");
-		lily.setGender(Gender.FEMALE);
-		lily.setName("Lily Potter");
-		lily.getAliases().add("Mrs. Potter");
-		
-		StoryEntity harry = new StoryEntity();
-		harry.setId("Harry");
-		harry.setGender(Gender.MALE);
-		harry.setName("Harry Potter");
-		
-		entities.add(vernon);
-		entities.add(petunia);
-		entities.add(dudley);
-		entities.add(james);
-		entities.add(lily);
-		entities.add(harry);
-		
-//		BufferedReader br = new BufferedReader(new FileReader(new File("./data/spark.harry.potter.book1.txt")));
-//		String line, document = "";
-//	    while ((line = br.readLine()) != null) {
-//	    	document += line + "\n";
-//	    }
+		////////////////////////// Resolve coreference! ///////////////////////////
+		File input = new File("./data/spark.harry.potter.book1.txt");
+		br = new BufferedReader(new FileReader(input));
+		List<String> paragraphs = new ArrayList<String>();
+	    while ((line = br.readLine()) != null) {
+	    	if (!line.trim().isEmpty()) {
+	    		paragraphs.add(line);
+	    	}
+	    }
+	    
+	    BufferedWriter bw = new BufferedWriter(new FileWriter("./output/" + input.getName() + ".resolved.txt"));
+	    File logSent = new File("./output/" + input.getName() + ".resolved.sentences.txt"); logSent.delete();
+	    File logMentions = new File("./output/" + input.getName() + ".unlinked.csv"); logMentions.delete();
+	    for (int i=0; i<paragraphs.size(); i++) {
+	    	bw.write(sa.annotate(input.getName(), paragraphs.get(i), entities, i+1) + "\n");
+	    }
+	    bw.close();
 		
 		String document1 = ""
 				+ "Vernon and Petunia Dursley, with their one-year-old son, Dudley, are proud to say that they are the most normal people possible. "
@@ -780,13 +830,30 @@ public class Resolve {
 				+ "On the way home, he bumps into a strangely dressed man who gleefully exclaims that someone named “You-Know-Who” has finally gone and that even a “Muggle” like Mr. Dursley should rejoice. "
 				+ "Meanwhile, the news is full of unusual reports of shooting stars and owls flying during the day.";
 		
-	    sa.annotate(document2, entities);
+		String document3 = ""
+				+ "Ten years have passed. "
+				+ "Harry is now almost eleven and living in wretchedness in a cupboard under the stairs in the Dursley house. "
+				+ "He is tormented by the Dursleys’ son, Dudley, a spoiled and whiny boy. "
+				+ "Harry is awakened one morning by his aunt, Petunia, telling him to tend to the bacon immediately, because it is Dudley’s birthday and everything must be perfect. "
+				+ "Dudley gets upset because he has only thirty-seven presents, one fewer than the previous year. "
+				+ "When a neighbor calls to say she will not be able to watch Harry for the day, Dudley begins to cry, as he is upset that Harry will have to be brought along on Dudley’s birthday trip to the zoo. "
+				+ "At the zoo, the Dursleys spoil Dudley and his friend Piers, neglecting Harry as usual. "
+				+ "In the reptile house, Harry pays close attention to a boa constrictor and is astonished when he is able to have a conversation with it. "
+				+ "Noticing what Harry is doing, Piers calls over Mr. Dursley and Dudley, who pushes Harry aside to get a better look at the snake. "
+				+ "At this moment, the glass front of the snake’s tank vanishes and the boa constrictor slithers out onto the floor. "
+				+ "Dudley and Piers claim that the snake attacked them. "
+				+ "The Dursleys are in shock. "
+				+ "At home, Harry is punished for the snake incident, being sent to his cupboard without any food, though he feels he had nothing to do with what happened.";
+		
+//	    sa.annotate("harry.potter", document1, entities, 1);
+//	    sa.annotate("harry.potter", document2, entities, 1);
+//		sa.annotate("harry.potter", document3, entities, 2);
 	    
+		bw = new BufferedWriter(new FileWriter("./output/" + input.getName() + ".entities.txt"));
 	    for (StoryEntity ent : entities) {
-	    	System.out.println(ent.toString());
-	    	System.out.println(ent.getMentions());
-	    	System.out.println();
+	    	bw.write(ent.toString() + "\n\n");
 	    }
+	    bw.close();
 	}
 
 }
