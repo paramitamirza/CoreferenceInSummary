@@ -85,7 +85,10 @@ public class WikiaListOfLinks {
     	p = Pattern.compile(familyPattern, Pattern.DOTALL);
     	m = p.matcher(infoboxStr);
     	if (m.find()) {
-    		System.out.println("FAMILY---" + m.group(1));
+    		String familyMember = m.group(1);
+    		familyMember = familyMember.replaceAll("\\*", "");
+    		String[] members = familyMember.split("\\\n");
+    		for (String s : members) System.out.println(s);
     	}
     	
 		StoryEntity ent = new StoryEntity(fullname.split(" ")[0] + pageId, fullname, aliases);
