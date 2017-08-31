@@ -17,7 +17,9 @@ public class StoryEntity {
 	
 	private String id;
 	private String name;
+	private String type;
 	private Gender gender;
+	private String url;
 	private Set<String> aliases;
 	private List<Fact> facts;
 	
@@ -27,6 +29,11 @@ public class StoryEntity {
 		aliases = new HashSet<String>();
 		facts = new ArrayList<Fact>();
 		mentions = new HashMap<Integer, Map<Integer, List<EntityMention>>>();
+	}
+	
+	public StoryEntity(String id, String name, Set<String> aliases) {
+		this();
+		this.setId(id); this.setName(name); this.getAliases().addAll(aliases);
 	}
 		
 	public String getId() {
@@ -199,11 +206,13 @@ public class StoryEntity {
 	}
 	
 	public String toString() {
-		String entity = id + ": " + name + " (" + gender + ") also known as ";
+		String entity = id + ": " + name + " (" + type + ", " + gender + ") also known as ";
 		for (String alias : aliases) entity += alias + "; ";
+		entity += "\nWikia URL: " + url;
 		entity += "\nMentioned in (" + countMention() + " times): " + mentions;
 		entity += "\nFacts: ";
 		for (Fact fact : facts) entity += fact.toString() + "; ";
+		entity += "\n";
 		return entity;
 	}
 	
@@ -233,6 +242,22 @@ public class StoryEntity {
 			}
 		}
 		return count;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }
