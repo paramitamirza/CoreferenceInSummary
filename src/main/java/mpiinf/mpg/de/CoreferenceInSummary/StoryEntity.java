@@ -11,7 +11,9 @@ import java.util.Set;
 import edu.stanford.nlp.coref.data.Dictionaries.Gender;
 import edu.stanford.nlp.simple.*;
 
-import org.apache.commons.lang3.StringUtils;  
+import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;  
 
 public class StoryEntity {
 	
@@ -21,6 +23,7 @@ public class StoryEntity {
 	private Gender gender;
 	private String url;
 	private Set<String> aliases;
+	private List<StoryEntity> familyMembers;
 	private List<Fact> facts;
 	
 	private Map<Integer, Map<Integer, List<EntityMention>>> mentions;
@@ -75,11 +78,12 @@ public class StoryEntity {
 		} else if (aliases.contains(mention)) {	//contained in the aliases list
 			return true;
 			
-		} else if (compareStrings(firstName, firstMention) >= 0.9
-				|| firstName.toLowerCase().contains(firstMention.toLowerCase())) {	//first name is similar
+		} else if (firstName.toLowerCase().equals(firstMention.toLowerCase())
+//				|| compareStrings(firstName, firstMention) >= 0.9
+				) {	//first name is similar
 			return true;
 			
-		} else if (compareStrings(lastName, lastMention) >= 0.9) {	//only last name is similar
+		} else if (lastName.toLowerCase().equals(lastName.toLowerCase())) {	//only last name is similar
 			if (gender == getGenderTitle(firstMention))
 				return true;
 			else
@@ -243,6 +247,25 @@ public class StoryEntity {
 		}
 		return count;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		boolean retVal = false;
+
+        if (obj instanceof StoryEntity){
+        	StoryEntity ptr = (StoryEntity) obj;
+            retVal = ptr.id == this.id;
+        }
+
+        return retVal;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 7;
+        hash = 17 * hash + (this.id != null ? this.id.hashCode() : 0);
+        return hash;
+	}
 
 	public String getType() {
 		return type;
@@ -258,6 +281,52 @@ public class StoryEntity {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public List<StoryEntity> getFamilyMembers() {
+		return familyMembers;
+	}
+
+	public void setFamilyMembers(List<StoryEntity> familyMembers) {
+		this.familyMembers = familyMembers;
+	}
+	
+	public JSONObject toJSON() {
+		JSONObject obj = new JSONObject();
+		
+		obj.put("id", this.id);
+		obj.put("name", this.name);
+		obj.put("type", this.type);
+		obj.put("gender", this.gender);
+		obj.put("wikia-url", this.url);
+		
+		JSONArray arrAliases = new JSONArray();
+		int i = 0;
+		for (String al : this.aliases) {
+			arrAliases.put(i, al);
+			i ++;
+		}
+		obj.put("aliases", arrAliases);
+		
+		
+		
+		return obj;
+	}
+	
+	public String toCSV() {
+		String csv = "";
+		csv += "\"" + this.getId() + "\"";
+		csv += ",\"" + this.getName() + "\"";
+		csv += ",\"" + this.getType() + "\"";
+		csv += ",\"" + this.getGender() + "\"";
+		csv += ",\"" + this.getUrl() + "\"";
+		csv += ",\"[";
+		for (String al : this.aliases) {
+			csv += al + ",";
+		}
+		csv += "]\"";
+		
+		return csv;
 	}
 
 }

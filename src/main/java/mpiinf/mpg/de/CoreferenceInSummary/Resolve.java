@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -23,7 +25,9 @@ import edu.stanford.nlp.util.CoreMap;
 import edu.stanford.nlp.simple.*;
 import edu.stanford.nlp.simple.Document;
 
-import org.apache.commons.lang3.StringUtils;  
+import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;  
 
 public class Resolve {
 	
@@ -43,9 +47,11 @@ public class Resolve {
 	    pipeline = new StanfordCoreNLP(props);
 	}
 	
-	public StoryEntity getEntityById(String id, List<StoryEntity> corefEntities) {
+	public StoryEntity getEntityById(String id, Collection<StoryEntity> corefEntities) {
 		for (StoryEntity ent : corefEntities) {
-			if (ent.getId().equals(id)) return ent;
+			if (ent != null) {
+				if (ent.getId().equals(id)) return ent;
+			}
 		}
 		return null;
 	}
@@ -74,7 +80,7 @@ public class Resolve {
 		}
 	}
 	
-	public void addMention(List<StoryEntity> entities, String entityId, int paraIdx, int sentIdx, int startIdx, int endIdx) {
+	public void addMention(Collection<StoryEntity> entities, String entityId, int paraIdx, int sentIdx, int startIdx, int endIdx) {
 		StoryEntity entity = getEntityById(entityId, entities);
 		if (!entity.getMentions().containsKey(paraIdx)) {
 			entity.getMentions().put(paraIdx, new HashMap<Integer, List<EntityMention>>());
@@ -88,7 +94,7 @@ public class Resolve {
 		}		
 	}
 	
-	public void addAlias(List<StoryEntity> entities, String entityId, String alias) {
+	public void addAlias(Collection<StoryEntity> entities, String entityId, String alias) {
 		StoryEntity entity = getEntityById(entityId, entities);
 		if (!alias.equals(entity.getId())
 				&& !alias.equals(entity.getName())
@@ -120,7 +126,7 @@ public class Resolve {
 			, int subjStartIdx, int subjEndIdx
 			, int objStartIdx, int objEndIdx
 			, String word, String pos
-			, List<StoryEntity> entities
+			, Collection<StoryEntity> entities
 //			, List<String> corefEntities
 			) {
 		
@@ -150,17 +156,18 @@ public class Resolve {
 			}
 			
 			for (StoryEntity ent: entities) {
-				
-				if (ent.getId().equals(objStr)
-						|| ent.isSimilar(objStr)) {
-					addAlias(entities, ent.getId(), objStr);
-					addMention(entities, ent.getId(), paraIdx, sentIdx, subjStartIdx, objEndIdx);
-					objId = ent.getId();
-				} 
-				
-				if (ent.containedInMention(paraIdx, sentIdx, subjStartIdx, subjEndIdx)) {
-					subj.add(ent.getId());
+				if (ent != null) {
+					if (ent.getId().equals(objStr)
+							|| ent.isSimilar(objStr)) {
+						addAlias(entities, ent.getId(), objStr);
+						addMention(entities, ent.getId(), paraIdx, sentIdx, subjStartIdx, objEndIdx);
+						objId = ent.getId();
+					} 
 					
+					if (ent.containedInMention(paraIdx, sentIdx, subjStartIdx, subjEndIdx)) {
+						subj.add(ent.getId());
+						
+					}
 				}
 			}
 			
@@ -178,8 +185,8 @@ public class Resolve {
 					subjEntity.getFacts().add(new Fact(subjId, pred, objId));
 					inferFacts(subjEntity, objEntity, pred);
 					
-					subjEntity.removeMention(paraIdx, sentIdx, subjStartIdx, subjEndIdx);
-					objEntity.removeMention(paraIdx, sentIdx, objStartIdx, objEndIdx);
+					if (subjEntity != null) subjEntity.removeMention(paraIdx, sentIdx, subjStartIdx, subjEndIdx);
+					if (objEntity != null) objEntity.removeMention(paraIdx, sentIdx, objStartIdx, objEndIdx);
 				
 				} else {
 					objEntity.removeMention(paraIdx, sentIdx, subjStartIdx, subjEndIdx);
@@ -188,7 +195,7 @@ public class Resolve {
 		}
 	}
 	
-	public List<String> linkEntities(String summary, List<StoryEntity> entities) {
+	public List<String> linkEntities(String summary, Collection<StoryEntity> entities) {
 		
 		List<String> output = new ArrayList<String>();
 		String linkedSummary = "";
@@ -214,15 +221,17 @@ public class Resolve {
 						//Link with entities if possible
 						boolean linked = false;
 						for (StoryEntity ent : entities) {
-							if (ent.isSimilar(currNNP)) {	//similar to an entity, link them!
-								words.set(currIdx.get(0), ent.getId());
-								if (currIdx.size() > 1) {
-									for (int j=1; j<currIdx.size(); j++) {
-										words.set(currIdx.get(j), null);
+							if (ent != null) {
+								if (ent.isSimilar(currNNP)) {	//similar to an entity, link them!
+									words.set(currIdx.get(0), ent.getId());
+									if (currIdx.size() > 1) {
+										for (int j=1; j<currIdx.size(); j++) {
+											words.set(currIdx.get(j), null);
+										}
 									}
+									linked = true;
+									break;
 								}
-								linked = true;
-								break;
 							}
 						}
 						if (!linked) unlinkedEntities += currNNP + ";";
@@ -243,7 +252,7 @@ public class Resolve {
 		return output;
 	}
 	
-	public String annotate(String docName, String summary, List<StoryEntity> entities, int paraIdx) throws IOException {
+	public String annotate(String docName, String summary, Collection<StoryEntity> entities, int paraIdx) throws IOException {
 		
 		StringBuilder sb = new StringBuilder();
 		
@@ -266,27 +275,29 @@ public class Resolve {
 			
 			CorefMention rep = cc.getRepresentativeMention();
 			for (StoryEntity ent: entities) {
-				if (rep.mentionSpan.equals(ent.getId())
-						|| rep.mentionSpan.equals(ent.getId() + " 's")) {	//single entity
-					addAlias(entities, ent.getId(), rep.mentionSpan);
-					addMention(entities, ent.getId(), paraIdx, rep.sentNum, rep.startIndex, rep.endIndex);
-					
-					if (!resolvedTokens.containsKey(rep.sentNum)) resolvedTokens.put(rep.sentNum, new HashSet<Integer>());
-					for (int x=rep.startIndex; x<rep.endIndex; x++) resolvedTokens.get(rep.sentNum).add(x);
-					
-					corefEntities.add(ent.getId());
-					corefGender = ent.getGender();
-					break;
-				
-				} else {
-					if (ent.isBelongToAGroup(rep.mentionSpan, paraIdx, rep.sentNum, rep.startIndex, rep.endIndex)
-							|| ent.isBelongToFamilyMention(rep.mentionSpan)) {	//a group of entities (connected by other words, or belong to the same family)
+				if (ent != null) {
+					if (rep.mentionSpan.equals(ent.getId())
+							|| rep.mentionSpan.equals(ent.getId() + " 's")) {	//single entity
+						addAlias(entities, ent.getId(), rep.mentionSpan);
 						addMention(entities, ent.getId(), paraIdx, rep.sentNum, rep.startIndex, rep.endIndex);
 						
 						if (!resolvedTokens.containsKey(rep.sentNum)) resolvedTokens.put(rep.sentNum, new HashSet<Integer>());
 						for (int x=rep.startIndex; x<rep.endIndex; x++) resolvedTokens.get(rep.sentNum).add(x);
 						
 						corefEntities.add(ent.getId());
+						corefGender = ent.getGender();
+						break;
+					
+					} else {
+						if (ent.isBelongToAGroup(rep.mentionSpan, paraIdx, rep.sentNum, rep.startIndex, rep.endIndex)
+								|| ent.isBelongToFamilyMention(rep.mentionSpan)) {	//a group of entities (connected by other words, or belong to the same family)
+							addMention(entities, ent.getId(), paraIdx, rep.sentNum, rep.startIndex, rep.endIndex);
+							
+							if (!resolvedTokens.containsKey(rep.sentNum)) resolvedTokens.put(rep.sentNum, new HashSet<Integer>());
+							for (int x=rep.startIndex; x<rep.endIndex; x++) resolvedTokens.get(rep.sentNum).add(x);
+							
+							corefEntities.add(ent.getId());
+						}
 					}
 				}
 			}
@@ -324,6 +335,7 @@ public class Resolve {
 				}
 			}
 			
+			corefEntities.clear();
 	    }
 		
 		////////////////////////// Resolve all other mentions ///////////////////////////
@@ -565,40 +577,42 @@ public class Resolve {
 					}
 					
 					for (StoryEntity ent: entities) {
-						if (wronglyResolved.contains(m.mentionID)) {
-							//Find the correct entity!
-							if (ent.getMentions().containsKey(paraIdx)) {
-								if (ent.getMentions().get(paraIdx).containsKey(m.sentNum+1)
-										&& ent.getGender() == m.gender) {
+						if (ent != null) {
+							if (wronglyResolved.contains(m.mentionID)) {
+								//Find the correct entity!
+								if (ent.getMentions().containsKey(paraIdx)) {
+									if (ent.getMentions().get(paraIdx).containsKey(m.sentNum+1)
+											&& ent.getGender() == m.gender) {
+										addMention(entities, ent.getId(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1);
+										
+										if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+										for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+										
+										break;
+									}
+								}
+							
+							} else {
+							
+								if (m.spanToString().equals(ent.getId())
+										|| m.spanToString().equals(ent.getId() + " 's")) {	//single entity
+									addAlias(entities, ent.getId(), m.spanToString());
 									addMention(entities, ent.getId(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1);
 									
 									if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
 									for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
 									
 									break;
-								}
-							}
-						
-						} else {
-						
-							if (m.spanToString().equals(ent.getId())
-									|| m.spanToString().equals(ent.getId() + " 's")) {	//single entity
-								addAlias(entities, ent.getId(), m.spanToString());
-								addMention(entities, ent.getId(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1);
 								
-								if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
-								for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
-								
-								break;
-							
-							} else {
-								if (ent.isBelongToAGroup(m.spanToString(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1)
-										|| ent.isBelongToFamilyMention(m.spanToString())) {	//a group of entities (connected by other words, or belong to the same family)
-									
-									addMention(entities, ent.getId(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1);
-									
-									if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
-									for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+								} else {
+									if (ent.isBelongToAGroup(m.spanToString(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1)
+											|| ent.isBelongToFamilyMention(m.spanToString())) {	//a group of entities (connected by other words, or belong to the same family)
+										
+										addMention(entities, ent.getId(), paraIdx, m.sentNum+1, m.startIndex+1, m.endIndex+1);
+										
+										if (!resolvedTokens.containsKey(m.sentNum+1)) resolvedTokens.put(m.sentNum+1, new HashSet<Integer>());
+										for (int x=m.startIndex+1; x<m.endIndex+1; x++) resolvedTokens.get(m.sentNum+1).add(x);
+									}
 								}
 							}
 						}
@@ -650,11 +664,13 @@ public class Resolve {
 		for (Sentence sent : doc.sentences()) {
 			Map<String, List<String>> mentions = new HashMap<String, List<String>>();
 			for (StoryEntity entity : entities) {
-				if (entity.getMentions().containsKey(paraIdx)) {
-					if (entity.getMentions().get(paraIdx).containsKey(sent.sentenceIndex()+1)) {
-						for (EntityMention em : entity.getMentions().get(paraIdx).get(sent.sentenceIndex()+1)) {
-							if (!mentions.containsKey(em.toString())) mentions.put(em.toString(), new ArrayList<String>());
-							mentions.get(em.toString()).add(entity.getId().replace(" ", "_"));
+				if (entity != null) {
+					if (entity.getMentions().containsKey(paraIdx)) {
+						if (entity.getMentions().get(paraIdx).containsKey(sent.sentenceIndex()+1)) {
+							for (EntityMention em : entity.getMentions().get(paraIdx).get(sent.sentenceIndex()+1)) {
+								if (!mentions.containsKey(em.toString())) mentions.put(em.toString(), new ArrayList<String>());
+								mentions.get(em.toString()).add(entity.getId().replace(" ", "_"));
+							}
 						}
 					}
 				}
@@ -672,7 +688,8 @@ public class Resolve {
 						
 						if (i+1 == startIdx) {
 							String replace = mentions.get(span).get(0);
-							if (!sent.posTag(endIdx-2).equals("NNP")) {
+							if ((endIdx-2) < sent.length()
+									&& !sent.posTag(endIdx-2).equals("NNP")) {
 								if (sent.posTag(i).equals("PRP$")
 										&& (sent.word(i).equals("his")
 												|| sent.word(i).equals("her")
@@ -742,14 +759,137 @@ public class Resolve {
 		else return false;
 	}
 	
+	public void resolveSeries(String wikiaUrl, String[] titles) throws IOException {
+		
+		Map<String, StoryEntity> allEntities = new HashMap<String, StoryEntity>();
+		BufferedWriter bw;
+		
+		for (String title : titles) {
+			
+			// Get the list of story entities & write to file
+	        WikiaListOfLinks wl = new WikiaListOfLinks();	
+	        boolean addFamilyMembers = false;
+			Map<String, StoryEntity> entities = wl.getEntitiesDict(wikiaUrl, title, addFamilyMembers);
+			
+	        for (String entId : entities.keySet()) {
+	        	if (entities.get(entId) != null) {
+	        		if (!allEntities.keySet().contains(entId)) {
+	        			allEntities.put(entId, entities.get(entId));
+	        		} else {
+	        			allEntities.get(entId).getAliases().addAll(entities.get(entId).getAliases());
+	        		}
+	        	}
+		    }		    
+		}
+		
+		bw = new BufferedWriter(new FileWriter("./output/" + wikiaUrl.replace("http://", "") + ".entities.csv"));
+		for (String entId : allEntities.keySet()) {
+			bw.write(allEntities.get(entId).toCSV() + "\n");
+		}
+		bw.close();
+		
+		for (String title : titles) {
+			
+			// Clear the list of mentions for each entity
+			for (String entId : allEntities.keySet()) {
+	        	allEntities.get(entId).getMentions().clear();
+		    }	
+		
+			// Get the page ID:		
+			String wikiaPageInfo = wikiaUrl + "/api.php?format=json&action=query&titles=" + title;
+			// http://harrypotter.wikia.com/api.php?format=json&action=query&titles=Harry_Potter_and_the_Philosopher%27s_Stone
+			
+			BufferedReader in = new BufferedReader(new InputStreamReader(new URL(wikiaPageInfo).openStream()));
 	
+	        String input = "", inputLine;
+	        while ((inputLine = in.readLine()) != null)
+	            input += inputLine + "\n";
+	        in.close();
+	        
+	        int pageId = -99;
+	        JSONObject obj = new JSONObject(input).getJSONObject("query").getJSONObject("pages");
+	        for (String key : obj.keySet()) {
+	        	pageId = obj.getJSONObject(key).getInt("pageid");
+	        }
+	        
+	        List<String> paragraphs = new ArrayList<String>();
+	        
+	        if (pageId > 0) {
+	        	
+	        	// Get simplified article
+	    		// http://harrypotter.wikia.com/api/v1/Articles/AsSimpleJson?id=63
+	            String wikiaContent = wikiaUrl + "/api/v1/Articles/AsSimpleJson?id=" + pageId;
+	            
+	            in = new BufferedReader(new InputStreamReader(new URL(wikiaContent).openStream()));
+	            input = ""; inputLine = "";
+	            while ((inputLine = in.readLine()) != null)
+	                input += inputLine + "\n";
+	            in.close();
+	            
+	            System.out.println("====" + title);
+	            
+	            JSONArray sections = new JSONObject(input).getJSONArray("sections");
+	            for (int j=0; j<sections.length(); j++) {
+	            	JSONObject sec = sections.getJSONObject(j);
+	            	if (sec.getString("title").startsWith("Chapter")
+	            			|| sec.getString("title").startsWith("Plot")) {
+	            		
+	            		System.out.println("==" + sec.getString("title"));
+	            		
+		            	JSONArray content = sec.getJSONArray("content");
+		            	for (int k=0; k<content.length(); k++) {
+		            		if (content.getJSONObject(k).has("text")) {
+			            		String text = content.getJSONObject(k).getString("text");
+			            		for (String para : text.split("\\n")) {
+			            			System.out.println("--" + para);
+			            			paragraphs.add(para);
+			            		}
+		            		}
+		            	}
+	            	}
+	            }
+	        }
+	        
+	        // Resolve coreference!
+	        
+	        bw = new BufferedWriter(new FileWriter("./output/" + title + ".resolved.txt"));
+	        File logSent = new File("./output/" + title + ".resolved.sentences.txt"); logSent.delete();
+		    File logMentions = new File("./output/" + title + ".unlinked.csv"); logMentions.delete();
+		    for (int i=0; i<paragraphs.size(); i++) {
+		    	bw.write(annotate(title, paragraphs.get(i), allEntities.values(), i+1) + "\n");
+		    }
+		    bw.close();
+		}
+	}
 	
 	public static void main(String[] args) throws Exception {
 		Resolve sa = new Resolve();
 		
+		String wikiaUrl = "http://harrypotter.wikia.com";
+		
+		String[] bookTitles = {
+				"Harry_Potter_and_the_Philosopher%27s_Stone",
+				"Harry_Potter_and_the_Chamber_of_Secrets",
+				"Harry_Potter_and_the_Prisoner_of_Azkaban",
+				"Harry_Potter_and_the_Goblet_of_Fire",
+				"Harry_Potter_and_the_Order_of_the_Phoenix",
+				"Harry_Potter_and_the_Half-Blood_Prince",
+				"Harry_Potter_and_the_Deathly_Hallows",
+				"Harry_Potter_and_the_Philosopher%27s_Stone_(film)",
+				"Harry_Potter_and_the_Chamber_of_Secrets_(film)",
+				"Harry_Potter_and_the_Prisoner_of_Azkaban_(film)",
+				"Harry_Potter_and_the_Goblet_of_Fire_(film)",
+				"Harry_Potter_and_the_Order_of_the_Phoenix_(film)",
+				"Harry_Potter_and_the_Half-Blood_Prince_(film)",
+				"Harry_Potter_and_the_Deathly_Hallows:_Part_1",
+				"Harry_Potter_and_the_Deathly_Hallows:_Part_2"};
+		
+		sa.resolveSeries(wikiaUrl, bookTitles);
+		
+        /***
 		
 		////////////////////////// Read list of entities ///////////////////////////
-		List<StoryEntity> entities = new ArrayList<StoryEntity>();
+		Collection<StoryEntity> entities = new ArrayList<StoryEntity>();
 		Set<String> keys = new HashSet<String>();
 		BufferedReader br = new BufferedReader(new FileReader(new File("./data/spark.harry.potter.entities.csv")));
 		String line;
@@ -854,6 +994,7 @@ public class Resolve {
 	    	bw.write(ent.toString() + "\n\n");
 	    }
 	    bw.close();
+	    ***/
 	}
 
 }
