@@ -15,5 +15,11 @@ public class Fact {
 	public String toString() {
 		return "<" + subject + "," + predicate + "," + object + ">";
 	}
+	
+	public static Fact loadFromString(String factStr) {
+		String[] factString = factStr.substring(1, factStr.length()-1).split(",");
+		Fact f = new Fact(factString[0], factString[1], factString[2]);
+		return f;
+	}
 
 }

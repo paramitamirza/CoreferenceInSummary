@@ -7,10 +7,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.stanford.nlp.coref.CorefCoreAnnotations;
 import edu.stanford.nlp.coref.data.CorefChain;
@@ -22,8 +25,10 @@ import edu.stanford.nlp.ling.*;
 import edu.stanford.nlp.ling.CoreAnnotations.*;
 import edu.stanford.nlp.pipeline.*;
 import edu.stanford.nlp.util.CoreMap;
+import mpiinf.mpg.de.CoreferenceInSummary.Parser.MateToolsParser;
 import edu.stanford.nlp.simple.*;
 import edu.stanford.nlp.simple.Document;
+import edu.stanford.nlp.simple.Sentence;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
@@ -759,42 +764,47 @@ public class Resolve {
 		else return false;
 	}
 	
-	public void resolveSeries(String wikiaUrl, String[] titles) throws IOException {
+	public void resolveSeries(String wikiaUrl, String[] titles) throws Exception {
 		
 		Map<String, StoryEntity> allEntities = new HashMap<String, StoryEntity>();
 		BufferedWriter bw;
 		
+//		for (String title : titles) {
+//			
+//			// Get the list of story entities & write to file
+//	        WikiaListOfLinks wl = new WikiaListOfLinks();	
+//	        boolean addFamilyMembers = true;
+//			Map<String, StoryEntity> entities = wl.getEntities(wikiaUrl, title, addFamilyMembers);
+//			
+//	        for (String entId : entities.keySet()) {
+//	        	if (entities.get(entId) != null) {
+//	        		if (!allEntities.keySet().contains(entId)) {
+//	        			allEntities.put(entId, entities.get(entId));
+//	        		} else {
+//	        			allEntities.get(entId).getAliases().addAll(entities.get(entId).getAliases());
+//	        		}
+//	        	}
+//		    }		    
+//		}
+//		
+//		bw = new BufferedWriter(new FileWriter("./output/" + wikiaUrl.replace("http://", "") + ".entities.csv"));
+//		for (String entId : allEntities.keySet()) {
+//			bw.write(allEntities.get(entId).toCSV() + "\n");
+//		}
+//		bw.close();
+		
 		for (String title : titles) {
 			
-			// Get the list of story entities & write to file
-	        WikiaListOfLinks wl = new WikiaListOfLinks();	
-	        boolean addFamilyMembers = false;
-			Map<String, StoryEntity> entities = wl.getEntitiesDict(wikiaUrl, title, addFamilyMembers);
+//			// Get the list of story entities & write to file
+//			WikiaListOfLinks wl = new WikiaListOfLinks();	
+//			boolean addFamilyMembers = true;
+//			Map<String, StoryEntity> entities = wl.getEntities(wikiaUrl, title, addFamilyMembers);
+//			bw = new BufferedWriter(new FileWriter("./output/" + wikiaUrl.replace("http://", "") + ".entities.csv"));
+//			for (String entId : entities.keySet()) {
+//				bw.write(entities.get(entId).toCSV() + "\n");
+//			}
+//			bw.close();
 			
-	        for (String entId : entities.keySet()) {
-	        	if (entities.get(entId) != null) {
-	        		if (!allEntities.keySet().contains(entId)) {
-	        			allEntities.put(entId, entities.get(entId));
-	        		} else {
-	        			allEntities.get(entId).getAliases().addAll(entities.get(entId).getAliases());
-	        		}
-	        	}
-		    }		    
-		}
-		
-		bw = new BufferedWriter(new FileWriter("./output/" + wikiaUrl.replace("http://", "") + ".entities.csv"));
-		for (String entId : allEntities.keySet()) {
-			bw.write(allEntities.get(entId).toCSV() + "\n");
-		}
-		bw.close();
-		
-		for (String title : titles) {
-			
-			// Clear the list of mentions for each entity
-			for (String entId : allEntities.keySet()) {
-	        	allEntities.get(entId).getMentions().clear();
-		    }	
-		
 			// Get the page ID:		
 			String wikiaPageInfo = wikiaUrl + "/api.php?format=json&action=query&titles=" + title;
 			// http://harrypotter.wikia.com/api.php?format=json&action=query&titles=Harry_Potter_and_the_Philosopher%27s_Stone
@@ -832,7 +842,9 @@ public class Resolve {
 	            for (int j=0; j<sections.length(); j++) {
 	            	JSONObject sec = sections.getJSONObject(j);
 	            	if (sec.getString("title").startsWith("Chapter")
-	            			|| sec.getString("title").startsWith("Plot")) {
+	            			|| sec.getString("title").startsWith("Plot")
+	            			|| sec.getString("title").startsWith("Synopsis")
+	            			) {
 	            		
 	            		System.out.println("==" + sec.getString("title"));
 	            		
@@ -862,6 +874,266 @@ public class Resolve {
 		}
 	}
 	
+	private void writeToConllFile(String title, List<String> paragraphs) throws IOException {
+		StringBuilder conllString = new StringBuilder();
+        for (String para : paragraphs) {
+        	Document doc = new Document(para);
+        	for (Sentence sent : doc.sentences()) {
+        		conllString.append(MateToolsParser.toConllString(sent.words()));
+        	}
+        }
+        
+        BufferedWriter bw = new BufferedWriter(new FileWriter("./data/" + title + ".conll"));
+        bw.write(conllString.toString());
+        bw.close();
+	}
+	
+	private int getPageId(String wikiaUrl, String title) throws MalformedURLException, IOException {
+		String wikiaPageInfo = wikiaUrl + "/api.php?format=json&action=query&titles=" + title;
+		// http://harrypotter.wikia.com/api.php?format=json&action=query&titles=Harry_Potter_and_the_Philosopher%27s_Stone
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(new URL(wikiaPageInfo).openStream()));
+
+        String input = "", inputLine;
+        while ((inputLine = in.readLine()) != null)
+            input += inputLine + "\n";
+        in.close();
+        
+        int pageId = -99;
+        JSONObject obj = new JSONObject(input).getJSONObject("query").getJSONObject("pages");
+        for (String key : obj.keySet()) {
+        	pageId = obj.getJSONObject(key).getInt("pageid");
+        }
+        
+        return pageId;
+	}
+	
+	private List<String> getParagraphs(String wikiaUrl, int pageId) throws MalformedURLException, IOException {
+		List<String> paragraphs = new ArrayList<String>();
+        
+        if (pageId > 0) {
+        	
+        	// Get simplified article
+    		// http://harrypotter.wikia.com/api/v1/Articles/AsSimpleJson?id=63
+            String wikiaContent = wikiaUrl + "/api/v1/Articles/AsSimpleJson?id=" + pageId;
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(new URL(wikiaContent).openStream()));
+            String input = "", inputLine;
+            while ((inputLine = in.readLine()) != null)
+                input += inputLine + "\n";
+            in.close();
+            
+//            System.out.println("====" + title);
+            
+            JSONArray sections = new JSONObject(input).getJSONArray("sections");
+            for (int j=0; j<sections.length(); j++) {
+            	JSONObject sec = sections.getJSONObject(j);
+            	if (sec.getString("title").startsWith("Chapter")
+            			|| sec.getString("title").startsWith("Plot")
+            			|| sec.getString("title").startsWith("Synopsis")
+            			) {
+            		
+//            		System.out.println("==" + sec.getString("title"));
+            		
+	            	JSONArray content = sec.getJSONArray("content");
+	            	for (int k=0; k<content.length(); k++) {
+	            		if (content.getJSONObject(k).has("text")) {
+		            		String text = content.getJSONObject(k).getString("text");
+		            		for (String para : text.split("\\n")) {
+//		            			System.out.println("--" + para);
+		            			paragraphs.add(para);
+		            		}
+	            		}
+	            	}
+            	}
+            }
+        }
+        
+        return paragraphs;
+	}
+	
+	private List<String> getParagraphs(String wikiaUrl, int pageId, String title,
+			Map<String, StoryEntity> entities, Map<String, String> entityLinks) throws MalformedURLException, IOException {
+		List<String> paragraphs = new ArrayList<String>();
+        
+		// Get simplified article
+		String wikiaContent = wikiaUrl + "/api.php?action=query&prop=revisions&rvprop=content&format=json&rvsection=3&titles=" + title;
+        
+        BufferedReader in = new BufferedReader(new InputStreamReader(new URL(wikiaContent).openStream()));
+        String input = "", inputLine;
+        while ((inputLine = in.readLine()) != null)
+            input += inputLine + "\n";
+        in.close();
+        
+//        System.out.println("====" + title);
+        
+        JSONArray revisions = new JSONObject(input).getJSONObject("query").getJSONObject("pages").getJSONObject(pageId+"").getJSONArray("revisions");
+        String content = revisions.getJSONObject(revisions.length()-1).getString("*");
+        
+        List<String> introducedEntities = new ArrayList<String>();
+        List<String> entitiesInChapter = new ArrayList<String>();
+        
+        String cleanLine;
+        for (String line : content.split("\n")) {	//for each paragraph
+        	
+        	if (line.startsWith("=")) {
+        		entitiesInChapter.clear();
+        	}
+        	
+        	cleanLine = line;
+        	cleanLine = cleanLine.replaceAll("\\{\\{Quote.+?\\}\\}", " ");
+        	cleanLine = cleanLine.replaceAll("\\{\\{Dialogue.+?\\}\\}", " ");
+        	cleanLine = cleanLine.replaceAll("\\[\\[File:.+?\\]\\]", " ");
+        	
+        	final Pattern p = Pattern.compile("\\[\\[([\\w\\d\\s\\.'\\-\\(\\)]+)\\|([\\w\\d\\s\\.,'\\-\\(\\)]+)\\]\\]");
+        	Matcher m = p.matcher(cleanLine);
+        	while (m.find()) {
+        		if (entityLinks.containsKey(m.group(1))) {
+        			cleanLine = m.replaceFirst(entityLinks.get(m.group(1)));
+        			introducedEntities.add(entityLinks.get(m.group(1)));
+        			entitiesInChapter.add(entityLinks.get(m.group(1)));
+        		} else {
+        			cleanLine = m.replaceFirst(m.group(2));
+        		}
+        	    m = p.matcher(cleanLine);
+        	}
+        	
+        	final Pattern pp = Pattern.compile("\\[\\[([\\w\\d\\s\\.'\\-\\(\\)]+)\\]\\]");
+        	Matcher mm = pp.matcher(cleanLine);
+        	while (mm.find()) {
+        		if (entityLinks.containsKey(mm.group(1))) {
+        			cleanLine = mm.replaceFirst(entityLinks.get(mm.group(1)));
+        			introducedEntities.add(entityLinks.get(mm.group(1)));
+        			entitiesInChapter.add(entityLinks.get(mm.group(1)));
+        		} else {
+        			cleanLine = mm.replaceFirst(mm.group(1));
+        		}
+        	    mm = pp.matcher(cleanLine);
+        	}
+        	
+        	for (String key : introducedEntities) {
+        		StoryEntity ent = entities.get(key);
+        		List<String> listAliases = new ArrayList(ent.getAliases());
+        		Collections.sort(listAliases, new Comparator<String>() {
+        			public int compare(String o1, String o2) {
+                        if(o1.length() < o2.length()){
+                            return 1;
+                        }else{
+                            return o1.compareTo(o2);
+                        }
+                    }
+                });
+        		
+        		cleanLine = cleanLine.replaceAll("\\b" + "(?i)" + ent.getName() + "'", key + "'s");
+    			
+        		if (ent.getType().equals("Individual")
+        				|| ent.getType().equals("Pet individual")
+        				|| ent.getType().equals("Family")
+        				|| ent.getType().equals("House")
+        				|| ent.getType().equals("Pet individual")
+        				) {
+        			for (String alias : listAliases) {
+            			if (alias.endsWith("s")) {
+            				cleanLine = cleanLine.replaceAll("\\b" + "(?i)" + alias + "'", key + "'s");
+            			}
+            			cleanLine = cleanLine.replaceAll("\\b" + "(?i)" + alias + "\\b", key);
+            			if (ent.getType().equals("Object")) {
+            				if (alias.startsWith("a ")) {
+            					cleanLine = cleanLine.replaceAll("the " + "(?i)" + alias.replaceAll("^a ", "") + "\\b", key);
+            				}
+            			}
+            		}
+        			
+        			String firstname = ent.getName().split(" ")[0];
+        			String lastname = ent.getName().split(" ")[ent.getName().split(" ").length-1];
+        			if (!firstname.toLowerCase().equals("the")
+        					&& !firstname.toLowerCase().equals("mr")
+        					&& !firstname.toLowerCase().equals("mrs")
+        					&& !firstname.toLowerCase().equals("madam")) {
+        				cleanLine = cleanLine.replaceAll("\\b" + firstname + "\\b", key);
+        			}
+        		}
+        		
+        		if (ent.getType().equals("Object")) {
+            		cleanLine = cleanLine.replaceAll("\\bthe " + ent.getPredDesc() + "\\b", key);
+        		}
+        	}
+        	
+        	for (String key : entitiesInChapter) {
+        		StoryEntity ent = entities.get(key);
+        		if (ent.getType().equals("Object")) {
+            		cleanLine = cleanLine.replaceAll("\\bthe " + ent.getPredDesc() + "\\b", key);
+        		}
+        	}
+        	
+        	cleanLine = cleanLine.trim();
+        	if (!cleanLine.equals("")
+        			&& !cleanLine.startsWith("=")
+        			) {
+        		paragraphs.add(cleanLine);
+        	}
+        }
+        
+        return paragraphs;
+	}
+	
+	public void readSeries(String wikiaUrl, String[] titles) throws Exception {
+		
+		Map<String, StoryEntity> allEntities = new HashMap<String, StoryEntity>();
+		BufferedWriter bw;
+		WikiaListOfLinks wl = new WikiaListOfLinks();	
+		String entityPath = "./output/" + wikiaUrl.replace("http://", "") + ".entities.tsv";
+		
+		//All entities in the series
+		for (String title : titles) {
+			
+			// Get the list of story entities & write to file
+			
+			boolean addFamilyMembers = true;
+			wl.getEntities(wikiaUrl, title, addFamilyMembers, entityPath);
+						
+//	        for (String entId : entities.keySet()) {
+//	        	if (entities.get(entId) != null) {
+//	        		if (!allEntities.keySet().contains(entId)) {
+//	        			allEntities.put(entId, entities.get(entId));
+//	        		} 
+//	        	}
+//		    }		    
+		}
+		
+		for (String title : titles) {
+			
+//			// Get the list of story entities & write to file
+//			WikiaListOfLinks wl = new WikiaListOfLinks();	
+//			boolean addFamilyMembers = true;
+//			Map<String, StoryEntity> entities = wl.getEntities(wikiaUrl, title, addFamilyMembers);
+//			Map<String, String> entityLinks = wl.getEntityLinkDict(entities);
+//			bw = new BufferedWriter(new FileWriter("./data/" + title + ".entities.tsv"));
+//			for (String entId : entities.keySet()) {
+//				bw.write(entities.get(entId).toTSV() + "\n");
+//			}
+//			bw.close();
+			        
+//	        // Get paragraphs from the article and write to file
+//			int pageId = getPageId(wikiaUrl, title);			
+//			List<String> paragraphs = getParagraphs(wikiaUrl, pageId, title, entities, entityLinks);
+//			for (String para : paragraphs) {
+//				System.out.println(para);
+//			}
+//	        writeToConllFile(title, paragraphs);
+	        
+//	        //Run Mate tool: dependency parsing and semantic role labelling
+//	        String mateLemmatizerModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.lemmatizer.model";
+//			String mateTaggerModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.postagger.model";
+//			String mateParserModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.parser.model";
+//			String mateSrlModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.srl-4.1.srl.model";
+//				
+//			MateToolsParser mateTools = new MateToolsParser(mateLemmatizerModel, mateTaggerModel, mateParserModel, mateSrlModel);
+//			mateTools.runFullPipeline(new File("./data/" + title + ".conll"), new File("./data/" + title + ".srl"));
+			
+		}
+	}
+	
 	public static void main(String[] args) throws Exception {
 		Resolve sa = new Resolve();
 		
@@ -882,9 +1154,11 @@ public class Resolve {
 				"Harry_Potter_and_the_Order_of_the_Phoenix_(film)",
 				"Harry_Potter_and_the_Half-Blood_Prince_(film)",
 				"Harry_Potter_and_the_Deathly_Hallows:_Part_1",
-				"Harry_Potter_and_the_Deathly_Hallows:_Part_2"};
+				"Harry_Potter_and_the_Deathly_Hallows:_Part_2"
+				};
 		
-		sa.resolveSeries(wikiaUrl, bookTitles);
+//		sa.resolveSeries(wikiaUrl, bookTitles);
+		sa.readSeries(wikiaUrl, bookTitles);
 		
         /***
 		
@@ -995,6 +1269,12 @@ public class Resolve {
 	    }
 	    bw.close();
 	    ***/
+	}
+	
+	private class CompareLength implements Comparator<String> {
+		public int compare(String o1, String o2) {
+			return Integer.compare(o1.length(), o2.length());
+		}
 	}
 
 }

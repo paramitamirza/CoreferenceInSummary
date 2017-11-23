@@ -1,5 +1,9 @@
 package mpiinf.mpg.de.CoreferenceInSummary;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,6 +26,9 @@ public class StoryEntity {
 	private String type;
 	private Gender gender;
 	private String url;
+	private String pageId;
+	private String desc;
+	private String predDesc;
 	private Set<String> aliases;
 	private List<StoryEntity> familyMembers;
 	private List<Fact> facts;
@@ -34,9 +41,20 @@ public class StoryEntity {
 		mentions = new HashMap<Integer, Map<Integer, List<EntityMention>>>();
 	}
 	
-	public StoryEntity(String id, String name, Set<String> aliases) {
+	public StoryEntity(String pageId, String name, Set<String> aliases) {
 		this();
-		this.setId(id); this.setName(name); this.getAliases().addAll(aliases);
+		// entity key
+		String key = name.split(" ")[0].replaceAll("'", "");
+    	if (key.toLowerCase().equals("mr")
+    			|| key.toLowerCase().equals("mrs")
+    			|| key.toLowerCase().equals("the")
+    			) {
+    		key = name.split(" ")[1].replaceAll("'", "");
+    	}
+    	key = key + pageId;
+		this.setId(key); this.setPageId(pageId);
+		this.setName(name); this.getAliases().addAll(aliases);
+		this.setFacts(new ArrayList<Fact>());
 	}
 		
 	public String getId() {
@@ -318,6 +336,8 @@ public class StoryEntity {
 		csv += "\"" + this.getId() + "\"";
 		csv += ",\"" + this.getName() + "\"";
 		csv += ",\"" + this.getType() + "\"";
+		csv += ",\"" + this.getDesc() + "\"";
+		csv += ",\"" + this.getPredDesc() + "\"";
 		csv += ",\"" + this.getGender() + "\"";
 		csv += ",\"" + this.getUrl() + "\"";
 		csv += ",\"[";
@@ -325,8 +345,104 @@ public class StoryEntity {
 			csv += al + ",";
 		}
 		csv += "]\"";
+		csv += ",\"[";
+		for (Fact fact : this.facts) {
+			csv += fact.toString() + ",";
+		}
+		csv += "]\"";
 		
 		return csv;
+	}
+	
+	public String toTSV() {
+		String csv = "";
+		csv += this.getId();
+		csv += "\t" + this.getName().replaceAll("\t", " ");
+		csv += "\t" + this.getType().replaceAll("\t", " ");
+		csv += "\t" + this.getDesc().replaceAll("\t", " ");
+		csv += "\t" + this.getPredDesc().replaceAll("\t", " ");
+		csv += "\t" + this.getGender();
+		csv += "\t" + this.getUrl().replaceAll("\t", " ");
+		csv += "\t[";
+		for (String al : this.aliases) {
+			csv += al.replaceAll("\t", " ") + ",";
+		}
+		csv += "]";
+		csv += "\t[";
+		for (Fact fact : this.facts) {
+			csv += fact.toString() + ",";
+		}
+		csv += "]";
+		
+		return csv;
+	}
+	
+	public Map<String, StoryEntity> loadFromTSV(String tsvPath) throws IOException {
+		Map<String, StoryEntity> entities = new HashMap<String, StoryEntity>();
+		
+		BufferedReader br = new BufferedReader(new FileReader(tsvPath));
+		
+		String line = br.readLine();
+		while (line != null) {
+			
+			String[] cols = line.split("\t");
+			StoryEntity ent = new StoryEntity();
+			ent.setId(cols[0]);
+			ent.setName(cols[1]);
+			ent.setType(cols[2]);
+			ent.setDesc(cols[3]);
+			ent.setPredDesc(cols[4]);
+			if (cols[5].equals("MALE")) {
+				ent.setGender(Gender.MALE);
+			} else if (cols[5].equals("FEMALE")) {
+				ent.setGender(Gender.FEMALE);
+			} else if (cols[5].equals("NEUTRAL")) {
+				ent.setGender(Gender.NEUTRAL);
+			} else if (cols[5].equals("UNKNOWN")) {
+				ent.setGender(Gender.UNKNOWN);
+			}
+			ent.setUrl(cols[6]);
+			String aliases = cols[7].substring(1, cols[7].length()-2);
+			for (String alias : aliases.split(",")) {
+				ent.getAliases().add(alias);
+			}
+			String facts = cols[8].substring(1, cols[8].length()-2);
+			for (String fact : facts.split(",")) {
+				ent.getFacts().add(Fact.loadFromString(fact));
+			}
+			
+			entities.put(ent.getId(), ent);
+			
+			line = br.readLine();
+		}
+		
+		br.close();
+		
+		return entities;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	public String getPredDesc() {
+		return predDesc;
+	}
+
+	public void setPredDesc(String predDesc) {
+		this.predDesc = predDesc;
+	}
+
+	public String getPageId() {
+		return pageId;
+	}
+
+	public void setPageId(String pageId) {
+		this.pageId = pageId;
 	}
 
 }
