@@ -1,0 +1,2081 @@
+
+
+1	2017-01-19	2017-01-19	2017-01-19	CD	CD	_	_	0	0	ROOT	ROOT	_	_
+
+1	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_
+2	16	16	16	CD	CD	_	_	0	0	ROOT	ROOT	_	_	A1	_
+3	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_
+4	shot	shot	shot	VBN	VBN	_	_	2	2	APPO	APPO	Y	shoot.03	_	_
+5	in	in	in	IN	IN	_	_	4	4	LOC	LOC	_	_	AM-MNR	_
+6	head	head	head	NN	NN	_	_	5	5	PMOD	PMOD	Y	head.01	_	A0
+7	on	on	on	IN	IN	_	_	4	4	LOC	LOC	_	_	AM-LOC	_
+8	Far	far	far	NNP	NNP	_	_	10	10	NAME	NAME	_	_	_	_
+9	South	south	south	NNP	NNP	_	_	10	10	NAME	NAME	_	_	_	_
+10	Side	side	side	NNP	NNP	_	_	7	7	PMOD	PMOD	_	_	_	_
+
+1	,	,	,	,	,	_	_	4	4	P	P	_	_	_	_	_	_	_
+2	16	16	16	CD	CD	_	_	4	4	SBJ	SBJ	_	_	A1	_	_	_	_
+3	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_	_	_	_
+4	shot	shot	shot	VBN	VBN	_	_	17	17	PRN	PRN	Y	shoot.02	_	_	_	_	_
+5	in	in	in	IN	IN	_	_	4	4	LOC	LOC	_	_	A3	_	_	_	_
+6	head	head	head	NN	NN	_	_	5	5	PMOD	PMOD	Y	head.01	_	A0	_	_	_
+7	on	on	on	IN	IN	_	_	4	4	LOC	LOC	_	_	AM-LOC	_	_	_	_
+8	Far	far	far	NNP	NNP	_	_	11	11	NAME	NAME	_	_	_	_	_	_	_
+9	South	south	south	NNP	NNP	_	_	11	11	NAME	NAME	_	_	_	_	_	_	_
+10	Side	side	side	NNP	NNP	_	_	11	11	NAME	NAME	_	_	_	_	_	_	_
+11	NEWLINE	newline	newline	NNP	NNP	_	_	7	7	PMOD	PMOD	_	_	_	_	_	_	_
+12	A	a	a	DT	DT	_	_	16	16	NMOD	NMOD	_	_	_	_	_	_	_
+13	16-year	16-year	16-year	CD	CD	_	_	15	15	HMOD	HMOD	_	_	_	_	_	_	_
+14	-	-	-	HYPH	HYPH	_	_	13	13	HYPH	HYPH	_	_	_	_	_	_	_
+15	old	old	old	JJ	JJ	_	_	16	16	NMOD	NMOD	_	_	_	_	_	_	_
+16	boy	boy	boy	NN	NN	_	_	17	17	SBJ	SBJ	_	_	_	_	A1	_	_
+17	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_	_	_
+18	critically	critically	critically	RB	RB	_	_	19	19	AMOD	AMOD	_	_	_	_	AM-MNR	_	_
+19	wounded	wound	wound	VBN	VBN	_	_	17	17	VC	VC	Y	wound.01	_	_	_	_	_
+20	when	when	when	WRB	WRB	_	_	23	23	TMP	TMP	_	_	_	_	_	R-AM-TMP	_
+21	he	he	he	PRP	PRP	_	_	22	22	SBJ	SBJ	_	_	_	_	_	A1	_
+22	was	be	be	VBD	VBD	_	_	19	19	TMP	TMP	_	_	_	_	AM-TMP	_	_
+23	shot	shot	shot	VBN	VBN	_	_	22	22	VC	VC	Y	shoot.02	_	_	_	_	_
+24	in	in	in	IN	IN	_	_	23	23	LOC	LOC	_	_	_	_	_	A3	_
+25	the	the	the	DT	DT	_	_	26	26	NMOD	NMOD	_	_	_	_	_	_	_
+26	head	head	head	NN	NN	_	_	24	24	PMOD	PMOD	_	_	_	_	_	_	_
+27	Thursday	thursday	thursday	NNP	NNP	_	_	28	28	NMOD	NMOD	_	_	_	_	_	_	_
+28	evening	evening	evening	NN	NN	_	_	23	23	TMP	TMP	_	_	_	_	_	AM-TMP	_
+29	in	in	in	IN	IN	_	_	23	23	LOC	LOC	_	_	_	_	_	A3	_
+30	the	the	the	DT	DT	_	_	33	33	NMOD	NMOD	_	_	_	_	_	_	_
+31	East	east	east	NNP	NNP	_	_	32	32	NAME	NAME	_	_	_	_	_	_	_
+32	Side	side	side	NNP	NNP	_	_	33	33	NMOD	NMOD	_	_	_	_	_	_	A1
+33	neighborhood	neighborhood	neighborhood	NN	NN	_	_	29	29	PMOD	PMOD	Y	neighborhood.01	_	_	_	_	_
+34	on	on	on	IN	IN	_	_	33	33	LOC	LOC	_	_	_	_	_	_	A1
+35	the	the	the	DT	DT	_	_	38	38	NMOD	NMOD	_	_	_	_	_	_	_
+36	Far	far	far	NNP	NNP	_	_	38	38	NAME	NAME	_	_	_	_	_	_	_
+37	South	south	south	NNP	NNP	_	_	38	38	NAME	NAME	_	_	_	_	_	_	_
+38	Side	side	side	NNP	NNP	_	_	34	34	PMOD	PMOD	_	_	_	_	_	_	_
+39	.	.	.	.	.	_	_	17	17	P	P	_	_	_	_	_	_	_
+40	NEWLINE	newline	newline	NNP	NNP	_	_	26	26	APPO	APPO	_	_	_	_	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	23	23	OBJ	OBJ	_	_	_	_	A1
+2	inside	inside	inside	IN	IN	_	_	1	1	PRD	PRD	_	_	_	_	_
+3	a	a	a	DT	DT	_	_	4	4	NMOD	NMOD	_	_	_	_	_
+4	vehicle	vehicle	vehicle	NN	NN	_	_	2	2	PMOD	PMOD	_	_	_	_	_
+5	at	at	at	IN	IN	_	_	1	1	TMP	TMP	_	_	_	_	_
+6	6:04	6:04	6:04	CD	CD	_	_	7	7	NMOD	NMOD	_	_	_	_	_
+7	p.m.	p.m.	p.m.	RB	RB	_	_	5	5	PMOD	PMOD	_	_	_	_	_
+8	in	in	in	IN	IN	_	_	7	7	LOC	LOC	_	_	_	_	_
+9	the	the	the	DT	DT	_	_	11	11	NMOD	NMOD	_	_	_	_	_
+10	11000	11000	11000	CD	CD	_	_	11	11	NMOD	NMOD	_	_	_	_	_
+11	block	block	block	NN	NN	_	_	8	8	PMOD	PMOD	_	_	A0	_	_
+12	of	of	of	IN	IN	_	_	11	11	NMOD	NMOD	_	_	_	_	_
+13	South	south	south	NNP	NNP	_	_	14	14	NAME	NAME	_	_	_	_	_
+14	Ewing	ewing	ewing	NNP	NNP	_	_	12	12	PMOD	PMOD	_	_	_	_	_
+15	when	when	when	WRB	WRB	_	_	17	17	TMP	TMP	_	_	R-AM-TMP	_	_
+16	he	he	he	PRP	PRP	_	_	17	17	SBJ	SBJ	_	_	A0	A0	_
+17	suffered	suffer	suffer	VBD	VBD	_	_	11	11	NMOD	NMOD	Y	suffer.01	_	_	_
+18	the	the	the	DT	DT	_	_	20	20	NMOD	NMOD	_	_	_	_	_
+19	gunshot	gunshot	gunshot	JJ	JJ	_	_	20	20	NMOD	NMOD	_	_	_	A0	_
+20	wound	wound	wound	NN	NN	_	_	17	17	OBJ	OBJ	Y	wound.01	A1	_	_
+21	,	,	,	,	,	_	_	23	23	P	P	_	_	_	_	_
+22	police	police	police	NN	NN	_	_	23	23	SBJ	SBJ	_	_	_	_	A0
+23	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+24	.	.	.	.	.	_	_	23	23	P	P	_	_	_	_	_
+
+1	vehicle	vehicle	vehicle	NN	NN	_	_	3	3	SBJ	SBJ	_	_	A1
+2	then	then	then	RB	RB	_	_	3	3	TMP	TMP	_	_	AM-TMP
+3	crashed	crash	crash	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	crash.01	_
+4	into	into	into	IN	IN	_	_	3	3	DIR	DIR	_	_	AM-DIR
+5	a	a	a	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_
+6	tree	tree	tree	NN	NN	_	_	4	4	PMOD	PMOD	_	_	_
+7	.	.	.	.	.	_	_	3	3	P	P	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_
+2	taken	take	take	VBN	VBN	_	_	1	1	VC	VC	Y	take.01	_	_
+3	to	to	to	TO	TO	_	_	2	2	ADV	ADV	_	_	AM-DIR	_
+4	Christ	christ	christ	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_	_
+5	Medical	medical	medical	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_	_
+6	Center	center	center	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_	_
+7	in	in	in	IN	IN	_	_	6	6	LOC	LOC	_	_	_	_
+8	Oak	oak	oak	NNP	NNP	_	_	9	9	NAME	NAME	_	_	_	_
+9	Law	law	law	NNP	NNP	_	_	7	7	PMOD	PMOD	_	_	_	_
+10	in	in	in	IN	IN	_	_	2	2	MNR	MNR	_	_	AM-MNR	_
+11	critical	critical	critical	JJ	JJ	_	_	12	12	NMOD	NMOD	_	_	_	A2
+12	condition	condition	condition	NN	NN	_	_	10	10	PMOD	PMOD	Y	condition.01	_	A2
+13	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_
+14	NEWLINE	newline	newline	NNP	NNP	_	_	12	12	APPO	APPO	_	_	_	A1
+
+1	information	information	information	NN	NN	_	_	2	2	SBJ	SBJ	_	_
+2	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_
+3	not	not	not	RB	RB	_	_	2	2	ADV	ADV	_	_
+4	immediately	immediately	immediately	RB	RB	_	_	5	5	AMOD	AMOD	_	_
+5	available	available	available	JJ	JJ	_	_	2	2	PRD	PRD	_	_
+6	from	from	from	IN	IN	_	_	5	5	AMOD	AMOD	_	_
+7	police	police	police	NN	NN	_	_	6	6	PMOD	PMOD	_	_
+8	.	.	.	.	.	_	_	2	2	P	P	_	_
+
+
+
+1	2017-04-04	2017-04-04	2017-04-04	CD	CD	_	_	0	0	ROOT	ROOT	_	_
+
+1	shot	shot	shot	NN	NN	_	_	0	0	ROOT	ROOT	_	_	A0	_
+2	in	in	in	IN	IN	_	_	1	1	NMOD	NMOD	_	_	_	_
+3	Austin	austin	austin	NNP	NNP	_	_	2	2	PMOD	PMOD	_	_	_	_
+4	:	:	:	:	:	_	_	1	1	P	P	_	_	_	_
+5	'	'	'	''	''	_	_	8	8	P	P	_	_	_	_
+6	The	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_
+7	world	world	world	NN	NN	_	_	8	8	SBJ	SBJ	_	_	A0	A0
+8	needs	need	need	VBZ	VBZ	_	_	1	1	DEP	DEP	Y	need.01	_	_
+9	to	to	to	TO	TO	_	_	8	8	OPRD	OPRD	_	_	A1	_
+10	see	see	see	VB	VB	_	_	9	9	IM	IM	Y	see.01	_	_
+11	it	it	it	PRP	PRP	_	_	10	10	OBJ	OBJ	_	_	_	A1
+12	'	'	'	''	''	_	_	1	1	P	P	_	_	_	_
+
+1	Stokes	stokes	stokes	NNS	NNS	_	_	2	2	SBJ	SBJ	_	_	A0	_	_	_
+2	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_	_
+3	playing	play	play	VBG	VBG	_	_	2	2	VC	VC	Y	play.01	_	_	_	_
+4	a	a	a	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_	_	_	_
+5	game	game	game	NN	NN	_	_	3	3	OBJ	OBJ	_	_	A1	_	_	_
+6	on	on	on	IN	IN	_	_	3	3	ADV	ADV	_	_	AM-MNR	_	_	_
+7	his	his	his	PRP$	PRP$	_	_	9	9	NMOD	NMOD	_	_	_	_	_	_
+8	mobile	mobile	mobile	JJ	JJ	_	_	9	9	NMOD	NMOD	_	_	_	_	_	_
+9	phone	phone	phone	NN	NN	_	_	6	6	PMOD	PMOD	_	_	_	_	_	_
+10	early	early	early	RB	RB	_	_	11	11	NMOD	NMOD	_	_	_	_	_	_
+11	Wednesday	wednesday	wednesday	NNP	NNP	_	_	3	3	TMP	TMP	_	_	AM-TMP	_	_	_
+12	when	when	when	WRB	WRB	_	_	14	14	TMP	TMP	_	_	_	R-AM-TMP	_	_
+13	gunfire	gunfire	gunfire	NN	NN	_	_	14	14	SBJ	SBJ	_	_	_	A1	_	_
+14	erupted	erupt	erupt	VBD	VBD	_	_	3	3	TMP	TMP	Y	erupt.01	AM-TMP	_	_	_
+15	near	near	near	IN	IN	_	_	14	14	LOC	LOC	_	_	_	AM-LOC	_	_
+16	his	his	his	PRP$	PRP$	_	_	19	19	NMOD	NMOD	_	_	_	_	A0	_
+17	West	west	west	NNP	NNP	_	_	18	18	NAME	NAME	_	_	_	_	_	_
+18	Side	side	side	NNP	NNP	_	_	19	19	NMOD	NMOD	_	_	_	_	AM-LOC	_
+19	home	home	home	NN	NN	_	_	15	15	PMOD	PMOD	Y	home.01	_	_	A1	_
+20	in	in	in	IN	IN	_	_	14	14	LOC	LOC	_	_	_	AM-LOC	_	_
+21	the	the	the	DT	DT	_	_	23	23	NMOD	NMOD	_	_	_	_	_	_
+22	Austin	austin	austin	NNP	NNP	_	_	23	23	NMOD	NMOD	_	_	_	_	_	A1
+23	neighborhood	neighborhood	neighborhood	NN	NN	_	_	20	20	PMOD	PMOD	Y	neighborhood.01	_	_	_	_
+24	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_	_	_
+25	NEWLINE	newline	newline	NNP	NNP	_	_	22	22	APPO	APPO	_	_	_	_	_	_
+
+1	I	i	i	PRP	PRP	_	_	2	2	SBJ	SBJ	_	_	A1	_
+2	got	get	get	VBD	VBD	_	_	7	7	OBJ	OBJ	Y	get.03	_	A1
+3	down	down	down	RB	RB	_	_	2	2	PRD	PRD	_	_	A2	_
+4	,	,	,	,	,	_	_	7	7	P	P	_	_	_	_
+5	"	"	"	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_	_
+6	Stokes	stokes	stokes	NNP	NNP	_	_	7	7	SBJ	SBJ	_	_	_	A0
+7	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_
+8	.	.	.	.	.	_	_	7	7	P	P	_	_	_	_
+
+1	(	-lrb-	-lrb-	(	(	_	_	3	3	P	P	_	_	_	_	_
+2	It	it	it	PRP	PRP	_	_	3	3	SBJ	SBJ	_	_	A0	_	_
+3	’s	’s	’s	VBZ	VBZ	_	_	0	0	ROOT	ROOT	Y	’s.01	_	_	_
+4	)	-rrb-	-rrb-	)	)	_	_	3	3	P	P	_	_	_	_	_
+5	the	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_	_
+6	only	only	only	JJ	JJ	_	_	7	7	NMOD	NMOD	_	_	_	_	_
+7	reaction	reaction	reaction	NN	NN	_	_	3	3	OBJ	OBJ	Y	reaction.01	A1	A2	A1
+8	I	i	i	PRP	PRP	_	_	9	9	SBJ	SBJ	_	_	_	_	A0
+9	know	know	know	VBP	VBP	_	_	7	7	NMOD	NMOD	Y	know.01	_	A1	_
+10	.	.	.	.	.	_	_	3	3	P	P	_	_	_	_	_
+11	"	"	"	''	''	_	_	3	3	P	P	_	_	_	_	_
+12	NEWLINE	newline	newline	NNP	NNP	_	_	9	9	OBJ	OBJ	_	_	_	_	A1
+
+1	16-year	16-year	16-year	CD	CD	_	_	3	3	HMOD	HMOD	_	_	_	_
+2	-	-	-	HYPH	HYPH	_	_	1	1	HYPH	HYPH	_	_	_	_
+3	old	old	old	JJ	JJ	_	_	4	4	NMOD	NMOD	_	_	_	_
+4	boy	boy	boy	NN	NN	_	_	11	11	SBJ	SBJ	_	_	_	_
+5	and	and	and	CC	CC	_	_	4	4	COORD	COORD	_	_	_	_
+6	a	a	a	DT	DT	_	_	10	10	NMOD	NMOD	_	_	_	_
+7	19-year	19-year	19-year	CD	CD	_	_	9	9	HMOD	HMOD	_	_	_	_
+8	-	-	-	HYPH	HYPH	_	_	7	7	HYPH	HYPH	_	_	_	_
+9	old	old	old	JJ	JJ	_	_	10	10	NMOD	NMOD	_	_	_	_
+10	man	man	man	NN	NN	_	_	5	5	CONJ	CONJ	_	_	_	_
+11	were	be	be	VBD	VBD	_	_	24	24	OBJ	OBJ	_	_	_	A1
+12	each	each	each	DT	DT	_	_	13	13	NMOD	NMOD	_	_	_	_
+13	shot	shot	shot	NN	NN	_	_	11	11	SBJ	SBJ	Y	shot.08	_	_
+14	in	in	in	IN	IN	_	_	13	13	LOC	LOC	_	_	A1	_
+15	the	the	the	DT	DT	_	_	20	20	NMOD	NMOD	_	_	_	_
+16	leg	leg	leg	NN	NN	_	_	20	20	NMOD	NMOD	_	_	_	_
+17	just	just	just	RB	RB	_	_	20	20	NMOD	NMOD	_	_	_	_
+18	before	before	before	IN	IN	_	_	17	17	DEP	DEP	_	_	_	_
+19	1:45	1:45	1:45	CD	CD	_	_	17	17	DEP	DEP	_	_	_	_
+20	a.m.	a.m.	a.m.	NN	NN	_	_	14	14	PMOD	PMOD	_	_	_	_
+21	,	,	,	,	,	_	_	24	24	P	P	_	_	_	_
+22	Chicago	chicago	chicago	NNP	NNP	_	_	23	23	NMOD	NMOD	_	_	_	_
+23	police	police	police	NN	NN	_	_	24	24	SBJ	SBJ	_	_	_	A0
+24	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_
+25	.	.	.	.	.	_	_	24	24	P	P	_	_	_	_
+
+1	were	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_
+2	walking	walk	walk	VBG	VBG	_	_	1	1	VC	VC	Y	walk.01	_	_	_
+3	in	in	in	IN	IN	_	_	2	2	DIR	DIR	_	_	AM-DIR	_	_
+4	the	the	the	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_	_
+5	800	800	800	CD	CD	_	_	6	6	NMOD	NMOD	_	_	_	_	_
+6	block	block	block	NN	NN	_	_	3	3	PMOD	PMOD	Y	block.01	_	_	_
+7	of	of	of	IN	IN	_	_	6	6	NMOD	NMOD	_	_	_	A1	_
+8	North	north	north	NNP	NNP	_	_	10	10	NAME	NAME	_	_	_	_	_
+9	Parkside	parkside	parkside	NNP	NNP	_	_	10	10	NAME	NAME	_	_	_	_	_
+10	Avenue	avenue	avenue	NNP	NNP	_	_	7	7	PMOD	PMOD	_	_	_	_	_
+11	when	when	when	WRB	WRB	_	_	13	13	TMP	TMP	_	_	_	_	_
+12	someone	someone	someone	NN	NN	_	_	13	13	SBJ	SBJ	_	_	_	_	A0
+13	in	in	in	IN	IN	_	_	2	2	TMP	TMP	_	_	AM-TMP	_	_
+14	a	a	a	DT	DT	_	_	17	17	NMOD	NMOD	_	_	_	_	_
+15	red	red	red	JJ	JJ	_	_	17	17	NMOD	NMOD	_	_	_	_	A2
+16	van	van	van	NN	NN	_	_	17	17	NMOD	NMOD	_	_	_	_	A1
+17	shot	shot	shot	NN	NN	_	_	13	13	PMOD	PMOD	Y	shot.07	_	_	_
+18	at	at	at	IN	IN	_	_	17	17	NMOD	NMOD	_	_	_	_	A2
+19	them	them	them	PRP	PRP	_	_	18	18	PMOD	PMOD	_	_	_	_	_
+20	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_	_
+21	NEWLINE	newline	newline	NNP	NNP	_	_	20	20	POSTHON	POSTHON	_	_	_	_	_
+
+1	19-year	19-year	19-year	CD	CD	_	_	3	3	HMOD	HMOD	_	_	_
+2	-	-	-	HYPH	HYPH	_	_	1	1	HYPH	HYPH	_	_	_
+3	old	old	old	JJ	JJ	_	_	4	4	NMOD	NMOD	_	_	_
+4	man	man	man	NN	NN	_	_	5	5	SBJ	SBJ	_	_	A1
+5	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+6	taken	take	take	VBN	VBN	_	_	5	5	VC	VC	Y	take.01	_
+7	in	in	in	IN	IN	_	_	6	6	LOC	LOC	_	_	AM-LOC
+8	good	good	good	JJ	JJ	_	_	9	9	NMOD	NMOD	_	_	_
+9	condition	condition	condition	NN	NN	_	_	7	7	PMOD	PMOD	_	_	_
+10	to	to	to	TO	TO	_	_	6	6	DIR	DIR	_	_	AM-DIR
+11	Mount	mount	mount	NNP	NNP	_	_	13	13	NAME	NAME	_	_	_
+12	Sinai	sinai	sinai	NNP	NNP	_	_	13	13	NAME	NAME	_	_	_
+13	Hospital	hospital	hospital	NNP	NNP	_	_	10	10	PMOD	PMOD	_	_	_
+14	.	.	.	.	.	_	_	5	5	P	P	_	_	_
+
+1	teen	teen	teen	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A1
+2	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+3	taken	take	take	VBN	VBN	_	_	2	2	VC	VC	Y	take.01	_
+4	in	in	in	IN	IN	_	_	3	3	LOC	LOC	_	_	AM-LOC
+5	good	good	good	JJ	JJ	_	_	6	6	NMOD	NMOD	_	_	_
+6	condition	condition	condition	NN	NN	_	_	4	4	PMOD	PMOD	_	_	_
+7	to	to	to	TO	TO	_	_	3	3	DIR	DIR	_	_	AM-DIR
+8	Stroger	stroger	stroger	NNP	NNP	_	_	9	9	NAME	NAME	_	_	_
+9	Hospital	hospital	hospital	NNP	NNP	_	_	7	7	PMOD	PMOD	_	_	_
+10	.	.	.	.	.	_	_	2	2	P	P	_	_	_
+
+1	one	one	one	CD	CD	_	_	2	2	SBJ	SBJ	_	_
+2	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_
+3	in	in	in	IN	IN	_	_	2	2	PRD	PRD	_	_
+4	custody	custody	custody	NN	NN	_	_	3	3	PMOD	PMOD	_	_
+5	.	.	.	.	.	_	_	2	2	P	P	_	_
+6	NEWLINE	newline	newline	NNP	NNP	_	_	1	1	APPO	APPO	_	_
+
+1	teen	teen	teen	NN	NN	_	_	5	5	SBJ	SBJ	_	_	_	_	_
+2	and	and	and	CC	CC	_	_	1	1	COORD	COORD	_	_	_	_	_
+3	the	the	the	DT	DT	_	_	4	4	NMOD	NMOD	_	_	_	_	_
+4	man	man	man	NN	NN	_	_	2	2	CONJ	CONJ	_	_	_	_	_
+5	were	be	be	VBD	VBD	_	_	22	22	OBJ	OBJ	_	_	_	_	A1
+6	among	among	among	IN	IN	_	_	5	5	LOC-PRD	LOC-PRD	_	_	_	_	_
+7	11	11	11	CD	CD	_	_	8	8	NMOD	NMOD	_	_	_	_	_
+8	people	people	people	NN	NN	_	_	6	6	PMOD	PMOD	_	_	A1	_	_
+9	shot	shot	shot	VBD	VBD	_	_	8	8	APPO	APPO	Y	shoot.06	_	_	_
+10	,	,	,	,	,	_	_	9	9	P	P	_	_	_	_	_
+11	one	one	one	CD	CD	_	_	16	16	NMOD	NMOD	_	_	_	_	_
+12	fatally	fatally	fatally	RB	RB	_	_	9	9	MNR	MNR	_	_	AM-MNR	_	_
+13	,	,	,	,	,	_	_	9	9	P	P	_	_	_	_	_
+14	from	from	from	IN	IN	_	_	9	9	DIR	DIR	_	_	A3	_	_
+15	Tuesday	tuesday	tuesday	NNP	NNP	_	_	16	16	NMOD	NMOD	_	_	_	_	_
+16	afternoon	afternoon	afternoon	NN	NN	_	_	14	14	PMOD	PMOD	_	_	_	_	_
+17	to	to	to	TO	TO	_	_	14	14	PMOD	PMOD	_	_	_	_	_
+18	early	early	early	JJ	JJ	_	_	19	19	NMOD	NMOD	_	_	_	_	_
+19	Wednesday	wednesday	wednesday	NNP	NNP	_	_	17	17	PMOD	PMOD	_	_	_	_	_
+20	,	,	,	,	,	_	_	22	22	P	P	_	_	_	_	_
+21	police	police	police	NN	NN	_	_	22	22	SBJ	SBJ	Y	police.01	_	A0	A0
+22	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+23	.	.	.	.	.	_	_	22	22	P	P	_	_	_	_	_
+24	NEWLINE	newline	newline	NNP	NNP	_	_	21	21	OBJ	OBJ	_	_	_	A2	_
+
+1	officers	officer	officer	NNS	NNS	_	_	2	2	SBJ	SBJ	_	_	A0	_	_	_	_	_	_
+2	blocked	block	block	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	block.01	_	_	_	_	_	_	_
+3	off	off	off	RP	RP	_	_	2	2	PRT	PRT	_	_	_	_	_	_	_	_	_
+4	part	part	part	NN	NN	_	_	2	2	OBJ	OBJ	Y	part.01	A1	_	_	_	_	_	_
+5	of	of	of	IN	IN	_	_	4	4	NMOD	NMOD	_	_	_	A1	_	_	_	_	_
+6	Parkside	parkside	parkside	NNP	NNP	_	_	5	5	PMOD	PMOD	_	_	_	_	_	_	_	_	_
+7	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_	_	_	_	_	_
+8	neighbors	neighbor	neighbor	NNS	NNS	_	_	11	11	SBJ	SBJ	_	_	_	_	A0	A0	_	_	_
+9	wearing	wear	wear	VBG	VBG	_	_	8	8	APPO	APPO	Y	wear.01	_	_	_	_	_	_	_
+10	pajamas	pajama	pajama	NNS	NNS	_	_	9	9	OBJ	OBJ	_	_	_	_	A1	_	_	_	_
+11	peeked	peek	peek	VBD	VBD	_	_	2	2	COORD	COORD	Y	peek.01	_	_	_	_	_	_	_
+12	out	out	out	RP	RP	_	_	11	11	PRT	PRT	_	_	_	_	_	_	_	_	_
+13	their	their	their	PRP$	PRP$	_	_	14	14	NMOD	NMOD	_	_	_	_	_	_	A1	_	_
+14	windows	windows	windows	NNS	NNS	_	_	11	11	OBJ	OBJ	Y	window.01	_	_	_	A1	_	_	_
+15	and	and	and	CC	CC	_	_	11	11	COORD	COORD	_	_	_	_	_	_	_	_	_
+16	others	others	others	NNS	NNS	_	_	17	17	SBJ	SBJ	_	_	_	_	_	_	_	A0	_
+17	watched	watch	watch	VBD	VBD	_	_	15	15	CONJ	CONJ	Y	watch.01	_	_	_	_	_	_	_
+18	police	police	police	NN	NN	_	_	17	17	OBJ	OBJ	_	_	_	_	_	_	_	A1	_
+19	from	from	from	IN	IN	_	_	17	17	ADV	ADV	_	_	_	_	_	_	_	C-A1	_
+20	their	their	their	PRP$	PRP$	_	_	22	22	NMOD	NMOD	_	_	_	_	_	_	_	_	A0
+21	front	front	front	NN	NN	_	_	22	22	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+22	porches	porch	porch	NNS	NNS	_	_	19	19	PMOD	PMOD	Y	porch.01	_	_	_	_	_	_	_
+23	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_	_	_	_	_	_
+
+1	crime	crime	crime	NN	NN	_	_	2	2	NMOD	NMOD	_	_	_	_	_
+2	scene	scene	scene	NN	NN	_	_	3	3	SBJ	SBJ	_	_	A1	_	_
+3	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_
+4	later	later	later	RB	RB	_	_	3	3	TMP	TMP	_	_	AM-TMP	_	_
+5	expanded	expand	expand	VBN	VBN	_	_	3	3	VC	VC	Y	expand.01	_	_	_
+6	after	after	after	IN	IN	_	_	5	5	TMP	TMP	_	_	AM-TMP	_	_
+7	additional	additional	additional	JJ	JJ	_	_	8	8	NMOD	NMOD	_	_	_	_	_
+8	casings	casing	casing	NNS	NNS	_	_	9	9	SBJ	SBJ	_	_	_	A1	_
+9	were	be	be	VBD	VBD	_	_	6	6	SUB	SUB	_	_	_	_	_
+10	found	found	found	VBN	VBN	_	_	9	9	VC	VC	Y	find.01	_	_	_
+11	on	on	on	IN	IN	_	_	10	10	LOC	LOC	_	_	_	AM-LOC	_
+12	the	the	the	DT	DT	_	_	14	14	NMOD	NMOD	_	_	_	_	_
+13	front	front	front	NN	NN	_	_	14	14	NMOD	NMOD	_	_	_	_	A1
+14	lawn	lawn	lawn	NN	NN	_	_	11	11	PMOD	PMOD	Y	lawn.01	_	_	_
+15	of	of	of	IN	IN	_	_	14	14	NMOD	NMOD	_	_	_	_	A1
+16	a	a	a	DT	DT	_	_	17	17	NMOD	NMOD	_	_	_	_	_
+17	home	home	home	NN	NN	_	_	15	15	PMOD	PMOD	_	_	_	_	_
+18	.	.	.	.	.	_	_	3	3	P	P	_	_	_	_	_
+19	NEWLINE	newline	newline	NNP	NNP	_	_	18	18	POSTHON	POSTHON	_	_	_	_	_
+
+1	broadcast	broadcast	broadcast	VBN	VBN	_	_	11	11	NMOD	NMOD	Y	broadcast.01	_	_	_
+2	the	the	the	DT	DT	_	_	3	3	NMOD	NMOD	_	_	_	_	_
+3	aftermath	aftermath	aftermath	NN	NN	_	_	1	1	OBJ	OBJ	Y	aftermath.01	A1	A1	_
+4	of	of	of	IN	IN	_	_	3	3	NMOD	NMOD	_	_	_	A2	_
+5	the	the	the	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_	_
+6	shooting	shooting	shooting	NN	NN	_	_	4	4	PMOD	PMOD	Y	shooting.01	_	_	_
+7	on	on	on	IN	IN	_	_	6	6	NMOD	NMOD	_	_	_	_	A1
+8	Facebook	facebook	facebook	NNP	NNP	_	_	9	9	NAME	NAME	_	_	_	_	_
+9	Live	live	live	NNP	NNP	_	_	7	7	PMOD	PMOD	_	_	_	_	_
+10	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_	_
+11	NEWLINE	newline	newline	NNP	NNP	_	_	0	0	ROOT	ROOT	_	_	A1	_	_
+
+1	The	the	the	DT	DT	_	_	2	2	NMOD	NMOD	_	_	_	_	_	_
+2	world	world	world	NN	NN	_	_	3	3	SBJ	SBJ	_	_	A0	A0	_	_
+3	needs	need	need	VBZ	VBZ	_	_	10	10	OBJ	OBJ	Y	need.01	_	_	A1	_
+4	to	to	to	TO	TO	_	_	3	3	OPRD	OPRD	_	_	A1	_	_	_
+5	see	see	see	VB	VB	_	_	4	4	IM	IM	Y	see.01	_	_	_	_
+6	it	it	it	PRP	PRP	_	_	5	5	OBJ	OBJ	_	_	_	A1	_	_
+7	,	,	,	,	,	_	_	10	10	P	P	_	_	_	_	_	_
+8	"	"	"	''	''	_	_	10	10	P	P	_	_	_	_	_	_
+9	he	he	he	PRP	PRP	_	_	10	10	SBJ	SBJ	_	_	_	_	A0	A0
+10	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_
+11	while	while	while	IN	IN	_	_	10	10	TMP	TMP	_	_	_	_	AM-TMP	_
+12	holding	hold	hold	VBG	VBG	_	_	11	11	SUB	SUB	Y	hold.01	_	_	_	_
+13	his	his	his	PRP$	PRP$	_	_	14	14	NMOD	NMOD	_	_	_	_	_	_
+14	phone	phone	phone	NN	NN	_	_	12	12	OBJ	OBJ	_	_	_	_	_	A1
+15	.	.	.	.	.	_	_	10	10	P	P	_	_	_	_	_	_
+16	NEWLINE	newline	newline	NNP	NNP	_	_	12	12	PRT	PRT	_	_	_	_	_	_
+
+1	uncle	uncle	uncle	JJ	JJ	_	_	12	12	SBJ	SBJ	_	_	A0	_	A0	A0	_
+2	,	,	,	,	,	_	_	1	1	P	P	_	_	_	_	_	_	_
+3	who	who	who	WP	WP	_	_	4	4	SBJ	SBJ	_	_	R-A0	R-A1	_	_	_
+4	did	do	do	VBD	VBD	_	_	1	1	NMOD	NMOD	_	_	_	_	_	_	_
+5	not	not	not	RB	RB	_	_	4	4	ADV	ADV	_	_	AM-NEG	_	_	_	_
+6	want	want	want	VB	VB	_	_	4	4	VC	VC	Y	want.01	_	_	_	_	_
+7	to	to	to	TO	TO	_	_	6	6	OPRD	OPRD	_	_	A1	_	_	_	_
+8	be	be	be	VB	VB	_	_	7	7	IM	IM	_	_	_	_	_	_	_
+9	identified	identify	identify	VBN	VBN	_	_	8	8	VC	VC	Y	identify.01	_	_	_	_	_
+10	,	,	,	,	,	_	_	1	1	P	P	_	_	_	_	_	_	_
+11	also	also	also	RB	RB	_	_	12	12	ADV	ADV	_	_	_	_	AM-DIS	_	_
+12	heard	hear	hear	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	hear.01	_	_	_	_	_
+13	the	the	the	DT	DT	_	_	14	14	NMOD	NMOD	_	_	_	_	_	_	_
+14	gunfire	gunfire	gunfire	NN	NN	_	_	12	12	OBJ	OBJ	_	_	_	_	A1	_	_
+15	and	and	and	CC	CC	_	_	12	12	COORD	COORD	_	_	_	_	_	_	_
+16	thought	think	think	VBD	VBD	_	_	15	15	CONJ	CONJ	Y	think.01	_	_	_	_	_
+17	he	he	he	PRP	PRP	_	_	18	18	SBJ	SBJ	_	_	_	_	_	_	A0
+18	was	be	be	VBD	VBD	_	_	16	16	OBJ	OBJ	_	_	_	_	_	A1	_
+19	dreaming	dream	dream	VBG	VBG	_	_	18	18	VC	VC	Y	dream.02	_	_	_	_	_
+20	.	.	.	.	.	_	_	12	12	P	P	_	_	_	_	_	_	_
+
+1	watched	watch	watch	VBN	VBN	_	_	64	64	OBJ	OBJ	Y	watch.01	_	_	_	_	_	_	_	_	_	A1
+2	police	police	police	NN	NN	_	_	1	1	OBJ	OBJ	_	_	A1	_	_	_	_	_	_	_	_	_
+3	from	from	from	IN	IN	_	_	1	1	ADV	ADV	_	_	C-A1	_	_	_	_	_	_	_	_	_
+4	his	his	his	PRP$	PRP$	_	_	5	5	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+5	porch	porch	porch	NN	NN	_	_	3	3	PMOD	PMOD	_	_	_	_	_	_	_	_	_	_	_	_
+6	and	and	and	CC	CC	_	_	1	1	COORD	COORD	_	_	_	_	_	_	_	_	_	_	_	_
+7	,	,	,	,	,	_	_	6	6	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+8	with	with	with	IN	IN	_	_	12	12	ADV	ADV	_	_	_	_	AM-ADV	_	_	_	_	_	_	_
+9	his	his	his	PRP$	PRP$	_	_	10	10	NMOD	NMOD	_	_	_	A1	_	_	_	_	_	_	_	_
+10	neighbors	neighbor	neighbor	NNS	NNS	_	_	8	8	PMOD	PMOD	Y	neighbor.01	_	A0	_	_	_	_	_	_	_	_
+11	,	,	,	,	,	_	_	12	12	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+12	tried	try	try	VBD	VBD	_	_	6	6	CONJ	CONJ	Y	try.01	_	_	_	_	_	_	_	_	_	_
+13	to	to	to	TO	TO	_	_	12	12	OPRD	OPRD	_	_	_	_	A1	_	_	_	_	_	_	_
+14	piece	piece	piece	VB	VB	_	_	13	13	IM	IM	Y	piece.01	_	_	_	_	_	_	_	_	_	_
+15	together	together	together	RB	RB	_	_	14	14	ADV	ADV	_	_	_	_	_	A3	_	_	_	_	_	_
+16	what	what	what	WP	WP	_	_	17	17	SBJ	SBJ	_	_	_	_	_	_	R-A1	_	_	_	_	_
+17	happened	happen	happen	VBD	VBD	_	_	14	14	OBJ	OBJ	Y	happen.01	_	_	_	A1	_	_	_	_	_	_
+18	.	.	.	.	.	_	_	17	17	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+19	NEWLINE	newline	newline	NNP	NNP	_	_	20	20	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+20	2	2	2	CD	CD	_	_	17	17	TMP	TMP	_	_	_	_	_	_	AM-TMP	_	_	_	_	_
+21	wounded	wound	wound	VBD	VBD	_	_	17	17	TMP	TMP	Y	wind.02	_	_	_	_	AM-TMP	_	_	_	_	_
+22	in	in	in	IN	IN	_	_	21	21	LOC	LOC	_	_	_	_	_	_	_	A2	_	_	_	_
+23	South	south	south	NNP	NNP	_	_	24	24	NAME	NAME	_	_	_	_	_	_	_	_	_	_	_	_
+24	Austin	austin	austin	NNP	NNP	_	_	25	25	SBJ	SBJ	_	_	_	_	_	_	_	_	A0	_	_	_
+25	shooting	shoot	shoot	VBG	VBG	_	_	22	22	PMOD	PMOD	Y	shoot.02	_	_	_	_	_	_	_	_	_	_
+26	Elvia	elvia	elvia	NNP	NNP	_	_	31	31	NAME	NAME	_	_	_	_	_	_	_	_	_	_	_	_
+27	Malagon	malagon	malagon	NNP	NNP	_	_	31	31	NAME	NAME	_	_	_	_	_	_	_	_	_	_	_	_
+28	/	/	/	:	:	_	_	27	27	COORD	COORD	_	_	_	_	_	_	_	_	_	_	_	_
+29	Chicago	chicago	chicago	NNP	NNP	_	_	28	28	CONJ	CONJ	_	_	_	_	_	_	_	_	_	_	_	_
+30	Tribune	tribune	tribune	NNP	NNP	_	_	31	31	NAME	NAME	_	_	_	_	_	_	_	_	_	_	_	_
+31	Casings	casing	casing	NNP	NNP	_	_	32	32	SBJ	SBJ	_	_	_	_	_	_	_	_	_	A1	_	_
+32	were	be	be	VBD	VBD	_	_	25	25	OBJ	OBJ	_	_	_	_	_	_	_	_	A1	_	_	_
+33	found	found	found	VBN	VBN	_	_	32	32	VC	VC	Y	find.01	_	_	_	_	_	_	_	_	_	_
+34	on	on	on	IN	IN	_	_	33	33	LOC	LOC	_	_	_	_	_	_	_	_	_	AM-LOC	_	_
+35	the	the	the	DT	DT	_	_	36	36	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+36	ground	ground	ground	NN	NN	_	_	34	34	PMOD	PMOD	_	_	_	_	_	_	_	_	_	_	_	_
+37	at	at	at	IN	IN	_	_	33	33	LOC	LOC	_	_	_	_	_	_	_	_	_	AM-LOC	_	_
+38	the	the	the	DT	DT	_	_	39	39	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+39	scene	scene	scene	NN	NN	_	_	37	37	PMOD	PMOD	_	_	_	_	_	_	_	_	_	_	_	_
+40	of	of	of	IN	IN	_	_	39	39	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+41	a	a	a	DT	DT	_	_	42	42	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+42	shooting	shooting	shooting	NN	NN	_	_	40	40	PMOD	PMOD	_	_	_	_	_	_	_	_	_	_	_	_
+43	early	early	early	RB	RB	_	_	44	44	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+44	April	april	april	NNP	NNP	_	_	47	47	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+45	5	5	5	CD	CD	_	_	44	44	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+46	,	,	,	,	,	_	_	47	47	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+47	2017	2017	2017	CD	CD	_	_	39	39	TMP	TMP	_	_	_	_	_	_	_	_	_	_	_	_
+48	,	,	,	,	,	_	_	47	47	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+49	that	that	that	WDT	WDT	_	_	50	50	SBJ	SBJ	_	_	_	_	_	_	_	_	_	_	R-A0	_
+50	wounded	wound	wound	VBD	VBD	_	_	47	47	NMOD	NMOD	Y	wound.01	_	_	_	_	_	_	_	_	_	_
+51	a	a	a	DT	DT	_	_	55	55	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+52	16-year	16-year	16-year	CD	CD	_	_	54	54	HMOD	HMOD	_	_	_	_	_	_	_	_	_	_	_	_
+53	-	-	-	HYPH	HYPH	_	_	52	52	HYPH	HYPH	_	_	_	_	_	_	_	_	_	_	_	_
+54	old	old	old	JJ	JJ	_	_	55	55	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+55	boy	boy	boy	NN	NN	_	_	50	50	OBJ	OBJ	_	_	_	_	_	_	_	_	_	_	A1	_
+56	and	and	and	CC	CC	_	_	55	55	COORD	COORD	_	_	_	_	_	_	_	_	_	_	_	_
+57	a	a	a	DT	DT	_	_	61	61	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+58	19-year	19-year	19-year	CD	CD	_	_	60	60	HMOD	HMOD	_	_	_	_	_	_	_	_	_	_	_	_
+59	-	-	-	HYPH	HYPH	_	_	58	58	HYPH	HYPH	_	_	_	_	_	_	_	_	_	_	_	_
+60	old	old	old	JJ	JJ	_	_	61	61	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+61	man	man	man	NN	NN	_	_	56	56	CONJ	CONJ	_	_	_	_	_	_	_	_	_	_	_	_
+62	,	,	,	,	,	_	_	64	64	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+63	police	police	police	NN	NN	_	_	64	64	SBJ	SBJ	_	_	_	_	_	_	_	_	_	_	_	A0
+64	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_	_	_	_	_	_	_
+65	.	.	.	.	.	_	_	64	64	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+
+1	were	be	be	VBD	VBD	_	_	33	33	OBJ	OBJ	_	_	_	_	A1
+2	found	found	found	VBN	VBN	_	_	1	1	VC	VC	Y	find.01	_	_	_
+3	on	on	on	IN	IN	_	_	2	2	LOC	LOC	_	_	AM-LOC	_	_
+4	the	the	the	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_	_	_
+5	ground	ground	ground	NN	NN	_	_	3	3	PMOD	PMOD	_	_	_	_	_
+6	at	at	at	IN	IN	_	_	2	2	LOC	LOC	_	_	AM-LOC	_	_
+7	the	the	the	DT	DT	_	_	8	8	NMOD	NMOD	_	_	_	_	_
+8	scene	scene	scene	NN	NN	_	_	6	6	PMOD	PMOD	_	_	_	_	_
+9	of	of	of	IN	IN	_	_	8	8	NMOD	NMOD	_	_	_	_	_
+10	a	a	a	DT	DT	_	_	11	11	NMOD	NMOD	_	_	_	_	_
+11	shooting	shooting	shooting	NN	NN	_	_	9	9	PMOD	PMOD	_	_	_	_	_
+12	early	early	early	RB	RB	_	_	13	13	NMOD	NMOD	_	_	_	_	_
+13	April	april	april	NNP	NNP	_	_	16	16	NMOD	NMOD	_	_	_	_	_
+14	5	5	5	CD	CD	_	_	13	13	NMOD	NMOD	_	_	_	_	_
+15	,	,	,	,	,	_	_	16	16	P	P	_	_	_	_	_
+16	2017	2017	2017	CD	CD	_	_	8	8	TMP	TMP	_	_	_	_	_
+17	,	,	,	,	,	_	_	16	16	P	P	_	_	_	_	_
+18	that	that	that	WDT	WDT	_	_	19	19	SBJ	SBJ	_	_	_	R-A0	_
+19	wounded	wound	wound	VBD	VBD	_	_	16	16	NMOD	NMOD	Y	wound.01	_	_	_
+20	a	a	a	DT	DT	_	_	24	24	NMOD	NMOD	_	_	_	_	_
+21	16-year	16-year	16-year	CD	CD	_	_	23	23	HMOD	HMOD	_	_	_	_	_
+22	-	-	-	HYPH	HYPH	_	_	21	21	HYPH	HYPH	_	_	_	_	_
+23	old	old	old	JJ	JJ	_	_	24	24	NMOD	NMOD	_	_	_	_	_
+24	boy	boy	boy	NN	NN	_	_	19	19	OBJ	OBJ	_	_	_	A1	_
+25	and	and	and	CC	CC	_	_	24	24	COORD	COORD	_	_	_	_	_
+26	a	a	a	DT	DT	_	_	30	30	NMOD	NMOD	_	_	_	_	_
+27	19-year	19-year	19-year	CD	CD	_	_	29	29	HMOD	HMOD	_	_	_	_	_
+28	-	-	-	HYPH	HYPH	_	_	27	27	HYPH	HYPH	_	_	_	_	_
+29	old	old	old	JJ	JJ	_	_	30	30	NMOD	NMOD	_	_	_	_	_
+30	man	man	man	NN	NN	_	_	25	25	CONJ	CONJ	_	_	_	_	_
+31	,	,	,	,	,	_	_	33	33	P	P	_	_	_	_	_
+32	police	police	police	NN	NN	_	_	33	33	SBJ	SBJ	_	_	_	_	A0
+33	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+34	.	.	.	.	.	_	_	33	33	P	P	_	_	_	_	_
+
+1	Elvia	elvia	elvia	NNP	NNP	_	_	5	5	NAME	NAME	_	_
+2	Malagon	malagon	malagon	NNP	NNP	_	_	5	5	NAME	NAME	_	_
+3	/	/	/	:	:	_	_	2	2	COORD	COORD	_	_
+4	Chicago	chicago	chicago	NNP	NNP	_	_	3	3	CONJ	CONJ	_	_
+5	Tribune	tribune	tribune	NNP	NNP	_	_	0	0	ROOT	ROOT	_	_
+6	)	-rrb-	-rrb-	)	)	_	_	5	5	P	P	_	_
+7	(	-lrb-	-lrb-	(	(	_	_	9	9	P	P	_	_
+8	Elvia	elvia	elvia	NNP	NNP	_	_	9	9	NAME	NAME	_	_
+9	Malagon	malagon	malagon	NNP	NNP	_	_	5	5	PRN	PRN	_	_
+10	/	/	/	:	:	_	_	9	9	COORD	COORD	_	_
+11	Chicago	chicago	chicago	NNP	NNP	_	_	12	12	NAME	NAME	_	_
+12	Tribune	tribune	tribune	NNP	NNP	_	_	10	10	CONJ	CONJ	_	_
+13	)	-rrb-	-rrb-	)	)	_	_	9	9	P	P	_	_
+14	NEWLINE	newline	newline	NNP	NNP	_	_	11	11	OBJ	OBJ	_	_
+
+1	Someone	someone	someone	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A1
+2	died	die	die	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	die.01	_
+3	?	?	?	.	.	_	_	2	2	P	P	_	_	_
+4	"	"	"	)	)	_	_	2	2	P	P	_	_	_
+
+1	67-year	67-year	67-year	JJ	JJ	_	_	3	3	HMOD	HMOD	_	_	_	_
+2	-	-	-	HYPH	HYPH	_	_	1	1	HYPH	HYPH	_	_	_	_
+3	old	old	old	JJ	JJ	_	_	4	4	NMOD	NMOD	_	_	_	_
+4	woman	woman	woman	NN	NN	_	_	5	5	SBJ	SBJ	_	_	A0	A1
+5	asked	ask	ask	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	ask.01	_	_
+6	Stokes’	stokes’	stokes’	NNP	NNP	_	_	7	7	NMOD	NMOD	_	_	_	A1
+7	uncle	uncle	uncle	NN	NN	_	_	5	5	OBJ	OBJ	Y	uncle.01	A2	A0
+8	.	.	.	.	.	_	_	5	5	P	P	_	_	_	_
+9	NEWLINE	newline	newline	NNP	NNP	_	_	5	5	OBJ	OBJ	_	_	A2	_
+
+1	I	i	i	PRP	PRP	_	_	2	2	SBJ	SBJ	_	_	A0	A0	_
+2	don’t	don’t	don’t	VBP	VBP	_	_	7	7	OBJ	OBJ	Y	don’t.01	_	_	A1
+3	know	know	know	VBP	VBP	_	_	2	2	OBJ	OBJ	Y	know.01	A1	_	_
+4	,	,	,	,	,	_	_	7	7	P	P	_	_	_	_	_
+5	"	"	"	''	''	_	_	7	7	P	P	_	_	_	_	_
+6	he	he	he	PRP	PRP	_	_	7	7	SBJ	SBJ	_	_	_	_	A0
+7	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+8	.	.	.	.	.	_	_	7	7	P	P	_	_	_	_	_
+9	NEWLINE	newline	newline	NNP	NNP	_	_	3	3	OBJ	OBJ	_	_	_	A1	_
+
+1	Oh	oh	oh	UH	UH	_	_	8	8	DEP	DEP	_	_	_	A1	_
+2	,	,	,	,	,	_	_	8	8	P	P	_	_	_	_	_
+3	my	my	my	PRP$	PRP$	_	_	6	6	NMOD	NMOD	_	_	A0	_	_
+4	God	god	god	NNP	NNP	_	_	6	6	NMOD	NMOD	_	_	A1	_	_
+5	,	,	,	,	,	_	_	6	6	P	P	_	_	_	_	_
+6	"	"	"	NNP	NNP	_	_	10	10	NMOD	NMOD	Y	".01	_	_	A0
+7	she	she	she	PRP	PRP	_	_	8	8	SBJ	SBJ	_	_	_	A0	_
+8	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+9	.	.	.	.	.	_	_	8	8	P	P	_	_	_	_	_
+10	NEWLINE	newline	newline	NNP	NNP	_	_	1	1	DEP	DEP	Y	newline.01	_	_	_
+
+1	woman	woman	woman	NN	NN	_	_	12	12	SBJ	SBJ	_	_	A0	A1	A0	_
+2	,	,	,	,	,	_	_	1	1	P	P	_	_	_	_	_	_
+3	who	who	who	WP	WP	_	_	5	5	SBJ	SBJ	_	_	R-A0	R-A1	_	_
+4	also	also	also	RB	RB	_	_	5	5	ADV	ADV	_	_	AM-DIS	_	_	_
+5	did	do	do	VBD	VBD	_	_	1	1	NMOD	NMOD	_	_	_	_	_	_
+6	not	not	not	RB	RB	_	_	5	5	ADV	ADV	_	_	AM-NEG	_	_	_
+7	want	want	want	VB	VB	_	_	5	5	VC	VC	Y	want.01	_	_	_	_
+8	to	to	to	TO	TO	_	_	7	7	OPRD	OPRD	_	_	A1	_	_	_
+9	be	be	be	VB	VB	_	_	8	8	IM	IM	_	_	_	_	_	_
+10	identified	identify	identify	VBN	VBN	_	_	9	9	VC	VC	Y	identify.01	_	_	_	_
+11	,	,	,	,	,	_	_	1	1	P	P	_	_	_	_	_	_
+12	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_
+13	she	she	she	PRP	PRP	_	_	14	14	SBJ	SBJ	_	_	_	_	_	_
+14	was	be	be	VBD	VBD	_	_	12	12	OBJ	OBJ	_	_	_	_	A1	_
+15	in	in	in	IN	IN	_	_	14	14	PRD	PRD	_	_	_	_	_	_
+16	bed	bed	bed	NN	NN	_	_	15	15	PMOD	PMOD	_	_	_	_	_	_
+17	when	when	when	WRB	WRB	_	_	19	19	TMP	TMP	_	_	_	_	_	_
+18	she	she	she	PRP	PRP	_	_	19	19	SBJ	SBJ	_	_	_	_	_	A0
+19	heard	hear	hear	VBD	VBD	_	_	14	14	TMP	TMP	Y	hear.01	_	_	_	_
+20	several	several	several	DT	DT	_	_	21	21	NMOD	NMOD	_	_	_	_	_	_
+21	gunshots	gunshot	gunshot	NNS	NNS	_	_	19	19	OBJ	OBJ	_	_	_	_	_	A1
+22	.	.	.	.	.	_	_	12	12	P	P	_	_	_	_	_	_
+23	NEWLINE	newline	newline	NNP	NNP	_	_	19	19	OPRD	OPRD	_	_	_	_	_	C-A1
+
+1	I	i	i	PRP	PRP	_	_	3	3	SBJ	SBJ	_	_	A0	_	_
+2	just	just	just	RB	RB	_	_	3	3	ADV	ADV	_	_	AM-TMP	_	_
+3	heard	hear	hear	VBD	VBD	_	_	13	13	OBJ	OBJ	Y	hear.01	_	_	A1
+4	'	'	'	''	''	_	_	5	5	P	P	_	_	_	_	_
+5	bing	bing	bing	NN	NN	_	_	3	3	OBJ	OBJ	_	_	A1	_	_
+6	,	,	,	,	,	_	_	5	5	P	P	_	_	_	_	_
+7	bing	bing	bing	NN	NN	_	_	8	8	NMOD	NMOD	Y	bing.01	_	_	_
+8	bing	bing	bing	NN	NN	_	_	5	5	APPO	APPO	_	_	_	_	_
+9	,	,	,	,	,	_	_	13	13	P	P	_	_	_	_	_
+10	'	'	'	''	''	_	_	13	13	P	P	_	_	_	_	_
+11	"	"	"	PRP	PRP	_	_	7	7	OBJ	OBJ	_	_	_	A1	_
+12	she	she	she	PRP	PRP	_	_	13	13	SBJ	SBJ	_	_	_	_	A0
+13	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+14	.	.	.	.	.	_	_	13	13	P	P	_	_	_	_	_
+
+1	I	i	i	PRP	PRP	_	_	2	2	SBJ	SBJ	_	_	A0	_	_
+2	didn’t	didn’t	didn’t	VBP	VBP	_	_	0	0	ROOT	ROOT	Y	didn’t.01	_	_	_
+3	dare	dare	dare	JJ	JJ	_	_	4	4	SBJ	SBJ	_	_	_	A1	_
+4	go	go	go	VBP	VBP	_	_	2	2	OBJ	OBJ	Y	go.01	A1	_	_
+5	to	to	to	TO	TO	_	_	4	4	DIR	DIR	_	_	_	A4	_
+6	the	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_	_
+7	door	door	door	NN	NN	_	_	5	5	PMOD	PMOD	_	_	_	_	_
+8	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_	_
+9	no	no	no	DT	DT	_	_	10	10	NMOD	NMOD	_	_	_	_	AM-NEG
+10	way	way	way	NN	NN	_	_	2	2	ADV	ADV	Y	way.01	AM-MNR	_	_
+11	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_	_
+12	"	"	"	''	''	_	_	2	2	P	P	_	_	_	_	_
+13	NEWLINE	newline	newline	NNP	NNP	_	_	12	12	NAME	NAME	_	_	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_
+2	the	the	the	DT	DT	_	_	4	4	NMOD	NMOD	_	_	_	_
+3	second	second	second	JJ	JJ	_	_	4	4	NMOD	NMOD	_	_	_	_
+4	time	time	time	NN	NN	_	_	1	1	PRD	PRD	_	_	_	_
+5	in	in	in	IN	IN	_	_	4	4	TMP	TMP	_	_	_	_
+6	less	less	less	JJR	JJR	_	_	8	8	DEP	DEP	_	_	_	_
+7	than	than	than	IN	IN	_	_	8	8	DEP	DEP	_	_	_	_
+8	24	24	24	CD	CD	_	_	9	9	NMOD	NMOD	_	_	_	_
+9	hours	hours	hours	NNS	NNS	_	_	5	5	PMOD	PMOD	_	_	_	_
+10	that	that	that	IN	IN	_	_	4	4	NMOD	NMOD	_	_	_	_
+11	she	she	she	PRP	PRP	_	_	12	12	SBJ	SBJ	_	_	A0	_
+12	had	have	have	VBD	VBD	_	_	10	10	SUB	SUB	_	_	_	_
+13	heard	hear	hear	VBN	VBN	_	_	12	12	VC	VC	Y	hear.01	_	_
+14	gunfire	gunfire	gunfire	NN	NN	_	_	13	13	OBJ	OBJ	_	_	A1	_
+15	outside	outside	outside	IN	IN	_	_	13	13	LOC	LOC	_	_	AM-LOC	_
+16	her	her	her	PRP$	PRP$	_	_	17	17	NMOD	NMOD	_	_	_	A0
+17	home	home	home	NN	NN	_	_	15	15	PMOD	PMOD	Y	home.01	_	A1
+18	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_
+
+1	afternoon	afternoon	afternoon	NN	NN	_	_	3	3	ADV	ADV	_	_	AM-TMP	_	_	_	_	_
+2	she	she	she	PRP	PRP	_	_	3	3	SBJ	SBJ	_	_	A0	_	_	_	_	_
+3	heard	hear	hear	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	hear.01	_	_	_	_	_	_
+4	another	another	another	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_	_	_	_	_	_
+5	set	set	set	NN	NN	_	_	3	3	OBJ	OBJ	Y	set.01	A1	_	_	_	_	_
+6	of	of	of	IN	IN	_	_	5	5	NMOD	NMOD	_	_	_	A1	_	_	_	_
+7	gunshots	gunshot	gunshot	NNS	NNS	_	_	6	6	PMOD	PMOD	_	_	_	_	A1	_	_	_
+8	that	that	that	WDT	WDT	_	_	9	9	SBJ	SBJ	_	_	_	_	R-A1	_	_	_
+9	sounded	sound	sound	VBD	VBD	_	_	7	7	NMOD	NMOD	Y	sound.01	_	_	_	_	_	_
+10	like	like	like	IN	IN	_	_	9	9	OBJ	OBJ	_	_	_	_	A2	_	_	_
+11	they	they	they	PRP	PRP	_	_	12	12	SBJ	SBJ	_	_	_	_	_	A1	_	_
+12	were	be	be	VBD	VBD	_	_	10	10	SUB	SUB	_	_	_	_	_	_	_	_
+13	coming	come	come	VBG	VBG	_	_	12	12	VC	VC	Y	come.03	_	_	_	_	_	_
+14	from	from	from	IN	IN	_	_	13	13	DIR	DIR	_	_	_	_	_	A2	_	_
+15	a	a	a	DT	DT	_	_	17	17	NMOD	NMOD	_	_	_	_	_	_	_	_
+16	block	block	block	NN	NN	_	_	17	17	NMOD	NMOD	_	_	_	_	_	_	A1	_
+17	west	west	west	NN	NN	_	_	14	14	PMOD	PMOD	Y	west.01	_	_	_	_	_	_
+18	of	of	of	IN	IN	_	_	17	17	NMOD	NMOD	_	_	_	_	_	_	A1	_
+19	her	her	her	PRP$	PRP$	_	_	20	20	NMOD	NMOD	_	_	_	_	_	_	_	A0
+20	home	home	home	NN	NN	_	_	18	18	PMOD	PMOD	Y	home.01	_	_	_	_	_	A1
+21	.	.	.	.	.	_	_	3	3	P	P	_	_	_	_	_	_	_	_
+22	NEWLINE	newline	newline	NNP	NNP	_	_	21	21	POSTHON	POSTHON	_	_	_	_	_	_	_	_
+
+1	is	be	be	VBZ	VBZ	_	_	14	14	OBJ	OBJ	_	_	_	_	A1
+2	one	one	one	CD	CD	_	_	1	1	PRD	PRD	_	_	_	_	_
+3	of	of	of	IN	IN	_	_	2	2	NMOD	NMOD	_	_	_	_	_
+4	several	several	several	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_	_	_
+5	residents	resident	resident	NNS	NNS	_	_	3	3	PMOD	PMOD	Y	resident.01	A0	A1	_
+6	on	on	on	IN	IN	_	_	5	5	LOC	LOC	_	_	A1	_	_
+7	the	the	the	DT	DT	_	_	8	8	NMOD	NMOD	_	_	_	_	_
+8	street	street	street	NN	NN	_	_	6	6	PMOD	PMOD	_	_	_	_	_
+9	who	who	who	WP	WP	_	_	10	10	SBJ	SBJ	_	_	_	R-A0	_
+10	are	be	be	VBP	VBP	_	_	5	5	NMOD	NMOD	_	_	_	_	_
+11	retired	retire	retire	VBN	VBN	_	_	10	10	VC	VC	Y	retire.01	_	_	_
+12	,	,	,	,	,	_	_	14	14	P	P	_	_	_	_	_
+13	she	she	she	PRP	PRP	_	_	14	14	SBJ	SBJ	_	_	_	_	A0
+14	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+15	.	.	.	.	.	_	_	14	14	P	P	_	_	_	_	_
+
+1	feels	feel	feel	NNS	NNS	_	_	2	2	SBJ	SBJ	_	_	A1	A0	_	_	_	_
+2	exasperated	exasperate	exasperate	VBN	VBN	_	_	0	0	ROOT	ROOT	Y	exasperate.01	_	_	_	_	_	_
+3	by	by	by	IN	IN	_	_	2	2	LGS	LGS	_	_	A0	_	_	_	_	_
+4	the	the	the	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_	_	_	_	_	_
+5	city	city	city	NN	NN	_	_	3	3	PMOD	PMOD	_	_	_	_	_	_	_	_
+6	’s	’s	’s	IN	IN	_	_	2	2	ADV	ADV	_	_	AM-ADV	_	_	_	_	_
+7	violence	violence	violence	NN	NN	_	_	6	6	PMOD	PMOD	_	_	_	_	_	_	_	_
+8	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_	_	_	_	_
+9	saying	say	say	VBG	VBG	_	_	2	2	ADV	ADV	Y	say.01	AM-ADV	_	_	_	_	_
+10	she	she	she	PRP	PRP	_	_	11	11	SBJ	SBJ	_	_	_	_	A0	_	_	_
+11	wouldn’t	wouldn’t	wouldn’t	MD	MD	_	_	9	9	OBJ	OBJ	_	_	_	A1	AM-MOD	_	_	_
+12	mind	mind	mind	VB	VB	_	_	11	11	VC	VC	Y	mind.01	_	_	_	_	_	_
+13	if	if	if	IN	IN	_	_	12	12	ADV	ADV	_	_	_	_	AM-ADV	_	_	_
+14	federal	federal	federal	JJ	JJ	_	_	15	15	NMOD	NMOD	_	_	_	_	_	A2	_	_
+15	agents	agent	agent	NNS	NNS	_	_	16	16	SBJ	SBJ	Y	agent.01	_	_	_	A0	A1	A0
+16	were	be	be	VBD	VBD	_	_	13	13	SUB	SUB	_	_	_	_	_	_	_	_
+17	sent	send	send	VBN	VBN	_	_	16	16	VC	VC	Y	send.01	_	_	_	_	_	_
+18	to	to	to	TO	TO	_	_	17	17	OPRD	OPRD	_	_	_	_	_	_	A2	_
+19	help	help	help	VB	VB	_	_	18	18	IM	IM	Y	help.01	_	_	_	_	_	_
+20	police	police	police	NN	NN	_	_	19	19	OBJ	OBJ	_	_	_	_	_	_	_	A1
+21	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_	_	_	_	_
+22	NEWLINE	newline	newline	NNP	NNP	_	_	21	21	POSTHON	POSTHON	_	_	_	_	_	_	_	_
+
+1	You	you	you	PRP	PRP	_	_	3	3	SBJ	SBJ	_	_	A0	A0	_
+2	just	just	just	RB	RB	_	_	3	3	ADV	ADV	_	_	AM-ADV	_	_
+3	want	want	want	VBP	VBP	_	_	11	11	OBJ	OBJ	Y	want.01	_	_	A1
+4	to	to	to	TO	TO	_	_	3	3	OPRD	OPRD	_	_	A1	_	_
+5	live	live	live	VB	VB	_	_	4	4	IM	IM	Y	live.01	_	_	_
+6	in	in	in	IN	IN	_	_	5	5	LOC	LOC	_	_	_	AM-LOC	_
+7	peace	peace	peace	NN	NN	_	_	6	6	PMOD	PMOD	_	_	_	_	_
+8	,	,	,	,	,	_	_	11	11	P	P	_	_	_	_	_
+9	"	"	"	NNP	NNP	_	_	11	11	SBJ	SBJ	_	_	_	_	A0
+10	she	she	she	PRP	PRP	_	_	11	11	SBJ	SBJ	_	_	_	_	A0
+11	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+12	.	.	.	.	.	_	_	11	11	P	P	_	_	_	_	_
+
+1	They	they	they	PRP	PRP	_	_	2	2	SBJ	SBJ	_	_	A0	A1	_
+2	shooting	shooting	shooting	VBG	VBG	_	_	0	0	ROOT	ROOT	Y	shoot.02	_	_	_
+3	like	like	like	IN	IN	_	_	2	2	MNR	MNR	_	_	AM-MNR	_	_
+4	someone	someone	someone	NN	NN	_	_	3	3	PMOD	PMOD	_	_	_	_	_
+5	’s	’s	’s	IN	IN	_	_	2	2	MNR	MNR	_	_	AM-MNR	_	_
+6	going	go	go	VBG	VBG	_	_	5	5	PMOD	PMOD	Y	go.01	_	_	_
+7	out	out	out	IN	IN	_	_	6	6	DIR	DIR	_	_	_	AM-DIR	_
+8	of	of	of	IN	IN	_	_	7	7	PMOD	PMOD	_	_	_	_	_
+9	their	their	their	PRP$	PRP$	_	_	10	10	NMOD	NMOD	_	_	_	_	A0
+10	mind	mind	mind	NN	NN	_	_	8	8	PMOD	PMOD	Y	mind.01	_	_	_
+11	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_	_
+12	"	"	"	''	''	_	_	2	2	P	P	_	_	_	_	_
+13	NEWLINE	newline	newline	NNP	NNP	_	_	12	12	NAME	NAME	_	_	_	_	_
+
+1	10:50	10:50	10:50	CD	CD	_	_	3	3	NMOD	NMOD	_	_	_	_
+2	p.m.	p.m.	p.m.	RB	RB	_	_	1	1	NMOD	NMOD	_	_	_	_
+3	Tuesday	tuesday	tuesday	NNP	NNP	_	_	12	12	TMP	TMP	_	_	AM-TMP	_
+4	on	on	on	IN	IN	_	_	12	12	LOC	LOC	_	_	AM-LOC	_
+5	the	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_
+6	South	south	south	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_
+7	Side	side	side	NNP	NNP	_	_	4	4	PMOD	PMOD	_	_	_	_
+8	,	,	,	,	,	_	_	12	12	P	P	_	_	_	_
+9	the	the	the	DT	DT	_	_	11	11	NMOD	NMOD	_	_	_	_
+10	fatal	fatal	fatal	JJ	JJ	_	_	11	11	NMOD	NMOD	_	_	_	_
+11	shooting	shooting	shooting	NN	NN	_	_	12	12	SBJ	SBJ	_	_	A1	_
+12	happened	happen	happen	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	happen.01	_	_
+13	in	in	in	IN	IN	_	_	12	12	LOC	LOC	_	_	AM-LOC	_
+14	the	the	the	DT	DT	_	_	16	16	NMOD	NMOD	_	_	_	_
+15	Englewood	englewood	englewood	NNP	NNP	_	_	16	16	NMOD	NMOD	_	_	_	A1
+16	neighborhood	neighborhood	neighborhood	NN	NN	_	_	13	13	PMOD	PMOD	Y	neighborhood.01	_	_
+17	.	.	.	.	.	_	_	12	12	P	P	_	_	_	_
+
+1	17-year	17-year	17-year	CD	CD	_	_	3	3	HMOD	HMOD	_	_	_	_
+2	-	-	-	HYPH	HYPH	_	_	1	1	HYPH	HYPH	_	_	_	_
+3	old	old	old	JJ	JJ	_	_	4	4	NMOD	NMOD	_	_	_	_
+4	boy	boy	boy	NN	NN	_	_	5	5	SBJ	SBJ	_	_	_	_
+5	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_
+6	with	with	with	IN	IN	_	_	5	5	PRD	PRD	_	_	_	_
+7	a	a	a	DT	DT	_	_	11	11	NMOD	NMOD	_	_	_	_
+8	20-year	20-year	20-year	CD	CD	_	_	10	10	HMOD	HMOD	_	_	_	_
+9	-	-	-	HYPH	HYPH	_	_	8	8	HYPH	HYPH	_	_	_	_
+10	old	old	old	JJ	JJ	_	_	11	11	NMOD	NMOD	_	_	_	_
+11	man	man	man	NN	NN	_	_	6	6	PMOD	PMOD	_	_	_	_
+12	in	in	in	IN	IN	_	_	11	11	LOC	LOC	_	_	_	_
+13	an	an	an	DT	DT	_	_	14	14	NMOD	NMOD	_	_	_	_
+14	alley	alley	alley	NN	NN	_	_	12	12	PMOD	PMOD	_	_	_	_
+15	in	in	in	IN	IN	_	_	14	14	LOC	LOC	_	_	_	_
+16	the	the	the	DT	DT	_	_	18	18	NMOD	NMOD	_	_	_	_
+17	5600	5600	5600	CD	CD	_	_	18	18	NMOD	NMOD	_	_	_	_
+18	block	block	block	NN	NN	_	_	15	15	PMOD	PMOD	_	_	_	_
+19	of	of	of	IN	IN	_	_	18	18	NMOD	NMOD	_	_	_	_
+20	South	south	south	NNP	NNP	_	_	22	22	NAME	NAME	_	_	_	_
+21	Elizabeth	elizabeth	elizabeth	NNP	NNP	_	_	22	22	NAME	NAME	_	_	_	_
+22	Street	street	street	NNP	NNP	_	_	19	19	PMOD	PMOD	_	_	_	_
+23	when	when	when	WRB	WRB	_	_	26	26	TMP	TMP	_	_	R-AM-TMP	_
+24	the	the	the	DT	DT	_	_	25	25	NMOD	NMOD	_	_	_	_
+25	shooter	shooter	shooter	NN	NN	_	_	26	26	SBJ	SBJ	_	_	A1	A0
+26	approached	approach	approach	VBD	VBD	_	_	5	5	TMP	TMP	Y	approach.01	_	_
+27	them	them	them	PRP	PRP	_	_	26	26	OBJ	OBJ	_	_	A2	_
+28	and	and	and	CC	CC	_	_	26	26	COORD	COORD	_	_	_	_
+29	opened	open	open	VBD	VBD	_	_	28	28	CONJ	CONJ	Y	open.01	_	_
+30	fire	fire	fire	NN	NN	_	_	29	29	OBJ	OBJ	_	_	_	A1
+31	.	.	.	.	.	_	_	5	5	P	P	_	_	_	_
+32	NEWLINE	newline	newline	NNP	NNP	_	_	29	29	ADV	ADV	_	_	_	AM-ADV
+
+1	teen	teen	teen	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A1
+2	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+3	shot	shot	shot	VBN	VBN	_	_	2	2	VC	VC	Y	shoot.02	_
+4	in	in	in	IN	IN	_	_	3	3	LOC	LOC	_	_	A3
+5	the	the	the	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_
+6	chest	chest	chest	NN	NN	_	_	4	4	PMOD	PMOD	_	_	_
+7	and	and	and	CC	CC	_	_	6	6	COORD	COORD	_	_	_
+8	the	the	the	DT	DT	_	_	9	9	NMOD	NMOD	_	_	_
+9	leg	leg	leg	NN	NN	_	_	7	7	CONJ	CONJ	_	_	_
+10	.	.	.	.	.	_	_	2	2	P	P	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_
+2	taken	take	take	VBN	VBN	_	_	1	1	VC	VC	Y	take.01	_	_
+3	to	to	to	TO	TO	_	_	2	2	ADV	ADV	_	_	AM-DIR	_
+4	Stroger	stroger	stroger	NNP	NNP	_	_	5	5	NAME	NAME	_	_	_	_
+5	Hospital	hospital	hospital	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_	_
+6	,	,	,	,	,	_	_	5	5	P	P	_	_	_	_
+7	where	where	where	WRB	WRB	_	_	10	10	LOC	LOC	_	_	_	R-AM-LOC
+8	he	he	he	PRP	PRP	_	_	9	9	SBJ	SBJ	_	_	_	A1
+9	was	be	be	VBD	VBD	_	_	5	5	NMOD	NMOD	_	_	_	_
+10	pronounced	pronounce	pronounce	VBN	VBN	_	_	9	9	VC	VC	Y	pronounce.01	_	_
+11	dead	dead	dead	JJ	JJ	_	_	10	10	OPRD	OPRD	_	_	_	C-A1
+12	at	at	at	IN	IN	_	_	10	10	ADV	ADV	_	_	_	AM-TMP
+13	11:21	11:21	11:21	CD	CD	_	_	12	12	PMOD	PMOD	_	_	_	_
+14	p.m.	p.m.	p.m.	RB	RB	_	_	13	13	NMOD	NMOD	_	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_	_
+2	identified	identify	identify	VBN	VBN	_	_	1	1	VC	VC	Y	identify.01	_	_	_	_
+3	as	as	as	IN	IN	_	_	2	2	ADV	ADV	_	_	A2	_	_	_
+4	Ronnie	ronnie	ronnie	NNP	NNP	_	_	5	5	NAME	NAME	_	_	_	_	_	_
+5	Smith	smith	smith	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_	_	_	_
+6	Jr.	jr.	jr.	NNP	NNP	_	_	5	5	POSTHON	POSTHON	_	_	_	_	_	_
+7	,	,	,	,	,	_	_	1	1	P	P	_	_	_	_	_	_
+8	of	of	of	IN	IN	_	_	5	5	NMOD	NMOD	_	_	_	_	_	_
+9	the	the	the	DT	DT	_	_	11	11	NMOD	NMOD	_	_	_	_	_	_
+10	same	same	same	JJ	JJ	_	_	11	11	NMOD	NMOD	_	_	_	_	_	_
+11	block	block	block	NN	NN	_	_	8	8	PMOD	PMOD	_	_	_	_	A1	_
+12	where	where	where	WRB	WRB	_	_	15	15	LOC	LOC	_	_	_	R-AM-LOC	_	_
+13	the	the	the	DT	DT	_	_	14	14	NMOD	NMOD	_	_	_	_	_	_
+14	shooting	shooting	shooting	NN	NN	_	_	15	15	SBJ	SBJ	_	_	_	A1	A1	_
+15	took	take	take	VBD	VBD	_	_	11	11	NMOD	NMOD	Y	take.14	_	_	_	_
+16	place	place	place	NN	NN	_	_	15	15	OBJ	OBJ	Y	place.03	_	A2	_	_
+17	,	,	,	,	,	_	_	15	15	P	P	_	_	_	_	_	_
+18	according	accord	accord	VBG	VBG	_	_	15	15	ADV	ADV	_	_	_	_	_	_
+19	to	to	to	TO	TO	_	_	18	18	PMOD	PMOD	_	_	_	_	_	_
+20	the	the	the	DT	DT	_	_	24	24	NMOD	NMOD	_	_	_	_	_	_
+21	Cook	cook	cook	NNP	NNP	_	_	22	22	NAME	NAME	_	_	_	_	_	_
+22	County	county	county	NNP	NNP	_	_	24	24	NMOD	NMOD	_	_	_	_	_	A1
+23	medical	medical	medical	JJ	JJ	_	_	24	24	NMOD	NMOD	_	_	_	_	_	A1
+24	examiner	examiner	examiner	NN	NN	_	_	26	26	NMOD	NMOD	Y	examiner.01	_	_	_	A0
+25	's	's	's	POS	POS	_	_	24	24	SUFFIX	SUFFIX	_	_	_	_	_	_
+26	office	office	office	NN	NN	_	_	19	19	PMOD	PMOD	_	_	_	_	_	_
+27	.	.	.	.	.	_	_	15	15	P	P	_	_	_	_	_	_
+28	NEWLINE	newline	newline	NNP	NNP	_	_	15	15	ADV	ADV	_	_	_	_	_	_
+
+1	older	older	older	JJR	JJR	_	_	2	2	NMOD	NMOD	_	_	_	_	_
+2	man	man	man	NN	NN	_	_	3	3	SBJ	SBJ	_	_	A1	_	_
+3	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_
+4	shot	shot	shot	VBN	VBN	_	_	3	3	VC	VC	Y	shoot.02	_	_	_
+5	in	in	in	IN	IN	_	_	4	4	LOC	LOC	_	_	A3	_	_
+6	the	the	the	DT	DT	_	_	8	8	NMOD	NMOD	_	_	_	_	_
+7	right	right	right	JJ	JJ	_	_	8	8	NMOD	NMOD	_	_	_	_	_
+8	leg	leg	leg	NN	NN	_	_	5	5	PMOD	PMOD	_	_	_	_	_
+9	,	,	,	,	,	_	_	3	3	P	P	_	_	_	_	_
+10	and	and	and	CC	CC	_	_	3	3	COORD	COORD	_	_	_	_	_
+11	his	his	his	PRP$	PRP$	_	_	12	12	NMOD	NMOD	_	_	_	A1	_
+12	condition	condition	condition	NN	NN	_	_	13	13	SBJ	SBJ	Y	condition.01	_	A2	A1
+13	was	be	be	VBD	VBD	_	_	10	10	CONJ	CONJ	_	_	_	_	_
+14	stabilized	stabilize	stabilize	VBN	VBN	_	_	13	13	VC	VC	Y	stabilize.01	_	_	_
+15	at	at	at	IN	IN	_	_	14	14	LOC	LOC	_	_	_	_	AM-LOC
+16	St.	st.	st.	NNP	NNP	_	_	18	18	NAME	NAME	_	_	_	_	_
+17	Bernard	bernard	bernard	NNP	NNP	_	_	18	18	NAME	NAME	_	_	_	_	_
+18	Hospital	hospital	hospital	NNP	NNP	_	_	15	15	PMOD	PMOD	_	_	_	_	_
+19	.	.	.	.	.	_	_	3	3	P	P	_	_	_	_	_
+20	NEWLINE	newline	newline	NNP	NNP	_	_	19	19	POSTHON	POSTHON	_	_	_	_	_
+
+1	one	one	one	CD	CD	_	_	2	2	SBJ	SBJ	_	_	_
+2	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+3	in	in	in	IN	IN	_	_	2	2	PRD	PRD	_	_	_
+4	custody	custody	custody	NN	NN	_	_	3	3	PMOD	PMOD	Y	custody.01	_
+5	in	in	in	IN	IN	_	_	4	4	LOC	LOC	_	_	A1
+6	the	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_
+7	shooting	shooting	shooting	NN	NN	_	_	5	5	PMOD	PMOD	_	_	_
+8	.	.	.	.	.	_	_	2	2	P	P	_	_	_
+9	NEWLINE	newline	newline	NNP	NNP	_	_	1	1	APPO	APPO	_	_	_
+
+1	and	and	and	CC	CC	_	_	3	3	DEP	DEP	_	_	_	_	_
+2	detectives	detective	detective	NNS	NNS	_	_	3	3	SBJ	SBJ	_	_	A0	_	_
+3	searched	search	search	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	search.01	_	_	_
+4	a	a	a	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_	_	_
+5	stretch	stretch	stretch	NN	NN	_	_	3	3	OBJ	OBJ	Y	stretch.01	A1	_	A2
+6	of	of	of	IN	IN	_	_	5	5	NMOD	NMOD	_	_	_	A1	_
+7	the	the	the	DT	DT	_	_	8	8	NMOD	NMOD	_	_	_	_	_
+8	alley	alley	alley	NN	NN	_	_	6	6	PMOD	PMOD	_	_	_	_	_
+9	that	that	that	WDT	WDT	_	_	10	10	SBJ	SBJ	_	_	_	_	R-A2
+10	included	include	include	VBD	VBD	_	_	5	5	NMOD	NMOD	Y	include.01	_	_	_
+11	about	about	about	CD	CD	_	_	12	12	DEP	DEP	_	_	_	_	_
+12	three	three	three	CD	CD	_	_	13	13	NMOD	NMOD	_	_	_	_	_
+13	garages	garage	garage	NNS	NNS	_	_	10	10	OBJ	OBJ	_	_	_	_	A1
+14	.	.	.	.	.	_	_	3	3	P	P	_	_	_	_	_
+
+1	the	the	the	DT	DT	_	_	2	2	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+2	edge	edge	edge	NN	NN	_	_	9	9	NMOD	NMOD	Y	edge.02	_	_	_	_	_	_	_
+3	of	of	of	IN	IN	_	_	2	2	NMOD	NMOD	_	_	A1	_	_	_	_	_	_
+4	the	the	the	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+5	crime	crime	crime	NN	NN	_	_	6	6	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+6	scene	scene	scene	NN	NN	_	_	3	3	PMOD	PMOD	_	_	_	_	_	_	_	_	_
+7	,	,	,	,	,	_	_	9	9	P	P	_	_	_	_	_	_	_	_	_
+8	a	a	a	DT	DT	_	_	9	9	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+9	man	man	man	NN	NN	_	_	0	0	ROOT	ROOT	_	_	_	A0	_	_	_	_	_
+10	who	who	who	WP	WP	_	_	11	11	SBJ	SBJ	_	_	_	R-A0	_	_	_	_	_
+11	lives	life	life	VBZ	VBZ	_	_	9	9	NMOD	NMOD	Y	live.01	_	_	_	_	_	_	_
+12	around	around	around	IN	IN	_	_	11	11	LOC	LOC	_	_	_	AM-LOC	_	_	_	_	_
+13	the	the	the	DT	DT	_	_	14	14	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+14	corner	corner	corner	NN	NN	_	_	12	12	PMOD	PMOD	_	_	_	_	_	_	_	_	_
+15	from	from	from	IN	IN	_	_	14	14	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+16	where	where	where	WRB	WRB	_	_	19	19	LOC	LOC	_	_	_	_	_	_	_	_	_
+17	the	the	the	DT	DT	_	_	18	18	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+18	shooting	shooting	shooting	NN	NN	_	_	19	19	SBJ	SBJ	_	_	_	_	A1	A1	_	_	_
+19	took	take	take	VBD	VBD	_	_	15	15	PMOD	PMOD	Y	take.14	_	_	_	_	_	_	_
+20	place	place	place	NN	NN	_	_	19	19	OBJ	OBJ	Y	place.03	_	_	A2	_	A1	_	_
+21	stopped	stop	stop	VBN	VBN	_	_	19	19	OPRD	OPRD	Y	stop.02	_	_	A2	_	_	_	_
+22	by	by	by	IN	IN	_	_	21	21	PRT	PRT	_	_	_	_	_	_	A2	_	_
+23	after	after	after	IN	IN	_	_	21	21	TMP	TMP	_	_	_	_	_	_	AM-TMP	_	_
+24	work	work	work	NN	NN	_	_	23	23	PMOD	PMOD	_	_	_	_	_	_	_	_	_
+25	to	to	to	TO	TO	_	_	21	21	PRP	PRP	_	_	_	_	_	_	AM-PNC	_	_
+26	see	see	see	VB	VB	_	_	25	25	IM	IM	Y	see.01	_	_	_	_	_	_	_
+27	what	what	what	WP	WP	_	_	28	28	SBJ	SBJ	_	_	_	_	_	_	_	_	R-A1
+28	happened	happen	happen	VBD	VBD	_	_	26	26	OBJ	OBJ	Y	happen.01	_	_	_	_	_	A1	_
+29	.	.	.	.	.	_	_	28	28	P	P	_	_	_	_	_	_	_	_	_
+30	NEWLINE	newline	newline	NNP	NNP	_	_	28	28	TMP	TMP	_	_	_	_	_	_	_	_	AM-TMP
+
+1	That	that	that	DT	DT	_	_	2	2	SBJ	SBJ	_	_	A1	_	_	_
+2	's	's	's	VBZ	VBZ	_	_	8	8	OBJ	OBJ	_	_	_	A1	_	_
+3	messed	mess	mess	VBN	VBN	_	_	2	2	VC	VC	Y	mess.02	_	_	_	_
+4	up	up	up	IN	IN	_	_	3	3	PRT	PRT	_	_	_	_	_	_
+5	,	,	,	,	,	_	_	8	8	P	P	_	_	_	_	_	_
+6	"	"	"	:	:	_	_	8	8	P	P	_	_	_	_	_	_
+7	he	he	he	PRP	PRP	_	_	8	8	SBJ	SBJ	_	_	_	A0	_	_
+8	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_
+9	as	as	as	IN	IN	_	_	8	8	TMP	TMP	_	_	_	AM-TMP	_	_
+10	he	he	he	PRP	PRP	_	_	11	11	SBJ	SBJ	_	_	_	_	A0	A0
+11	smoked	smok	smok	VBD	VBD	_	_	9	9	SUB	SUB	Y	smok.01	_	_	_	_
+12	a	a	a	DT	DT	_	_	13	13	NMOD	NMOD	_	_	_	_	_	_
+13	cigarette	cigarette	cigarette	NN	NN	_	_	11	11	OBJ	OBJ	_	_	_	_	A1	_
+14	and	and	and	CC	CC	_	_	11	11	COORD	COORD	_	_	_	_	_	_
+15	looked	look	look	VBD	VBD	_	_	14	14	CONJ	CONJ	Y	look.01	_	_	_	_
+16	at	at	at	IN	IN	_	_	15	15	ADV	ADV	_	_	_	_	_	A1
+17	the	the	the	DT	DT	_	_	19	19	NMOD	NMOD	_	_	_	_	_	_
+18	crime	crime	crime	NN	NN	_	_	19	19	NMOD	NMOD	_	_	_	_	_	_
+19	scene	scene	scene	NN	NN	_	_	16	16	PMOD	PMOD	_	_	_	_	_	_
+20	.	.	.	.	.	_	_	8	8	P	P	_	_	_	_	_	_
+21	NEWLINE	newline	newline	NNP	NNP	_	_	20	20	POSTHON	POSTHON	_	_	_	_	_	_
+
+1	other	other	other	JJ	JJ	_	_	2	2	NMOD	NMOD	_	_	_	_	_
+2	shootings	shooting	shooting	NNS	NNS	_	_	19	19	SBJ	SBJ	_	_	_	A1	_
+3	:	:	:	:	:	_	_	2	2	P	P	_	_	_	_	_
+4	NEWLINE	newline	newline	NN	NN	_	_	2	2	NMOD	NMOD	_	_	_	_	_
+5	In	in	in	IN	IN	_	_	19	19	LOC	LOC	_	_	_	AM-LOC	_
+6	the	the	the	DT	DT	_	_	8	8	NMOD	NMOD	_	_	_	_	_
+7	West	west	west	NNP	NNP	_	_	8	8	NAME	NAME	_	_	_	_	_
+8	Side	side	side	NNP	NNP	_	_	12	12	NMOD	NMOD	_	_	A0	_	_
+9	's	's	's	POS	POS	_	_	8	8	SUFFIX	SUFFIX	_	_	_	_	_
+10	Humboldt	humboldt	humboldt	NNP	NNP	_	_	11	11	NAME	NAME	_	_	_	_	_
+11	Park	park	park	NNP	NNP	_	_	12	12	NMOD	NMOD	_	_	A1	_	_
+12	neighborhood	neighborhood	neighborhood	NN	NN	_	_	5	5	PMOD	PMOD	Y	neighborhood.01	_	_	_
+13	,	,	,	,	,	_	_	19	19	P	P	_	_	_	_	_
+14	a	a	a	DT	DT	_	_	18	18	NMOD	NMOD	_	_	_	_	_
+15	34-year	34-year	34-year	CD	CD	_	_	17	17	HMOD	HMOD	_	_	_	_	_
+16	-	-	-	HYPH	HYPH	_	_	15	15	HYPH	HYPH	_	_	_	_	_
+17	old	old	old	JJ	JJ	_	_	18	18	NMOD	NMOD	_	_	_	_	_
+18	man	man	man	NN	NN	_	_	19	19	SBJ	SBJ	_	_	_	A1	_
+19	was	be	be	VBD	VBD	_	_	42	42	OBJ	OBJ	_	_	_	_	A1
+20	shot	shot	shot	VBN	VBN	_	_	19	19	VC	VC	Y	shoot.02	_	_	_
+21	in	in	in	IN	IN	_	_	20	20	LOC	LOC	_	_	_	A3	_
+22	the	the	the	DT	DT	_	_	26	26	NMOD	NMOD	_	_	_	_	_
+23	leg	leg	leg	NN	NN	_	_	26	26	NMOD	NMOD	_	_	_	_	_
+24	about	about	about	IN	IN	_	_	26	26	NMOD	NMOD	_	_	_	_	_
+25	4:10	4:10	4:10	CD	CD	_	_	26	26	NMOD	NMOD	_	_	_	_	_
+26	a.m.	a.m.	a.m.	RB	RB	_	_	21	21	PMOD	PMOD	_	_	_	_	_
+27	Wednesday	wednesday	wednesday	NNP	NNP	_	_	20	20	TMP	TMP	_	_	_	AM-TMP	_
+28	while	while	while	IN	IN	_	_	20	20	TMP	TMP	_	_	_	AM-TMP	_
+29	he	he	he	PRP	PRP	_	_	30	30	SBJ	SBJ	_	_	_	_	_
+30	was	be	be	VBD	VBD	_	_	28	28	SUB	SUB	_	_	_	_	_
+31	outside	outside	outside	JJ	JJ	_	_	30	30	PRD	PRD	_	_	_	_	_
+32	in	in	in	IN	IN	_	_	31	31	AMOD	AMOD	_	_	_	_	_
+33	the	the	the	DT	DT	_	_	35	35	NMOD	NMOD	_	_	_	_	_
+34	2500	2500	2500	CD	CD	_	_	35	35	NMOD	NMOD	_	_	_	_	_
+35	block	block	block	NN	NN	_	_	32	32	PMOD	PMOD	_	_	_	_	_
+36	of	of	of	IN	IN	_	_	35	35	NMOD	NMOD	_	_	_	_	_
+37	West	west	west	NNP	NNP	_	_	39	39	NAME	NAME	_	_	_	_	_
+38	Cortez	cortez	cortez	NNP	NNP	_	_	39	39	NAME	NAME	_	_	_	_	_
+39	Street	street	street	NNP	NNP	_	_	36	36	PMOD	PMOD	_	_	_	_	_
+40	,	,	,	,	,	_	_	42	42	P	P	_	_	_	_	_
+41	police	police	police	NN	NN	_	_	42	42	SBJ	SBJ	_	_	_	_	A0
+42	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+43	.	.	.	.	.	_	_	42	42	P	P	_	_	_	_	_
+
+1	shooter	shooter	shooter	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A0	A1
+2	pulled	pull	pull	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	pull.01	_	_
+3	out	out	out	RP	RP	_	_	2	2	PRT	PRT	_	_	_	_
+4	a	a	a	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_	_
+5	gun	gun	gun	NN	NN	_	_	2	2	OBJ	OBJ	_	_	A1	_
+6	and	and	and	CC	CC	_	_	2	2	COORD	COORD	_	_	_	_
+7	fired	fire	fire	VBD	VBD	_	_	6	6	CONJ	CONJ	Y	fire.02	_	_
+8	at	at	at	IN	IN	_	_	7	7	ADV	ADV	_	_	_	A2
+9	him	him	him	PRP	PRP	_	_	8	8	PMOD	PMOD	_	_	_	_
+10	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_
+2	taken	take	take	VBN	VBN	_	_	1	1	VC	VC	Y	take.01	_	_
+3	to	to	to	TO	TO	_	_	2	2	ADV	ADV	_	_	AM-DIR	_
+4	Presence	presence	presence	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_	_
+5	Saints	saint	saint	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_	_
+6	Mary	mary	mary	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_	_
+7	and	and	and	CC	CC	_	_	6	6	COORD	COORD	_	_	_	_
+8	Elizabeth	elizabeth	elizabeth	NNP	NNP	_	_	10	10	NAME	NAME	_	_	_	_
+9	Medical	medical	medical	NNP	NNP	_	_	10	10	NAME	NAME	_	_	_	_
+10	Center	center	center	NNP	NNP	_	_	7	7	CONJ	CONJ	_	_	_	_
+11	,	,	,	,	,	_	_	1	1	P	P	_	_	_	_
+12	and	and	and	CC	CC	_	_	1	1	COORD	COORD	_	_	_	_
+13	he	he	he	PRP	PRP	_	_	14	14	SBJ	SBJ	_	_	_	A1
+14	was	be	be	VBD	VBD	_	_	12	12	CONJ	CONJ	_	_	_	_
+15	later	later	later	RB	RB	_	_	14	14	TMP	TMP	_	_	_	AM-TMP
+16	transferred	transfer	transfer	VBN	VBN	_	_	14	14	VC	VC	Y	transfer.01	_	_
+17	to	to	to	TO	TO	_	_	16	16	DIR	DIR	_	_	_	A2
+18	Stroger	stroger	stroger	NNP	NNP	_	_	19	19	NAME	NAME	_	_	_	_
+19	Hospital	hospital	hospital	NNP	NNP	_	_	17	17	PMOD	PMOD	_	_	_	_
+20	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_
+21	NEWLINE	newline	newline	NNP	NNP	_	_	20	20	POSTHON	POSTHON	_	_	_	_
+
+1	9:55	9:55	9:55	CD	CD	_	_	2	2	NMOD	NMOD	_	_	_	_	_	_
+2	p.m.	p.m.	p.m.	NN	NN	_	_	17	17	SBJ	SBJ	_	_	_	A1	_	_
+3	Tuesday	tuesday	tuesday	NNP	NNP	_	_	2	2	APPO	APPO	_	_	_	_	_	_
+4	in	in	in	IN	IN	_	_	17	17	LOC	LOC	_	_	_	AM-LOC	_	_
+5	the	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_	_	_
+6	West	west	west	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_	_	_
+7	Side	side	side	NNP	NNP	_	_	10	10	NMOD	NMOD	_	_	A0	_	_	_
+8	's	's	's	POS	POS	_	_	7	7	SUFFIX	SUFFIX	_	_	_	_	_	_
+9	Lawndale	lawndale	lawndale	NNP	NNP	_	_	10	10	NMOD	NMOD	_	_	A1	_	_	_
+10	neighborhood	neighborhood	neighborhood	NN	NN	_	_	4	4	PMOD	PMOD	Y	neighborhood.01	_	_	_	_
+11	,	,	,	,	,	_	_	17	17	P	P	_	_	_	_	_	_
+12	a	a	a	DT	DT	_	_	16	16	NMOD	NMOD	_	_	_	_	_	_
+13	22-year	22-year	22-year	CD	CD	_	_	15	15	HMOD	HMOD	_	_	_	_	_	_
+14	-	-	-	HYPH	HYPH	_	_	13	13	HYPH	HYPH	_	_	_	_	_	_
+15	old	old	old	JJ	JJ	_	_	16	16	NMOD	NMOD	_	_	_	_	_	_
+16	man	man	man	NN	NN	_	_	17	17	SBJ	SBJ	_	_	_	A1	_	_
+17	was	be	be	VBD	VBD	_	_	36	36	OBJ	OBJ	_	_	_	_	_	A1
+18	shot	shot	shot	VBN	VBN	_	_	17	17	VC	VC	Y	shoot.02	_	_	_	_
+19	in	in	in	IN	IN	_	_	18	18	LOC	LOC	_	_	_	A3	_	_
+20	the	the	the	DT	DT	_	_	22	22	NMOD	NMOD	_	_	_	_	_	_
+21	right	right	right	JJ	JJ	_	_	22	22	NMOD	NMOD	_	_	_	_	A1	_
+22	shoulder	shoulder	shoulder	NN	NN	_	_	19	19	PMOD	PMOD	Y	shoulder.01	_	_	_	_
+23	while	while	while	IN	IN	_	_	18	18	TMP	TMP	_	_	_	AM-TMP	_	_
+24	he	he	he	PRP	PRP	_	_	25	25	SBJ	SBJ	_	_	_	_	_	_
+25	was	be	be	VBD	VBD	_	_	23	23	SUB	SUB	_	_	_	_	_	_
+26	in	in	in	IN	IN	_	_	25	25	LOC-PRD	LOC-PRD	_	_	_	_	_	_
+27	the	the	the	DT	DT	_	_	29	29	NMOD	NMOD	_	_	_	_	_	_
+28	1500	1500	1500	CD	CD	_	_	29	29	NMOD	NMOD	_	_	_	_	_	_
+29	block	block	block	NN	NN	_	_	26	26	PMOD	PMOD	_	_	_	_	_	_
+30	of	of	of	IN	IN	_	_	29	29	NMOD	NMOD	_	_	_	_	_	_
+31	South	south	south	NNP	NNP	_	_	33	33	NAME	NAME	_	_	_	_	_	_
+32	Lawndale	lawndale	lawndale	NNP	NNP	_	_	33	33	NAME	NAME	_	_	_	_	_	_
+33	Avenue	avenue	avenue	NNP	NNP	_	_	30	30	PMOD	PMOD	_	_	_	_	_	_
+34	,	,	,	,	,	_	_	36	36	P	P	_	_	_	_	_	_
+35	police	police	police	NN	NN	_	_	36	36	SBJ	SBJ	_	_	_	_	_	A0
+36	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_
+37	.	.	.	.	.	_	_	36	36	P	P	_	_	_	_	_	_
+
+1	condition	condition	condition	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A1
+2	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+3	stabilized	stabilize	stabilize	VBN	VBN	_	_	2	2	VC	VC	Y	stabilize.01	_
+4	at	at	at	IN	IN	_	_	3	3	LOC	LOC	_	_	AM-LOC
+5	Stroger	stroger	stroger	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_
+6	Hospital	hospital	hospital	NNP	NNP	_	_	4	4	PMOD	PMOD	_	_	_
+7	.	.	.	.	.	_	_	2	2	P	P	_	_	_
+
+1	did	do	do	VBD	VBD	_	_	12	12	OBJ	OBJ	_	_	_	_	_	_	A1
+2	not	not	not	RB	RB	_	_	1	1	ADV	ADV	_	_	AM-NEG	_	_	_	_
+3	give	give	give	VB	VB	_	_	1	1	VC	VC	Y	give.01	_	_	_	_	_
+4	officers	officer	officer	NNS	NNS	_	_	3	3	OBJ	OBJ	Y	officer.01	A1	A0	_	_	_
+5	additional	additional	additional	JJ	JJ	_	_	6	6	NMOD	NMOD	_	_	_	_	_	_	_
+6	details	details	details	NNS	NNS	_	_	3	3	OBJ	OBJ	Y	detail.01	A1	_	_	_	_
+7	about	about	about	IN	IN	_	_	6	6	NMOD	NMOD	_	_	_	_	A1	_	_
+8	what	what	what	WP	WP	_	_	9	9	SBJ	SBJ	_	_	_	_	_	R-A1	_
+9	happened	happen	happen	VBD	VBD	_	_	7	7	PMOD	PMOD	Y	happen.01	_	_	_	_	_
+10	,	,	,	,	,	_	_	12	12	P	P	_	_	_	_	_	_	_
+11	police	police	police	NN	NN	_	_	12	12	SBJ	SBJ	_	_	_	_	_	_	A0
+12	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_	_
+13	.	.	.	.	.	_	_	12	12	P	P	_	_	_	_	_	_	_
+14	NEWLINE	newline	newline	NNP	NNP	_	_	9	9	OBJ	OBJ	_	_	_	_	_	A1	_
+
+1	7:15	7:15	7:15	CD	CD	_	_	13	13	SBJ	SBJ	_	_	A1	A1	_	_
+2	p.m.	p.m.	p.m.	RB	RB	_	_	1	1	NMOD	NMOD	_	_	_	_	_	_
+3	on	on	on	IN	IN	_	_	13	13	LOC	LOC	_	_	AM-LOC	AM-LOC	_	_
+4	the	the	the	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_	_	_
+5	Southwest	southwest	southwest	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_	_	_	_
+6	Side	side	side	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_	_	_	_
+7	,	,	,	,	,	_	_	13	13	P	P	_	_	_	_	_	_
+8	a	a	a	DT	DT	_	_	12	12	NMOD	NMOD	_	_	_	_	_	_
+9	40-year	40-year	40-year	CD	CD	_	_	11	11	HMOD	HMOD	_	_	_	_	_	_
+10	-	-	-	HYPH	HYPH	_	_	9	9	HYPH	HYPH	_	_	_	_	_	_
+11	old	old	old	JJ	JJ	_	_	12	12	NMOD	NMOD	_	_	_	_	_	_
+12	man	man	man	NN	NN	_	_	13	13	SBJ	SBJ	_	_	A1	A1	_	_
+13	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_	_
+14	shot	shot	shot	VBN	VBN	_	_	13	13	VC	VC	Y	shoot.02	_	_	_	_
+15	in	in	in	IN	IN	_	_	14	14	LOC	LOC	_	_	A3	_	_	_
+16	the	the	the	DT	DT	_	_	17	17	NMOD	NMOD	_	_	_	_	_	_
+17	head	head	head	NN	NN	_	_	15	15	PMOD	PMOD	_	_	_	_	_	_
+18	and	and	and	CC	CC	_	_	14	14	COORD	COORD	_	_	_	_	_	_
+19	critically	critically	critically	RB	RB	_	_	20	20	AMOD	AMOD	_	_	_	AM-MNR	_	_
+20	wounded	wound	wound	VBN	VBN	_	_	18	18	CONJ	CONJ	Y	wind.02	_	_	_	_
+21	,	,	,	,	,	_	_	13	13	P	P	_	_	_	_	_	_
+22	and	and	and	CC	CC	_	_	13	13	COORD	COORD	_	_	_	_	_	_
+23	a	a	a	DT	DT	_	_	27	27	NMOD	NMOD	_	_	_	_	_	_
+24	24-year	24-year	24-year	CD	CD	_	_	26	26	HMOD	HMOD	_	_	_	_	_	_
+25	-	-	-	HYPH	HYPH	_	_	24	24	HYPH	HYPH	_	_	_	_	_	_
+26	old	old	old	JJ	JJ	_	_	27	27	NMOD	NMOD	_	_	_	_	_	_
+27	man	man	man	NN	NN	_	_	28	28	SBJ	SBJ	_	_	_	_	_	_
+28	was	be	be	VBD	VBD	_	_	22	22	CONJ	CONJ	_	_	_	_	_	_
+29	in	in	in	IN	IN	_	_	28	28	LOC-PRD	LOC-PRD	_	_	_	_	_	_
+30	good	good	good	JJ	JJ	_	_	31	31	NMOD	NMOD	_	_	_	_	_	_
+31	condition	condition	condition	NN	NN	_	_	29	29	PMOD	PMOD	_	_	_	_	_	_
+32	after	after	after	IN	IN	_	_	28	28	TMP	TMP	_	_	_	_	_	_
+33	a	a	a	DT	DT	_	_	34	34	NMOD	NMOD	_	_	_	_	_	_
+34	shooting	shooting	shooting	NN	NN	_	_	32	32	PMOD	PMOD	Y	shooting.01	_	_	_	_
+35	in	in	in	IN	IN	_	_	34	34	LOC	LOC	_	_	_	_	A1	_
+36	the	the	the	DT	DT	_	_	39	39	NMOD	NMOD	_	_	_	_	_	_
+37	Brighton	brighton	brighton	NNP	NNP	_	_	38	38	NAME	NAME	_	_	_	_	_	_
+38	Park	park	park	NNP	NNP	_	_	39	39	NMOD	NMOD	_	_	_	_	_	A1
+39	neighborhood	neighborhood	neighborhood	NN	NN	_	_	35	35	PMOD	PMOD	Y	neighborhood.01	_	_	_	_
+40	.	.	.	.	.	_	_	13	13	P	P	_	_	_	_	_	_
+
+1	happened	happen	happen	VBN	VBN	_	_	12	12	ADV	ADV	Y	happen.01	_	A1
+2	in	in	in	IN	IN	_	_	1	1	LOC	LOC	_	_	AM-LOC	_
+3	the	the	the	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_	_
+4	3200	3200	3200	CD	CD	_	_	5	5	NMOD	NMOD	_	_	_	_
+5	block	block	block	NN	NN	_	_	2	2	PMOD	PMOD	_	_	_	_
+6	of	of	of	IN	IN	_	_	5	5	NMOD	NMOD	_	_	_	_
+7	West	west	west	NNP	NNP	_	_	9	9	NAME	NAME	_	_	_	_
+8	38th	38th	38th	NNP	NNP	_	_	9	9	NAME	NAME	_	_	_	_
+9	Place	place	place	NNP	NNP	_	_	6	6	PMOD	PMOD	_	_	_	_
+10	,	,	,	,	,	_	_	12	12	P	P	_	_	_	_
+11	police	police	police	NN	NN	_	_	12	12	SBJ	SBJ	_	_	A1	A0
+12	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_
+13	.	.	.	.	.	_	_	12	12	P	P	_	_	_	_
+
+1	men	men	men	NNS	NNS	_	_	2	2	SBJ	SBJ	_	_	A1	_	_	_
+2	were	be	be	VBD	VBD	_	_	28	28	OBJ	OBJ	_	_	_	_	_	A1
+3	taken	take	take	VBN	VBN	_	_	2	2	VC	VC	Y	take.01	_	_	_	_
+4	to	to	to	TO	TO	_	_	3	3	ADV	ADV	_	_	A2	_	_	_
+5	Mount	mount	mount	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_	_	_
+6	Sinai	sinai	sinai	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_	_	_
+7	Hospital	hospital	hospital	NNP	NNP	_	_	4	4	PMOD	PMOD	_	_	_	_	_	_
+8	,	,	,	,	,	_	_	7	7	P	P	_	_	_	_	_	_
+9	where	where	where	WRB	WRB	_	_	13	13	LOC	LOC	_	_	_	_	_	_
+10	the	the	the	DT	DT	_	_	12	12	NMOD	NMOD	_	_	_	_	_	_
+11	older	older	older	JJR	JJR	_	_	12	12	NMOD	NMOD	_	_	_	_	_	_
+12	man	man	man	NN	NN	_	_	13	13	SBJ	SBJ	_	_	_	_	_	_
+13	was	be	be	VBD	VBD	_	_	7	7	NMOD	NMOD	_	_	_	_	_	_
+14	in	in	in	IN	IN	_	_	13	13	PRD	PRD	_	_	_	_	_	_
+15	listed	list	list	VBN	VBN	_	_	14	14	PMOD	PMOD	Y	list.01	_	_	_	_
+16	in	in	in	IN	IN	_	_	13	13	TMP	TMP	_	_	_	_	_	_
+17	critical	critical	critical	JJ	JJ	_	_	16	16	PMOD	PMOD	_	_	_	_	_	_
+18	and	and	and	CC	CC	_	_	13	13	COORD	COORD	_	_	_	_	_	_
+19	the	the	the	DT	DT	_	_	21	21	NMOD	NMOD	_	_	_	_	_	_
+20	other	other	other	JJ	JJ	_	_	21	21	NMOD	NMOD	_	_	_	_	_	_
+21	man	man	man	NN	NN	_	_	22	22	SBJ	SBJ	_	_	_	_	_	_
+22	was	be	be	VBD	VBD	_	_	18	18	CONJ	CONJ	_	_	_	_	_	_
+23	in	in	in	IN	IN	_	_	22	22	LOC-PRD	LOC-PRD	_	_	_	_	_	_
+24	good	good	good	JJ	JJ	_	_	25	25	NMOD	NMOD	_	_	_	_	_	_
+25	condition	condition	condition	NN	NN	_	_	23	23	PMOD	PMOD	_	_	_	_	_	_
+26	,	,	,	,	,	_	_	28	28	P	P	_	_	_	_	_	_
+27	police	police	police	NN	NN	_	_	28	28	SBJ	SBJ	Y	police.01	_	_	A0	A0
+28	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_
+29	.	.	.	.	.	_	_	28	28	P	P	_	_	_	_	_	_
+30	NEWLINE	newline	newline	NNP	NNP	_	_	27	27	OBJ	OBJ	_	_	_	_	A2	_
+
+1	6:05	6:05	6:05	CD	CD	_	_	13	13	SBJ	SBJ	_	_	A1	_	_
+2	p.m.	p.m.	p.m.	RB	RB	_	_	1	1	NMOD	NMOD	_	_	_	_	_
+3	on	on	on	IN	IN	_	_	13	13	LOC	LOC	_	_	AM-LOC	_	_
+4	the	the	the	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_	_
+5	South	south	south	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_	_	_
+6	Side	side	side	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_	_	_
+7	,	,	,	,	,	_	_	13	13	P	P	_	_	_	_	_
+8	a	a	a	DT	DT	_	_	12	12	NMOD	NMOD	_	_	_	_	_
+9	19-year	19-year	19-year	CD	CD	_	_	11	11	HMOD	HMOD	_	_	_	_	_
+10	-	-	-	HYPH	HYPH	_	_	9	9	HYPH	HYPH	_	_	_	_	_
+11	old	old	old	JJ	JJ	_	_	12	12	NMOD	NMOD	_	_	_	_	_
+12	man	man	man	NN	NN	_	_	13	13	SBJ	SBJ	_	_	A1	_	_
+13	was	be	be	VBD	VBD	_	_	33	33	OBJ	OBJ	_	_	_	_	A1
+14	shot	shot	shot	VBN	VBN	_	_	13	13	VC	VC	Y	shoot.02	_	_	_
+15	in	in	in	IN	IN	_	_	14	14	LOC	LOC	_	_	A3	_	_
+16	the	the	the	DT	DT	_	_	17	17	NMOD	NMOD	_	_	_	_	_
+17	legs	legs	legs	NNS	NNS	_	_	15	15	PMOD	PMOD	_	_	_	_	_
+18	in	in	in	IN	IN	_	_	14	14	LOC	LOC	_	_	A3	_	_
+19	the	the	the	DT	DT	_	_	21	21	NMOD	NMOD	_	_	_	_	_
+20	2600	2600	2600	CD	CD	_	_	21	21	NMOD	NMOD	_	_	_	_	_
+21	block	block	block	NN	NN	_	_	18	18	PMOD	PMOD	_	_	_	_	_
+22	of	of	of	IN	IN	_	_	21	21	NMOD	NMOD	_	_	_	_	_
+23	East	east	east	NNP	NNP	_	_	25	25	NAME	NAME	_	_	_	_	_
+24	85th	85th	85th	NNP	NNP	_	_	25	25	NAME	NAME	_	_	_	_	_
+25	Street	street	street	NNP	NNP	_	_	22	22	PMOD	PMOD	_	_	_	_	_
+26	in	in	in	IN	IN	_	_	14	14	LOC	LOC	_	_	A3	_	_
+27	the	the	the	DT	DT	_	_	30	30	NMOD	NMOD	_	_	_	_	_
+28	South	south	south	NNP	NNP	_	_	29	29	NAME	NAME	_	_	_	_	_
+29	Chicago	chicago	chicago	NNP	NNP	_	_	30	30	NMOD	NMOD	_	_	_	A1	_
+30	neighborhood	neighborhood	neighborhood	NN	NN	_	_	26	26	PMOD	PMOD	Y	neighborhood.01	_	_	_
+31	,	,	,	,	,	_	_	33	33	P	P	_	_	_	_	_
+32	police	police	police	NN	NN	_	_	33	33	SBJ	SBJ	_	_	_	_	A0
+33	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+34	.	.	.	.	.	_	_	33	33	P	P	_	_	_	_	_
+
+1	in	in	in	IN	IN	_	_	7	7	LOC	LOC	_	_	AM-LOC	_
+2	a	a	a	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_
+3	light	light	light	JJ	JJ	_	_	5	5	HMOD	HMOD	_	_	_	_
+4	-	-	-	HYPH	HYPH	_	_	3	3	HYPH	HYPH	_	_	_	_
+5	colored	colored	colored	JJ	JJ	_	_	6	6	NMOD	NMOD	_	_	_	_
+6	van	van	van	NN	NN	_	_	1	1	PMOD	PMOD	_	_	_	_
+7	opened	open	open	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	open.01	_	_
+8	fire	fire	fire	NN	NN	_	_	7	7	OBJ	OBJ	_	_	A1	_
+9	,	,	,	,	,	_	_	7	7	P	P	_	_	_	_
+10	hitting	hit	hit	VBG	VBG	_	_	7	7	ADV	ADV	Y	hit.02	AM-ADV	_
+11	the	the	the	DT	DT	_	_	14	14	NMOD	NMOD	_	_	_	_
+12	19-year	19-year	19-year	CD	CD	_	_	14	14	HMOD	HMOD	_	_	_	_
+13	-	-	-	HYPH	HYPH	_	_	12	12	HYPH	HYPH	_	_	_	_
+14	old	old	old	JJ	JJ	_	_	10	10	OBJ	OBJ	_	_	_	A1
+15	.	.	.	.	.	_	_	7	7	P	P	_	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+2	taken	take	take	VBN	VBN	_	_	1	1	VC	VC	Y	take.01	_
+3	to	to	to	TO	TO	_	_	2	2	DIR	DIR	_	_	AM-DIR
+4	Northwestern	northwestern	northwestern	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_
+5	Memorial	memorial	memorial	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_
+6	Hospital	hospital	hospital	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_
+7	in	in	in	IN	IN	_	_	2	2	MNR	MNR	_	_	AM-MNR
+8	good	good	good	JJ	JJ	_	_	9	9	NMOD	NMOD	_	_	_
+9	condition	condition	condition	NN	NN	_	_	7	7	PMOD	PMOD	_	_	_
+10	.	.	.	.	.	_	_	1	1	P	P	_	_	_
+11	NEWLINE	newline	newline	NNP	NNP	_	_	1	1	SBJ	SBJ	_	_	A1
+
+1	3:05	3:05	3:05	CD	CD	_	_	2	2	NMOD	NMOD	_	_	_	_	_
+2	p.m.	p.m.	p.m.	RB	RB	_	_	3	3	PMOD	PMOD	_	_	_	_	_
+3	in	in	in	IN	IN	_	_	17	17	LOC	LOC	_	_	_	AM-LOC	_
+4	the	the	the	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_	_
+5	South	south	south	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_	_	_
+6	Side	side	side	NNP	NNP	_	_	10	10	NMOD	NMOD	_	_	A0	_	_
+7	's	's	's	POS	POS	_	_	6	6	SUFFIX	SUFFIX	_	_	_	_	_
+8	Grand	grand	grand	NNP	NNP	_	_	9	9	NAME	NAME	_	_	_	_	_
+9	Crossing	crossing	crossing	NNP	NNP	_	_	10	10	NMOD	NMOD	_	_	A1	_	_
+10	neighborhood	neighborhood	neighborhood	NN	NN	_	_	3	3	PMOD	PMOD	Y	neighborhood.01	_	_	_
+11	,	,	,	,	,	_	_	17	17	P	P	_	_	_	_	_
+12	a	a	a	DT	DT	_	_	16	16	NMOD	NMOD	_	_	_	_	_
+13	20-year	20-year	20-year	CD	CD	_	_	15	15	HMOD	HMOD	_	_	_	_	_
+14	-	-	-	HYPH	HYPH	_	_	13	13	HYPH	HYPH	_	_	_	_	_
+15	old	old	old	JJ	JJ	_	_	16	16	NMOD	NMOD	_	_	_	_	_
+16	man	man	man	NN	NN	_	_	17	17	SBJ	SBJ	_	_	_	A1	_
+17	was	be	be	VBD	VBD	_	_	29	29	OBJ	OBJ	_	_	_	_	A1
+18	wounded	wound	wound	VBN	VBN	_	_	17	17	VC	VC	Y	wound.01	_	_	_
+19	in	in	in	IN	IN	_	_	18	18	LOC	LOC	_	_	_	AM-LOC	_
+20	the	the	the	DT	DT	_	_	22	22	NMOD	NMOD	_	_	_	_	_
+21	7000	7000	7000	CD	CD	_	_	22	22	NMOD	NMOD	_	_	_	_	_
+22	block	block	block	NN	NN	_	_	19	19	PMOD	PMOD	_	_	_	_	_
+23	of	of	of	IN	IN	_	_	22	22	NMOD	NMOD	_	_	_	_	_
+24	South	south	south	NNP	NNP	_	_	26	26	NAME	NAME	_	_	_	_	_
+25	Dorchester	dorchester	dorchester	NNP	NNP	_	_	26	26	NAME	NAME	_	_	_	_	_
+26	Avenue	avenue	avenue	NNP	NNP	_	_	23	23	PMOD	PMOD	_	_	_	_	_
+27	,	,	,	,	,	_	_	29	29	P	P	_	_	_	_	_
+28	police	police	police	NN	NN	_	_	29	29	SBJ	SBJ	_	_	_	_	A0
+29	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+30	.	.	.	.	.	_	_	29	29	P	P	_	_	_	_	_
+
+1	gunman	gunman	gunman	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A0	A0
+2	walked	walk	walk	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	walk.01	_	_
+3	up	up	up	RB	RB	_	_	2	2	DIR	DIR	_	_	AM-DIR	_
+4	and	and	and	CC	CC	_	_	2	2	COORD	COORD	_	_	_	_
+5	shot	shot	shot	VBD	VBD	_	_	4	4	CONJ	CONJ	Y	shoot.02	_	_
+6	him	him	him	PRP	PRP	_	_	5	5	OBJ	OBJ	_	_	_	A1
+7	in	in	in	IN	IN	_	_	5	5	LOC	LOC	_	_	_	A3
+8	the	the	the	DT	DT	_	_	9	9	NMOD	NMOD	_	_	_	_
+9	leg	leg	leg	NN	NN	_	_	7	7	PMOD	PMOD	_	_	_	_
+10	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_
+
+1	victim	victim	victim	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A0	_	_	_	_
+2	got	get	get	VBD	VBD	_	_	16	16	OBJ	OBJ	Y	get.01	_	_	_	_	A1
+3	himself	himself	himself	PRP	PRP	_	_	2	2	OBJ	OBJ	_	_	A1	_	_	_	_
+4	to	to	to	TO	TO	_	_	2	2	ADV	ADV	_	_	A2	_	_	_	_
+5	Jackson	jackson	jackson	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_	_	_	_
+6	Park	park	park	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_	_	_	_
+7	Hospital	hospital	hospital	NNP	NNP	_	_	4	4	PMOD	PMOD	_	_	_	_	A1	_	_
+8	,	,	,	,	,	_	_	7	7	P	P	_	_	_	_	_	_	_
+9	where	where	where	WRB	WRB	_	_	13	13	LOC	LOC	_	_	_	_	R-AM-LOC	_	_
+10	his	his	his	PRP$	PRP$	_	_	11	11	NMOD	NMOD	_	_	_	A1	_	_	_
+11	condition	condition	condition	NN	NN	_	_	12	12	SBJ	SBJ	Y	condition.01	_	A2	A1	_	_
+12	had	have	have	VBD	VBD	_	_	7	7	NMOD	NMOD	_	_	_	_	_	_	_
+13	stabilized	stabilize	stabilize	VBN	VBN	_	_	12	12	VC	VC	Y	stabilize.01	_	_	_	_	_
+14	,	,	,	,	,	_	_	16	16	P	P	_	_	_	_	_	_	_
+15	police	police	police	NN	NN	_	_	16	16	SBJ	SBJ	Y	police.01	_	_	_	A0	A0
+16	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_	_
+17	.	.	.	.	.	_	_	16	16	P	P	_	_	_	_	_	_	_
+18	NEWLINE	newline	newline	NNP	NNP	_	_	15	15	OBJ	OBJ	_	_	_	_	_	A2	_
+
+1	12:15	12:15	12:15	CD	CD	_	_	12	12	SBJ	SBJ	_	_	A1	_	_
+2	p.m.	p.m.	p.m.	RB	RB	_	_	1	1	NMOD	NMOD	_	_	_	_	_
+3	on	on	on	IN	IN	_	_	1	1	LOC	LOC	_	_	_	_	_
+4	the	the	the	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_	_
+5	South	south	south	NNP	NNP	_	_	6	6	NAME	NAME	_	_	_	_	_
+6	Side	side	side	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_	_	_
+7	,	,	,	,	,	_	_	6	6	P	P	_	_	_	_	_
+8	a	a	a	DT	DT	_	_	11	11	NMOD	NMOD	_	_	_	_	_
+9	24-year	24-year	24-year	CD	CD	_	_	11	11	HMOD	HMOD	_	_	_	_	_
+10	-	-	-	HYPH	HYPH	_	_	9	9	HYPH	HYPH	_	_	_	_	_
+11	old	old	old	JJ	JJ	_	_	6	6	APPO	APPO	_	_	_	_	_
+12	was	be	be	VBD	VBD	_	_	28	28	OBJ	OBJ	_	_	_	_	A1
+13	shot	shot	shot	VBN	VBN	_	_	12	12	VC	VC	Y	shoot.02	_	_	_
+14	in	in	in	IN	IN	_	_	13	13	LOC	LOC	_	_	A3	_	_
+15	the	the	the	DT	DT	_	_	17	17	NMOD	NMOD	_	_	_	_	_
+16	1600	1600	1600	CD	CD	_	_	17	17	NMOD	NMOD	_	_	_	_	_
+17	block	block	block	NN	NN	_	_	14	14	PMOD	PMOD	_	_	_	_	_
+18	of	of	of	IN	IN	_	_	17	17	NMOD	NMOD	_	_	_	_	_
+19	West	west	west	NNP	NNP	_	_	21	21	NAME	NAME	_	_	_	_	_
+20	81st	81st	81st	CD	CD	_	_	21	21	NMOD	NMOD	_	_	_	_	_
+21	Street	street	street	NNP	NNP	_	_	18	18	PMOD	PMOD	_	_	_	_	_
+22	in	in	in	IN	IN	_	_	13	13	LOC	LOC	_	_	A3	_	_
+23	the	the	the	DT	DT	_	_	25	25	NMOD	NMOD	_	_	_	_	_
+24	Gresham	gresham	gresham	NNP	NNP	_	_	25	25	NMOD	NMOD	_	_	_	A1	_
+25	neighborhood	neighborhood	neighborhood	NN	NN	_	_	22	22	PMOD	PMOD	Y	neighborhood.01	_	_	_
+26	,	,	,	,	,	_	_	28	28	P	P	_	_	_	_	_
+27	police	police	police	NN	NN	_	_	28	28	SBJ	SBJ	_	_	_	_	A0
+28	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+29	.	.	.	.	.	_	_	28	28	P	P	_	_	_	_	_
+
+1	24-year	24-year	24-year	JJ	JJ	_	_	3	3	HMOD	HMOD	_	_	_	_	_	_	_	_
+2	-	-	-	HYPH	HYPH	_	_	1	1	HYPH	HYPH	_	_	_	_	_	_	_	_
+3	old	old	old	JJ	JJ	_	_	4	4	SBJ	SBJ	_	_	A0	_	_	_	_	_
+4	was	be	be	VBD	VBD	_	_	30	30	OBJ	OBJ	_	_	_	_	_	_	_	A1
+5	walking	walk	walk	VBG	VBG	_	_	4	4	VC	VC	Y	walk.01	_	_	_	_	_	_
+6	on	on	on	IN	IN	_	_	5	5	LOC	LOC	_	_	AM-TMP	_	_	_	_	_
+7	81st	81st	81st	CD	CD	_	_	6	6	PMOD	PMOD	_	_	_	_	_	_	_	_
+8	when	when	when	WRB	WRB	_	_	12	12	TMP	TMP	_	_	_	R-AM-TMP	_	_	_	_
+9	a	a	a	DT	DT	_	_	11	11	NMOD	NMOD	_	_	_	_	_	_	_	_
+10	black	black	black	JJ	JJ	_	_	11	11	NMOD	NMOD	_	_	_	_	_	_	_	_
+11	vehicle	vehicle	vehicle	NN	NN	_	_	12	12	SBJ	SBJ	_	_	_	A1	_	A0	_	_
+12	pulled	pull	pull	VBD	VBD	_	_	5	5	TMP	TMP	Y	pull.01	AM-TMP	_	_	_	_	_
+13	up	up	up	RP	RP	_	_	12	12	PRT	PRT	_	_	_	_	_	_	_	_
+14	to	to	to	TO	TO	_	_	12	12	ADV	ADV	_	_	_	A2	_	_	_	_
+15	him	him	him	PRP	PRP	_	_	14	14	PMOD	PMOD	_	_	_	_	_	_	_	_
+16	and	and	and	CC	CC	_	_	15	15	COORD	COORD	_	_	_	_	_	_	_	_
+17	someone	someone	someone	NN	NN	_	_	16	16	CONJ	CONJ	_	_	_	_	_	_	_	_
+18	inside	inside	inside	IN	IN	_	_	17	17	LOC	LOC	_	_	_	_	_	_	_	_
+19	fired	fire	fire	VBN	VBN	_	_	20	20	NMOD	NMOD	Y	fire.02	_	_	_	_	_	_
+20	shots	shot	shot	NNS	NNS	_	_	18	18	PMOD	PMOD	_	_	_	_	A1	_	_	_
+21	,	,	,	,	,	_	_	12	12	P	P	_	_	_	_	_	_	_	_
+22	hitting	hit	hit	VBG	VBG	_	_	12	12	ADV	ADV	Y	hit.02	_	AM-ADV	_	_	_	_
+23	him	him	him	PRP	PRP	_	_	22	22	OBJ	OBJ	_	_	_	_	_	A1	_	_
+24	in	in	in	IN	IN	_	_	22	22	LOC	LOC	_	_	_	_	_	AM-LOC	_	_
+25	the	the	the	DT	DT	_	_	27	27	NMOD	NMOD	_	_	_	_	_	_	_	_
+26	left	leave	leave	JJ	JJ	_	_	27	27	NMOD	NMOD	_	_	_	_	_	_	A1	_
+27	leg	leg	leg	NN	NN	_	_	24	24	PMOD	PMOD	Y	leg.01	_	_	_	_	_	_
+28	,	,	,	,	,	_	_	30	30	P	P	_	_	_	_	_	_	_	_
+29	police	police	police	NN	NN	_	_	30	30	SBJ	SBJ	_	_	_	_	_	_	_	A0
+30	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_	_	_
+31	.	.	.	.	.	_	_	30	30	P	P	_	_	_	_	_	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+2	taken	take	take	VBN	VBN	_	_	1	1	VC	VC	Y	take.01	_
+3	to	to	to	TO	TO	_	_	2	2	ADV	ADV	_	_	AM-DIR
+4	Advocate	advocate	advocate	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_
+5	Christ	christ	christ	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_
+6	Medical	medical	medical	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_
+7	Center	center	center	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_
+8	in	in	in	IN	IN	_	_	7	7	LOC	LOC	_	_	_
+9	Oak	oak	oak	NNP	NNP	_	_	10	10	NAME	NAME	_	_	_
+10	Lawn	lawn	lawn	NNP	NNP	_	_	8	8	PMOD	PMOD	_	_	_
+11	in	in	in	IN	IN	_	_	2	2	MNR	MNR	_	_	AM-MNR
+12	good	good	good	JJ	JJ	_	_	13	13	NMOD	NMOD	_	_	_
+13	condition	condition	condition	NN	NN	_	_	11	11	PMOD	PMOD	_	_	_
+14	.	.	.	.	.	_	_	1	1	P	P	_	_	_
+
+1	shooter	shooter	shooter	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A0
+2	fled	flee	flee	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	flee.01	_
+3	in	in	in	IN	IN	_	_	2	2	LOC	LOC	_	_	AM-LOC
+4	the	the	the	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_
+5	vehicle	vehicle	vehicle	NN	NN	_	_	3	3	PMOD	PMOD	_	_	_
+6	east	east	east	JJ	JJ	_	_	5	5	APPO	APPO	_	_	_
+7	on	on	on	IN	IN	_	_	6	6	AMOD	AMOD	_	_	_
+8	81st	81st	81st	CD	CD	_	_	9	9	NMOD	NMOD	_	_	_
+9	Street	street	street	NNP	NNP	_	_	7	7	PMOD	PMOD	_	_	_
+10	.	.	.	.	.	_	_	2	2	P	P	_	_	_
+11	NEWLINE	newline	newline	NNP	NNP	_	_	10	10	POSTHON	POSTHON	_	_	_
+
+1	Tuesday	tuesday	tuesday	NNP	NNP	_	_	8	8	TMP	TMP	_	_	AM-TMP	_	_	_	_	_	_	_	_	_
+2	,	,	,	,	,	_	_	8	8	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+3	a	a	a	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+4	21-year	21-year	21-year	CD	CD	_	_	6	6	HMOD	HMOD	_	_	_	_	_	_	_	_	_	_	_	_
+5	-	-	-	HYPH	HYPH	_	_	4	4	HYPH	HYPH	_	_	_	_	_	_	_	_	_	_	_	_
+6	old	old	old	JJ	JJ	_	_	7	7	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+7	man	man	man	NN	NN	_	_	8	8	SBJ	SBJ	_	_	A0	_	_	_	_	_	_	_	_	_
+8	sought	seek	seek	VBD	VBD	_	_	34	34	OBJ	OBJ	Y	seek.01	_	_	_	_	_	_	_	_	_	A1
+9	medical	medical	medical	JJ	JJ	_	_	10	10	NMOD	NMOD	_	_	_	A1	_	_	_	_	_	_	_	_
+10	help	help	help	NN	NN	_	_	8	8	OBJ	OBJ	Y	help.01	A1	_	_	_	_	_	_	_	_	_
+11	for	for	for	IN	IN	_	_	10	10	NMOD	NMOD	_	_	_	A2	_	_	_	_	_	_	_	_
+12	a	a	a	DT	DT	_	_	14	14	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+13	gunshot	gunshot	gunshot	JJ	JJ	_	_	14	14	NMOD	NMOD	_	_	_	_	AM-MNR	_	_	_	_	_	_	_
+14	wound	wound	wound	NN	NN	_	_	11	11	PMOD	PMOD	Y	wound.01	_	_	_	_	_	_	_	_	_	_
+15	to	to	to	TO	TO	_	_	14	14	NMOD	NMOD	_	_	_	_	A1	_	_	_	_	_	_	_
+16	his	his	his	PRP$	PRP$	_	_	18	18	NMOD	NMOD	_	_	_	_	_	A3	_	_	_	_	_	_
+17	hand	hand	hand	NN	NN	_	_	18	18	NMOD	NMOD	_	_	_	_	_	A1	_	_	_	_	_	_
+18	days	days	days	NNS	NNS	_	_	15	15	PMOD	PMOD	Y	day.01	_	_	_	_	_	_	_	_	_	_
+19	after	after	after	IN	IN	_	_	8	8	TMP	TMP	_	_	AM-TMP	_	_	_	_	_	_	_	_	_
+20	he	he	he	PRP	PRP	_	_	21	21	SBJ	SBJ	_	_	_	_	_	_	A1	_	_	_	_	_
+21	was	be	be	VBD	VBD	_	_	19	19	SUB	SUB	_	_	_	_	_	_	_	_	_	_	_	_
+22	shot	shot	shot	VBN	VBN	_	_	21	21	VC	VC	Y	shoot.02	_	_	_	_	_	_	_	_	_	_
+23	during	during	during	IN	IN	_	_	22	22	TMP	TMP	_	_	_	_	_	_	AM-TMP	_	_	_	_	_
+24	an	an	an	DT	DT	_	_	26	26	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+25	attempted	attempt	attempt	VBN	VBN	_	_	26	26	NMOD	NMOD	Y	attempt.01	_	_	_	_	_	_	_	_	_	_
+26	robbery	robbery	robbery	NN	NN	_	_	23	23	PMOD	PMOD	Y	robbery.01	_	_	_	_	_	A1	_	_	_	_
+27	in	in	in	IN	IN	_	_	26	26	LOC	LOC	_	_	_	_	_	_	_	_	AM-LOC	_	_	_
+28	the	the	the	DT	DT	_	_	31	31	NMOD	NMOD	_	_	_	_	_	_	_	_	_	_	_	_
+29	South	south	south	NNP	NNP	_	_	30	30	NAME	NAME	_	_	_	_	_	_	_	_	_	_	_	_
+30	Austin	austin	austin	NNP	NNP	_	_	31	31	NMOD	NMOD	_	_	_	_	_	_	_	_	_	A1	_	_
+31	neighborhood	neighborhood	neighborhood	NN	NN	_	_	27	27	PMOD	PMOD	Y	neighborhood.01	_	_	_	_	_	_	_	_	_	_
+32	,	,	,	,	,	_	_	34	34	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+33	police	police	police	NN	NN	_	_	34	34	SBJ	SBJ	Y	police.01	_	_	_	_	_	_	_	_	A0	A0
+34	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_	_	_	_	_	_	_
+35	.	.	.	.	.	_	_	34	34	P	P	_	_	_	_	_	_	_	_	_	_	_	_
+36	NEWLINE	newline	newline	NNP	NNP	_	_	33	33	OBJ	OBJ	_	_	_	_	_	_	_	_	_	_	A2	_
+
+1	back	back	back	RB	RB	_	_	0	0	ROOT	ROOT	_	_
+2	for	for	for	IN	IN	_	_	1	1	AMOD	AMOD	_	_
+3	updates	update	update	NNS	NNS	_	_	2	2	PMOD	PMOD	_	_
+4	.	.	.	.	.	_	_	1	1	P	P	_	_
+
+
+
+1	2017-04-05	2017-04-05	2017-04-05	CD	CD	_	_	0	0	ROOT	ROOT	_	_
+
+1	-	-	-	HYPH	HYPH	_	_	2	2	NAME	NAME	_	_	_	_	_	_
+2	old	old	old	JJ	JJ	_	_	4	4	NMOD	NMOD	_	_	_	_	_	_
+3	Ronnie	ronnie	ronnie	NNP	NNP	_	_	4	4	NAME	NAME	_	_	_	_	_	_
+4	Smith	smith	smith	NNP	NNP	_	_	6	6	SBJ	SBJ	_	_	A0	_	_	_
+5	Jr.	jr.	jr.	NNP	NNP	_	_	4	4	POSTHON	POSTHON	_	_	_	_	_	_
+6	killed	kill	kill	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	kill.01	_	_	_	_
+7	,	,	,	,	,	_	_	6	6	P	P	_	_	_	_	_	_
+8	man	man	man	NN	NN	_	_	4	4	APPO	APPO	_	_	_	A1	A0	_
+9	wounded	wound	wound	VBN	VBN	_	_	8	8	APPO	APPO	Y	wound.01	_	_	_	_
+10	in	in	in	IN	IN	_	_	9	9	LOC	LOC	_	_	_	A2	_	_
+11	shooting	shoot	shoot	VBG	VBG	_	_	10	10	PMOD	PMOD	Y	shoot.01	_	_	_	_
+12	near	near	near	IN	IN	_	_	11	11	LOC	LOC	_	_	_	_	AM-LOC	_
+13	his	his	his	PRP$	PRP$	_	_	14	14	NMOD	NMOD	_	_	_	_	_	A0
+14	home	home	home	NN	NN	_	_	12	12	PMOD	PMOD	Y	home.01	_	_	_	A1
+15	in	in	in	IN	IN	_	_	14	14	LOC	LOC	_	_	_	_	_	AM-LOC
+16	Englewood	englewood	englewood	NNP	NNP	_	_	15	15	PMOD	PMOD	_	_	_	_	_	_
+
+1	Tyrone	tyrone	tyrone	NNP	NNP	_	_	2	2	NAME	NAME	_	_	_	_	_	_	_
+2	Smith	smith	smith	NNP	NNP	_	_	4	4	SBJ	SBJ	_	_	A1	_	_	_	_
+3	Jr.	jr.	jr.	NNP	NNP	_	_	2	2	POSTHON	POSTHON	_	_	_	_	_	_	_
+4	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_	_	_
+5	killed	kill	kill	VBN	VBN	_	_	4	4	VC	VC	Y	kill.01	_	_	_	_	_
+6	in	in	in	IN	IN	_	_	5	5	LOC	LOC	_	_	AM-LOC	_	_	_	_
+7	a	a	a	DT	DT	_	_	8	8	NMOD	NMOD	_	_	_	_	_	_	_
+8	shooting	shooting	shooting	NN	NN	_	_	6	6	PMOD	PMOD	_	_	_	_	_	_	_
+9	near	near	near	IN	IN	_	_	8	8	LOC	LOC	_	_	_	_	_	_	_
+10	his	his	his	PRP$	PRP$	_	_	11	11	NMOD	NMOD	_	_	_	A0	_	_	_
+11	home	home	home	NN	NN	_	_	9	9	PMOD	PMOD	Y	home.01	_	A1	_	_	_
+12	in	in	in	IN	IN	_	_	5	5	LOC	LOC	_	_	AM-LOC	_	_	_	_
+13	the	the	the	DT	DT	_	_	15	15	NMOD	NMOD	_	_	_	_	_	_	_
+14	Englewood	englewood	englewood	NNP	NNP	_	_	15	15	NMOD	NMOD	_	_	_	_	A1	_	_
+15	neighborhood	neighborhood	neighborhood	NN	NN	_	_	12	12	PMOD	PMOD	Y	neighborhood.01	_	_	_	_	_
+16	late	late	late	RB	RB	_	_	17	17	NMOD	NMOD	_	_	_	_	_	_	_
+17	Tuesday	tuesday	tuesday	NNP	NNP	_	_	5	5	TMP	TMP	_	_	AM-TMP	_	_	AM-TMP	_
+18	that	that	that	WDT	WDT	_	_	20	20	SBJ	SBJ	_	_	_	_	_	R-A0	R-A1
+19	also	also	also	RB	RB	_	_	20	20	ADV	ADV	_	_	_	_	_	AM-DIS	_
+20	left	leave	leave	VBD	VBD	_	_	17	17	NMOD	NMOD	Y	leave.01	_	_	_	_	_
+21	a	a	a	DT	DT	_	_	22	22	NMOD	NMOD	_	_	_	_	_	_	_
+22	man	man	man	NN	NN	_	_	20	20	OBJ	OBJ	_	_	_	_	_	A1	A1
+23	wounded	wound	wound	VBN	VBN	_	_	20	20	OPRD	OPRD	Y	wound.01	_	_	_	A2	_
+24	.	.	.	.	.	_	_	4	4	P	P	_	_	_	_	_	_	_
+25	NEWLINE	newline	newline	NNP	NNP	_	_	20	20	OBJ	OBJ	_	_	_	_	_	A1	_
+
+1	17-year	17-year	17-year	CD	CD	_	_	3	3	HMOD	HMOD	_	_	_
+2	-	-	-	HYPH	HYPH	_	_	1	1	HYPH	HYPH	_	_	_
+3	old	old	old	JJ	JJ	_	_	4	4	NMOD	NMOD	_	_	_
+4	Smith	smith	smith	NNP	NNP	_	_	6	6	SBJ	SBJ	_	_	A1
+5	Jr	jr	jr	NNP	NNP	_	_	4	4	POSTHON	POSTHON	_	_	_
+6	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+7	standing	stand	stand	VBG	VBG	_	_	6	6	VC	VC	Y	stand.01	_
+8	in	in	in	IN	IN	_	_	7	7	LOC	LOC	_	_	A2
+9	an	an	an	DT	DT	_	_	10	10	NMOD	NMOD	_	_	_
+10	alley	alley	alley	NN	NN	_	_	8	8	PMOD	PMOD	_	_	_
+11	with	with	with	IN	IN	_	_	7	7	ADV	ADV	_	_	A2
+12	a	a	a	DT	DT	_	_	16	16	NMOD	NMOD	_	_	_
+13	20-year	20-year	20-year	CD	CD	_	_	15	15	HMOD	HMOD	_	_	_
+14	-	-	-	HYPH	HYPH	_	_	13	13	HYPH	HYPH	_	_	_
+15	old	old	old	JJ	JJ	_	_	16	16	NMOD	NMOD	_	_	_
+16	man	man	man	NN	NN	_	_	11	11	PMOD	PMOD	_	_	_
+17	about	about	about	IN	IN	_	_	16	16	NMOD	NMOD	_	_	_
+18	10:50	10:50	10:50	NN	NN	_	_	17	17	PMOD	PMOD	_	_	_
+19	p.m.	p.m.	p.m.	RB	RB	_	_	18	18	NMOD	NMOD	_	_	_
+20	in	in	in	IN	IN	_	_	7	7	LOC	LOC	_	_	A2
+21	the	the	the	DT	DT	_	_	23	23	NMOD	NMOD	_	_	_
+22	5600	5600	5600	CD	CD	_	_	23	23	NMOD	NMOD	_	_	_
+23	block	block	block	NN	NN	_	_	20	20	PMOD	PMOD	_	_	_
+24	of	of	of	IN	IN	_	_	23	23	NMOD	NMOD	_	_	_
+25	South	south	south	NNP	NNP	_	_	26	26	NAME	NAME	_	_	_
+26	Elizabeth	elizabeth	elizabeth	NNP	NNP	_	_	24	24	PMOD	PMOD	_	_	_
+27	.	.	.	.	.	_	_	6	6	P	P	_	_	_
+
+1	male	male	male	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A0	A0	_
+2	walked	walk	walk	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	walk.01	_	_	_
+3	up	up	up	IN	IN	_	_	2	2	DIR	DIR	_	_	AM-DIR	_	_
+4	to	to	to	TO	TO	_	_	3	3	PMOD	PMOD	_	_	_	_	_
+5	them	them	them	PRP	PRP	_	_	4	4	PMOD	PMOD	_	_	_	_	_
+6	and	and	and	CC	CC	_	_	2	2	COORD	COORD	_	_	_	_	_
+7	fired	fire	fire	VBD	VBD	_	_	6	6	CONJ	CONJ	Y	fire.02	_	_	_
+8	shots	shot	shot	NNS	NNS	_	_	7	7	OBJ	OBJ	_	_	_	A1	_
+9	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_	_
+10	according	accord	accord	VBG	VBG	_	_	2	2	ADV	ADV	_	_	AM-ADV	_	_
+11	to	to	to	TO	TO	_	_	10	10	PMOD	PMOD	_	_	_	_	_
+12	Chicago	chicago	chicago	NNP	NNP	_	_	13	13	NAME	NAME	_	_	_	_	_
+13	Police	police	police	NNP	NNP	_	_	11	11	PMOD	PMOD	_	_	_	_	_
+14	and	and	and	CC	CC	_	_	13	13	COORD	COORD	_	_	_	_	_
+15	the	the	the	DT	DT	_	_	17	17	NMOD	NMOD	_	_	_	_	_
+16	Cook	cook	cook	NNP	NNP	_	_	17	17	NAME	NAME	_	_	_	_	_
+17	County	county	county	NNP	NNP	_	_	14	14	CONJ	CONJ	_	_	_	_	_
+18	medical	medical	medical	JJ	JJ	_	_	19	19	NMOD	NMOD	_	_	_	_	A1
+19	examiner	examiner	examiner	NN	NN	_	_	17	17	OBJ	OBJ	Y	examiner.01	_	_	_
+20	’s	’s	’s	IN	IN	_	_	19	19	NMOD	NMOD	_	_	_	_	_
+21	office	office	office	NN	NN	_	_	20	20	PMOD	PMOD	_	_	_	_	_
+22	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_	_
+23	NEWLINE	newline	newline	NNP	NNP	_	_	17	17	APPO	APPO	_	_	_	_	_
+
+1	,	,	,	,	,	_	_	3	3	P	P	_	_	_	_	_	_	_	_
+2	who	who	who	WP	WP	_	_	3	3	SBJ	SBJ	_	_	R-A0	_	_	_	_	_
+3	lived	live	live	VBD	VBD	_	_	35	35	OBJ	OBJ	Y	live.01	_	_	_	_	_	A1
+4	on	on	on	IN	IN	_	_	3	3	ADV	ADV	_	_	AM-MNR	_	_	_	_	_
+5	the	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_	_	_	_	_
+6	same	same	same	JJ	JJ	_	_	7	7	NMOD	NMOD	_	_	_	_	_	_	_	_
+7	block	block	block	NN	NN	_	_	4	4	PMOD	PMOD	_	_	_	_	_	_	_	_
+8	,	,	,	,	,	_	_	3	3	P	P	_	_	_	_	_	_	_	_
+9	suffered	suffer	suffer	VBD	VBD	_	_	3	3	COORD	COORD	Y	suffer.01	_	_	_	_	_	_
+10	gunshot	gunshot	gunshot	NN	NN	_	_	11	11	NMOD	NMOD	_	_	_	_	A1	_	_	_
+11	wounds	wound	wound	NNS	NNS	_	_	9	9	OBJ	OBJ	Y	wound.01	_	A1	_	_	_	_
+12	to	to	to	TO	TO	_	_	9	9	ADV	ADV	_	_	_	A2	_	_	_	_
+13	the	the	the	DT	DT	_	_	14	14	NMOD	NMOD	_	_	_	_	_	_	_	_
+14	chest	chest	chest	NN	NN	_	_	12	12	PMOD	PMOD	_	_	_	_	_	_	_	_
+15	and	and	and	CC	CC	_	_	14	14	COORD	COORD	_	_	_	_	_	_	_	_
+16	leg	leg	leg	NN	NN	_	_	15	15	CONJ	CONJ	_	_	_	_	_	_	_	_
+17	,	,	,	,	,	_	_	9	9	P	P	_	_	_	_	_	_	_	_
+18	and	and	and	CC	CC	_	_	9	9	COORD	COORD	_	_	_	_	_	_	_	_
+19	was	be	be	VBD	VBD	_	_	18	18	CONJ	CONJ	_	_	_	_	_	_	_	_
+20	taken	take	take	VBN	VBN	_	_	19	19	VC	VC	Y	take.01	_	_	_	_	_	_
+21	to	to	to	TO	TO	_	_	20	20	ADV	ADV	_	_	_	_	_	AM-DIR	_	_
+22	Stroger	stroger	stroger	NNP	NNP	_	_	23	23	NAME	NAME	_	_	_	_	_	_	_	_
+23	Hospital	hospital	hospital	NNP	NNP	_	_	21	21	PMOD	PMOD	_	_	_	_	_	_	_	_
+24	,	,	,	,	,	_	_	23	23	P	P	_	_	_	_	_	_	_	_
+25	where	where	where	WRB	WRB	_	_	28	28	LOC	LOC	_	_	_	_	_	_	R-AM-LOC	_
+26	he	he	he	PRP	PRP	_	_	27	27	SBJ	SBJ	_	_	_	_	_	_	A1	_
+27	was	be	be	VBD	VBD	_	_	23	23	NMOD	NMOD	_	_	_	_	_	_	_	_
+28	pronounced	pronounce	pronounce	VBN	VBN	_	_	27	27	VC	VC	Y	pronounce.01	_	_	_	_	_	_
+29	dead	dead	dead	JJ	JJ	_	_	28	28	OPRD	OPRD	_	_	_	_	_	_	C-A1	_
+30	at	at	at	IN	IN	_	_	28	28	ADV	ADV	_	_	_	_	_	_	AM-TMP	_
+31	11:21	11:21	11:21	CD	CD	_	_	30	30	PMOD	PMOD	_	_	_	_	_	_	_	_
+32	p.m.	p.m.	p.m.	RB	RB	_	_	31	31	NMOD	NMOD	_	_	_	_	_	_	_	_
+33	,	,	,	,	,	_	_	35	35	P	P	_	_	_	_	_	_	_	_
+34	authorities	authorities	authorities	NNS	NNS	_	_	35	35	SBJ	SBJ	_	_	_	_	_	_	_	A0
+35	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_	_	_
+36	.	.	.	.	.	_	_	35	35	P	P	_	_	_	_	_	_	_	_
+37	NEWLINE	newline	newline	NNP	NNP	_	_	34	34	OBJ	OBJ	_	_	_	_	_	_	_	_
+
+1	man	man	man	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A1	A1	_	_	_	_
+2	was	be	be	VBD	VBD	_	_	23	23	OBJ	OBJ	_	_	_	_	_	_	_	A1
+3	shot	shot	shot	VBN	VBN	_	_	2	2	VC	VC	Y	shoot.02	_	_	_	_	_	_
+4	in	in	in	IN	IN	_	_	3	3	LOC	LOC	_	_	A3	_	_	_	_	_
+5	the	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_	_	_	_	_
+6	right	right	right	JJ	JJ	_	_	7	7	NMOD	NMOD	_	_	_	_	_	_	_	_
+7	leg	leg	leg	NN	NN	_	_	4	4	PMOD	PMOD	_	_	_	_	_	_	_	_
+8	and	and	and	CC	CC	_	_	2	2	COORD	COORD	_	_	_	_	_	_	_	_
+9	was	be	be	VBD	VBD	_	_	8	8	CONJ	CONJ	_	_	_	_	_	_	_	_
+10	taken	take	take	VBN	VBN	_	_	9	9	VC	VC	Y	take.01	_	_	_	_	_	_
+11	to	to	to	TO	TO	_	_	10	10	ADV	ADV	_	_	_	AM-DIR	_	_	_	_
+12	St.	st.	st.	NNP	NNP	_	_	14	14	TITLE	TITLE	_	_	_	_	_	_	_	_
+13	Bernard	bernard	bernard	NNP	NNP	_	_	14	14	NAME	NAME	_	_	_	_	_	_	_	_
+14	Hospital	hospital	hospital	NNP	NNP	_	_	11	11	PMOD	PMOD	_	_	_	_	_	A1	_	_
+15	,	,	,	,	,	_	_	14	14	P	P	_	_	_	_	_	_	_	_
+16	where	where	where	WRB	WRB	_	_	20	20	LOC	LOC	_	_	_	_	_	R-AM-LOC	_	_
+17	his	his	his	PRP$	PRP$	_	_	18	18	NMOD	NMOD	_	_	_	_	A1	_	_	_
+18	condition	condition	condition	NN	NN	_	_	19	19	SBJ	SBJ	Y	condition.01	_	_	A2	A1	_	_
+19	was	be	be	VBD	VBD	_	_	14	14	NMOD	NMOD	_	_	_	_	_	_	_	_
+20	stabilized	stabilize	stabilize	VBN	VBN	_	_	19	19	VC	VC	Y	stabilize.01	_	_	_	_	_	_
+21	,	,	,	,	,	_	_	23	23	P	P	_	_	_	_	_	_	_	_
+22	police	police	police	NN	NN	_	_	23	23	SBJ	SBJ	Y	police.01	_	_	_	_	A0	A0
+23	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_	_	_
+24	.	.	.	.	.	_	_	23	23	P	P	_	_	_	_	_	_	_	_
+25	NEWLINE	newline	newline	NNP	NNP	_	_	22	22	OBJ	OBJ	_	_	_	_	_	_	A2	_
+
+1	Sun	sun	sun	NNP	NNP	_	_	3	3	NAME	NAME	_	_
+2	-	-	-	HYPH	HYPH	_	_	3	3	NAME	NAME	_	_
+3	Times	times	times	NNP	NNP	_	_	4	4	NMOD	NMOD	_	_
+4	Wire	wire	wire	NNP	NNP	_	_	0	0	ROOT	ROOT	_	_
+
+
+
+1	2017-01-19	2017-01-19	2017-01-19	CD	CD	_	_	0	0	ROOT	ROOT	_	_
+
+1	-	-	-	HYPH	HYPH	_	_	0	0	NMOD	NMOD	_	_	_	_
+2	old	old	old	JJ	JJ	_	_	4	4	NMOD	NMOD	_	_	AM-TMP	_
+3	girl	girl	girl	NN	NN	_	_	4	4	NMOD	NMOD	_	_	A1	_
+4	shot	shot	shot	NN	NN	_	_	1	1	COORD	COORD	Y	shot.03	_	_
+5	in	in	in	IN	IN	_	_	4	4	NMOD	NMOD	_	_	A2	_
+6	buttocks	buttocks	buttocks	NNS	NNS	_	_	5	5	PMOD	PMOD	Y	buttocks.01	_	_
+7	in	in	in	IN	IN	_	_	6	6	LOC	LOC	_	_	_	AM-LOC
+8	Lawndale	lawndale	lawndale	NNP	NNP	_	_	7	7	PMOD	PMOD	_	_	_	_
+
+1	Larry	larry	larry	NNP	NNP	_	_	3	3	NAME	NAME	_	_	_	_	_	_	_
+2	Altman	altman	altman	NNP	NNP	_	_	3	3	NAME	NAME	_	_	_	_	_	_	_
+3	NEWLINE	newline	newline	NNP	NNP	_	_	5	5	NMOD	NMOD	_	_	A0	_	_	_	_
+4	laltman@scng.com	laltman@scng.com	laltman@scng.com	NN	NN	_	_	5	5	NMOD	NMOD	_	_	A1	_	_	_	_
+5	@larryaltman	@larryaltman	@larryaltman	NN	NN	_	_	13	13	SBJ	SBJ	Y	@larryaltman.01	_	A1	_	_	_
+6	on	on	on	IN	IN	_	_	5	5	NMOD	NMOD	_	_	AM-LOC	_	_	_	_
+7	Twitter	twitter	twitter	NNP	NNP	_	_	8	8	NAME	NAME	_	_	_	_	_	_	_
+8	NEWLINE	newline	newline	NNP	NNP	_	_	6	6	PMOD	PMOD	_	_	_	_	_	_	_
+9	A	a	a	DT	DT	_	_	12	12	NAME	NAME	_	_	_	_	_	_	_
+10	16-year	16-year	16-year	CD	CD	_	_	12	12	HMOD	HMOD	_	_	_	_	_	_	_
+11	-	-	-	HYPH	HYPH	_	_	10	10	HYPH	HYPH	_	_	_	_	_	_	_
+12	old	old	old	JJ	JJ	_	_	8	8	NMOD	NMOD	_	_	_	_	_	_	_
+13	was	be	be	VBD	VBD	_	_	29	29	OBJ	OBJ	_	_	_	_	_	_	A1
+14	shot	shot	shot	VBN	VBN	_	_	13	13	VC	VC	Y	shoot.02	_	_	_	_	_
+15	in	in	in	IN	IN	_	_	14	14	LOC	LOC	_	_	_	A3	_	_	_
+16	the	the	the	DT	DT	_	_	17	17	NMOD	NMOD	_	_	_	_	_	_	_
+17	buttocks	buttocks	buttocks	NNS	NNS	_	_	15	15	PMOD	PMOD	_	_	_	_	_	_	_
+18	as	as	as	IN	IN	_	_	14	14	ADV	ADV	_	_	_	AM-ADV	_	_	_
+19	she	she	she	PRP	PRP	_	_	20	20	SBJ	SBJ	_	_	_	_	A0	_	_
+20	walked	walk	walk	VBD	VBD	_	_	18	18	SUB	SUB	Y	walk.01	_	_	_	_	_
+21	along	along	along	IN	IN	_	_	20	20	LOC	LOC	_	_	_	_	AM-DIR	_	_
+22	a	a	a	DT	DT	_	_	24	24	NMOD	NMOD	_	_	_	_	_	_	_
+23	Lawndale	lawndale	lawndale	NNP	NNP	_	_	24	24	NMOD	NMOD	_	_	_	_	_	_	_
+24	street	street	street	NN	NN	_	_	21	21	PMOD	PMOD	_	_	_	_	_	_	_
+25	,	,	,	,	,	_	_	29	29	P	P	_	_	_	_	_	_	_
+26	sheriff	sheriff	sheriff	NN	NN	_	_	27	27	SBJ	SBJ	_	_	_	_	_	A0	_
+27	’s	’s	’s	VBZ	VBZ	_	_	28	28	NMOD	NMOD	Y	’s.01	_	_	_	_	_
+28	deputies	deputy	deputy	NNS	NNS	_	_	29	29	SBJ	SBJ	_	_	_	_	_	A1	A0
+29	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_	_
+30	Thursday	thursday	thursday	NNP	NNP	_	_	29	29	TMP	TMP	_	_	_	_	_	_	AM-TMP
+31	.	.	.	.	.	_	_	29	29	P	P	_	_	_	_	_	_	_
+32	NEWLINE	newline	newline	NNP	NNP	_	_	27	27	OBJ	OBJ	_	_	_	_	_	A1	_
+
+1	shooting	shoot	shoot	VBG	VBG	_	_	2	2	SBJ	SBJ	Y	shoot.01	_	A1	_
+2	occurred	occur	occur	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	occur.01	_	_	_
+3	just	just	just	RB	RB	_	_	6	6	NMOD	NMOD	_	_	_	_	_
+4	before	before	before	IN	IN	_	_	3	3	DEP	DEP	_	_	_	_	_
+5	6	6	6	CD	CD	_	_	3	3	DEP	DEP	_	_	_	_	_
+6	p.m.	p.m.	p.m.	NN	NN	_	_	2	2	TMP	TMP	_	_	_	AM-TMP	_
+7	Wednesday	wednesday	wednesday	NNP	NNP	_	_	2	2	TMP	TMP	_	_	_	AM-TMP	_
+8	on	on	on	IN	IN	_	_	2	2	LOC	LOC	_	_	AM-LOC	AM-LOC	_
+9	Mansel	mansel	mansel	NNP	NNP	_	_	10	10	NAME	NAME	_	_	_	_	_
+10	Avenue	avenue	avenue	NNP	NNP	_	_	8	8	PMOD	PMOD	_	_	_	_	_
+11	north	north	north	RB	RB	_	_	2	2	TMP	TMP	_	_	_	AM-TMP	_
+12	of	of	of	IN	IN	_	_	11	11	AMOD	AMOD	_	_	_	_	_
+13	Manhattan	manhattan	manhattan	NNP	NNP	_	_	15	15	NAME	NAME	_	_	_	_	_
+14	Beach	beach	beach	NNP	NNP	_	_	15	15	NAME	NAME	_	_	_	_	_
+15	Boulevard	boulevard	boulevard	NNP	NNP	_	_	12	12	PMOD	PMOD	_	_	_	_	A0
+16	,	,	,	,	,	_	_	15	15	P	P	_	_	_	_	_
+17	sheriff	sheriff	sheriff	NN	NN	_	_	18	18	SBJ	SBJ	_	_	_	_	A0
+18	’s	’s	’s	VBZ	VBZ	_	_	15	15	NMOD	NMOD	Y	’s.01	_	_	_
+19	Lt	lt	lt	NNP	NNP	_	_	18	18	OBJ	OBJ	_	_	_	_	A1
+20	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_	_
+
+1	Hocking	hocking	hocking	VBG	VBG	_	_	2	2	SBJ	SBJ	Y	hocking.01	_	A1
+2	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_
+3	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_
+4	NEWLINE	newline	newline	NNP	NNP	_	_	1	1	OBJ	OBJ	_	_	A1	_
+
+1	girl	girl	girl	NN	NN	_	_	2	2	SBJ	SBJ	_	_	A0	_	_
+2	told	tell	tell	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	tell.01	_	_	_
+3	deputies	deputy	deputy	NNS	NNS	_	_	2	2	OBJ	OBJ	_	_	A2	_	_
+4	she	she	she	PRP	PRP	_	_	5	5	SBJ	SBJ	_	_	_	A0	_
+5	was	be	be	VBD	VBD	_	_	2	2	OBJ	OBJ	_	_	A1	_	_
+6	walking	walk	walk	VBG	VBG	_	_	5	5	VC	VC	Y	walk.01	_	_	_
+7	north	north	north	RB	RB	_	_	6	6	DIR	DIR	_	_	_	AM-DIR	_
+8	when	when	when	WRB	WRB	_	_	12	12	TMP	TMP	_	_	_	_	R-AM-TMP
+9	a	a	a	DT	DT	_	_	11	11	NMOD	NMOD	_	_	_	_	_
+10	small	small	small	JJ	JJ	_	_	11	11	NMOD	NMOD	_	_	_	_	_
+11	sedan	sedan	sedan	NN	NN	_	_	12	12	SBJ	SBJ	_	_	_	_	A1
+12	pulled	pull	pull	VBD	VBD	_	_	6	6	TMP	TMP	Y	pull.01	_	AM-TMP	_
+13	up	up	up	RP	RP	_	_	12	12	PRT	PRT	_	_	_	_	_
+14	to	to	to	TO	TO	_	_	12	12	ADV	ADV	_	_	_	_	A2
+15	her	her	her	PRP	PRP	_	_	14	14	PMOD	PMOD	_	_	_	_	_
+16	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_	_
+
+1	occupants	occupant	occupant	NNS	NNS	_	_	2	2	SBJ	SBJ	_	_	A0	_
+2	engaged	engage	engage	VBD	VBD	_	_	10	10	DEP	DEP	Y	engage.01	_	_
+3	her	her	her	PRP	PRP	_	_	2	2	OBJ	OBJ	_	_	A1	_
+4	in	in	in	IN	IN	_	_	2	2	LOC	LOC	_	_	A2	_
+5	a	a	a	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_
+6	brief	brief	brief	JJ	JJ	_	_	7	7	NMOD	NMOD	_	_	_	AM-TMP
+7	conversation	conversation	conversation	NN	NN	_	_	4	4	PMOD	PMOD	Y	conversation.01	_	_
+8	.	.	.	.	.	_	_	2	2	P	P	_	_	_	_
+9	NEWLINE	newline	newline	NNP	NNP	_	_	10	10	NMOD	NMOD	_	_	_	_
+10	“	“	“	NNP	NNP	_	_	0	0	ROOT	ROOT	_	_	A2	_
+
+1	next	next	next	JJ	JJ	_	_	2	2	NMOD	NMOD	_	_	_	_	_	_
+2	thing	thing	thing	NN	NN	_	_	6	6	TMP	TMP	_	_	AM-TMP	_	_	_
+3	she	she	she	PRP	PRP	_	_	4	4	SBJ	SBJ	_	_	A0	_	_	_
+4	knew	know	know	VBD	VBD	_	_	2	2	NMOD	NMOD	Y	know.01	_	_	_	_
+5	there	there	there	EX	EX	_	_	6	6	SBJ	SBJ	_	_	_	_	_	_
+6	were	be	be	VBD	VBD	_	_	25	25	OBJ	OBJ	_	_	_	_	_	A1
+7	two	two	two	CD	CD	_	_	8	8	NMOD	NMOD	_	_	_	_	_	_
+8	flashes	flash	flash	NNS	NNS	_	_	6	6	PRD	PRD	_	_	_	A1	_	_
+9	coming	come	come	VBG	VBG	_	_	8	8	APPO	APPO	Y	come.01	_	_	_	_
+10	out	out	out	IN	IN	_	_	9	9	DIR	DIR	_	_	_	AM-DIR	_	_
+11	of	of	of	IN	IN	_	_	10	10	AMOD	AMOD	_	_	_	_	_	_
+12	the	the	the	DT	DT	_	_	13	13	NMOD	NMOD	_	_	_	_	_	_
+13	vehicle	vehicle	vehicle	NN	NN	_	_	11	11	PMOD	PMOD	_	_	_	_	_	_
+14	and	and	and	CC	CC	_	_	6	6	COORD	COORD	_	_	_	_	_	_
+15	she	she	she	PRP	PRP	_	_	16	16	SBJ	SBJ	_	_	_	_	A1	_
+16	was	be	be	VBD	VBD	_	_	14	14	CONJ	CONJ	_	_	_	_	_	_
+17	shot	shot	shot	VBN	VBN	_	_	16	16	VC	VC	Y	shoot.02	_	_	_	_
+18	in	in	in	IN	IN	_	_	17	17	LOC	LOC	_	_	_	_	A3	_
+19	the	the	the	DT	DT	_	_	21	21	NMOD	NMOD	_	_	_	_	_	_
+20	lower	low	low	JJR	JJR	_	_	21	21	NMOD	NMOD	_	_	_	_	_	_
+21	buttocks	buttocks	buttocks	NNS	NNS	_	_	18	18	PMOD	PMOD	_	_	_	_	_	_
+22	,	,	,	,	,	_	_	25	25	P	P	_	_	_	_	_	_
+23	”	”	”	NN	NN	_	_	24	24	NMOD	NMOD	_	_	_	_	_	_
+24	Hocking	hocking	hocking	NN	NN	_	_	25	25	SBJ	SBJ	_	_	_	_	_	A0
+25	said	say	say	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_	_
+26	.	.	.	.	.	_	_	25	25	P	P	_	_	_	_	_	_
+27	NEWLINE	newline	newline	NNP	NNP	_	_	4	4	OBJ	OBJ	_	_	A1	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	10	10	NMOD	NMOD	_	_	_	_
+2	taken	take	take	VBN	VBN	_	_	1	1	VC	VC	Y	take.01	_	_
+3	to	to	to	TO	TO	_	_	2	2	ADV	ADV	_	_	AM-DIR	_
+4	a	a	a	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_	_
+5	hospital	hospital	hospital	NN	NN	_	_	3	3	PMOD	PMOD	_	_	_	_
+6	and	and	and	CC	CC	_	_	1	1	COORD	COORD	_	_	_	_
+7	was	be	be	VBD	VBD	_	_	6	6	CONJ	CONJ	_	_	_	_
+8	recovering	recover	recover	VBG	VBG	_	_	7	7	VC	VC	Y	recover.01	_	_
+9	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_
+10	NEWLINE	newline	newline	NNP	NNP	_	_	0	0	ROOT	ROOT	_	_	_	A1
+
+1	motive	motive	motive	NN	NN	_	_	5	5	SBJ	SBJ	Y	motive.01	_
+2	for	for	for	IN	IN	_	_	1	1	NMOD	NMOD	_	_	A1
+3	the	the	the	DT	DT	_	_	4	4	NMOD	NMOD	_	_	_
+4	shooting	shooting	shooting	NN	NN	_	_	2	2	PMOD	PMOD	_	_	_
+5	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+6	unknown	unknown	unknown	JJ	JJ	_	_	5	5	PRD	PRD	_	_	_
+7	.	.	.	.	.	_	_	5	5	P	P	_	_	_
+
+
+
+1	2017-01-27	2017-01-27	2017-01-27	CD	CD	_	_	0	0	ROOT	ROOT	_	_
+
+1	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_	_
+2	45	45	45	CD	CD	_	_	0	0	ROOT	ROOT	_	_	A1	_	_
+3	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_	_
+4	held	hold	hold	VBN	VBN	_	_	2	2	APPO	APPO	Y	hold.01	_	_	_
+5	in	in	in	IN	IN	_	_	4	4	LOC	LOC	_	_	AM-LOC	_	_
+6	fatal	fatal	fatal	JJ	JJ	_	_	7	7	NMOD	NMOD	_	_	_	AM-MNR	_
+7	shooting	shooting	shooting	NN	NN	_	_	5	5	PMOD	PMOD	Y	shooting.01	_	_	_
+8	of	of	of	IN	IN	_	_	7	7	NMOD	NMOD	_	_	_	A1	_
+9	Arkansas	arkansas	arkansas	NNP	NNP	_	_	12	12	NMOD	NMOD	_	_	_	_	AM-LOC
+10	high	high	high	JJ	JJ	_	_	11	11	NMOD	NMOD	_	_	_	_	_
+11	school	school	school	NN	NN	_	_	12	12	NMOD	NMOD	_	_	_	_	AM-LOC
+12	student	student	student	NN	NN	_	_	8	8	PMOD	PMOD	Y	student.01	_	_	A0
+
+1	arrested	arrest	arrest	VBN	VBN	_	_	0	0	ROOT	ROOT	Y	arrest.01	_	_	_
+2	an	an	an	DT	DT	_	_	4	4	NMOD	NMOD	_	_	_	_	_
+3	Arkansas	arkansas	arkansas	NNP	NNP	_	_	4	4	NMOD	NMOD	_	_	_	A2	_
+4	man	man	man	NN	NN	_	_	1	1	OBJ	OBJ	Y	man.01	A1	A0	_
+5	Thursday	thursday	thursday	NNP	NNP	_	_	1	1	TMP	TMP	_	_	AM-TMP	_	_
+6	in	in	in	IN	IN	_	_	1	1	ADV	ADV	_	_	AM-MNR	_	_
+7	the	the	the	DT	DT	_	_	9	9	NMOD	NMOD	_	_	_	_	_
+8	shooting	shooting	shooting	NN	NN	_	_	9	9	NMOD	NMOD	_	_	_	_	A1
+9	death	death	death	NN	NN	_	_	6	6	PMOD	PMOD	Y	death.01	_	_	_
+10	of	of	of	IN	IN	_	_	9	9	NMOD	NMOD	_	_	_	_	A1
+11	a	a	a	DT	DT	_	_	16	16	NMOD	NMOD	_	_	_	_	_
+12	17-year	17-year	17-year	CD	CD	_	_	14	14	HMOD	HMOD	_	_	_	_	_
+13	-	-	-	HYPH	HYPH	_	_	12	12	HYPH	HYPH	_	_	_	_	_
+14	old	old	old	JJ	JJ	_	_	16	16	NMOD	NMOD	_	_	_	_	_
+15	Sheridan	sheridan	sheridan	NNP	NNP	_	_	16	16	NMOD	NMOD	_	_	_	_	_
+16	boy	boy	boy	NN	NN	_	_	10	10	PMOD	PMOD	_	_	_	_	_
+17	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_	_
+
+1	Moody	moody	moody	NNP	NNP	_	_	24	24	SBJ	SBJ	_	_	_	_	A0	A1	A1	_	_
+2	,	,	,	,	,	_	_	1	1	P	P	_	_	_	_	_	_	_	_	_
+3	who	who	who	WP	WP	_	_	4	4	SBJ	SBJ	_	_	_	_	R-A0	_	_	_	_
+4	was	be	be	VBD	VBD	_	_	1	1	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+5	a	a	a	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+6	member	member	member	NN	NN	_	_	4	4	PRD	PRD	Y	member.01	_	_	_	_	_	_	_
+7	of	of	of	IN	IN	_	_	6	6	NMOD	NMOD	_	_	A1	_	_	_	_	_	_
+8	the	the	the	DT	DT	_	_	13	13	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+9	Sheridan	sheridan	sheridan	NNP	NNP	_	_	11	11	NAME	NAME	_	_	_	_	_	_	_	_	_
+10	High	high	high	NNP	NNP	_	_	11	11	NAME	NAME	_	_	_	_	_	_	_	_	_
+11	School	school	school	NNP	NNP	_	_	13	13	NMOD	NMOD	_	_	_	A2	_	_	_	_	_
+12	football	football	football	NN	NN	_	_	13	13	NMOD	NMOD	_	_	_	A1	_	_	_	_	_
+13	team	team	team	NN	NN	_	_	7	7	PMOD	PMOD	Y	team.01	_	_	_	_	_	_	_
+14	and	and	and	CC	CC	_	_	4	4	COORD	COORD	_	_	_	_	_	_	_	_	_
+15	competed	compete	compete	VBD	VBD	_	_	14	14	CONJ	CONJ	Y	compete.01	_	_	_	_	_	_	_
+16	in	in	in	IN	IN	_	_	15	15	LOC	LOC	_	_	_	_	AM-LOC	_	_	_	_
+17	track	track	track	NN	NN	_	_	16	16	PMOD	PMOD	_	_	_	_	_	_	_	_	_
+18	and	and	and	CC	CC	_	_	17	17	COORD	COORD	_	_	_	_	_	_	_	_	_
+19	field	field	field	NN	NN	_	_	18	18	CONJ	CONJ	_	_	_	_	_	_	_	_	_
+20	for	for	for	IN	IN	_	_	15	15	ADV	ADV	_	_	_	_	A2	_	_	_	_
+21	the	the	the	DT	DT	_	_	22	22	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+22	school	school	school	NN	NN	_	_	20	20	PMOD	PMOD	_	_	_	_	_	_	_	_	_
+23	,	,	,	,	,	_	_	1	1	P	P	_	_	_	_	_	_	_	_	_
+24	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_	_	_	A2	_
+25	shot	shot	shot	VBN	VBN	_	_	24	24	VC	VC	Y	shoot.02	_	_	_	_	_	_	_
+26	and	and	and	CC	CC	_	_	25	25	COORD	COORD	_	_	_	_	_	_	_	_	_
+27	killed	kill	kill	VBN	VBN	_	_	26	26	CONJ	CONJ	Y	kill.01	_	_	_	_	_	_	_
+28	in	in	in	IN	IN	_	_	25	25	LOC	LOC	_	_	_	_	_	AM-LOC	AM-LOC	_	_
+29	front	front	front	NN	NN	_	_	28	28	PMOD	PMOD	Y	front.02	_	_	_	_	_	_	_
+30	of	of	of	IN	IN	_	_	29	29	NMOD	NMOD	_	_	_	_	_	_	_	A1	_
+31	his	his	his	PRP$	PRP$	_	_	32	32	NMOD	NMOD	_	_	_	_	_	_	_	_	A0
+32	home	home	home	NN	NN	_	_	30	30	PMOD	PMOD	Y	home.01	_	_	_	_	_	_	A1
+33	on	on	on	IN	IN	_	_	25	25	TMP	TMP	_	_	_	_	_	AM-TMP	AM-TMP	_	_
+34	Arkansas	arkansas	arkansas	NNP	NNP	_	_	35	35	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+35	35	35	35	CD	CD	_	_	33	33	PMOD	PMOD	_	_	_	_	_	_	_	_	_
+36	north	north	north	RB	RB	_	_	35	35	LOC	LOC	_	_	_	_	_	_	_	_	_
+37	of	of	of	IN	IN	_	_	36	36	AMOD	AMOD	_	_	_	_	_	_	_	_	_
+38	Sheridan	sheridan	sheridan	NNP	NNP	_	_	37	37	PMOD	PMOD	_	_	_	_	_	_	_	_	_
+39	on	on	on	IN	IN	_	_	25	25	TMP	TMP	_	_	_	_	_	AM-TMP	AM-TMP	A2	_
+40	Jan.	jan.	jan.	NNP	NNP	_	_	41	41	NMOD	NMOD	_	_	_	_	_	_	_	_	_
+41	19	19	19	CD	CD	_	_	39	39	PMOD	PMOD	_	_	_	_	_	_	_	_	_
+42	.	.	.	.	.	_	_	24	24	P	P	_	_	_	_	_	_	_	_	_
+43	NEWLINE	newline	newline	NNP	NNP	_	_	35	35	APPO	APPO	_	_	_	_	_	_	_	_	_
+
+1	story	story	story	NN	NN	_	_	2	2	SBJ	SBJ	_	_
+2	is	be	be	VBZ	VBZ	_	_	0	0	ROOT	ROOT	_	_
+3	only	only	only	RB	RB	_	_	4	4	AMOD	AMOD	_	_
+4	available	available	available	JJ	JJ	_	_	2	2	PRD	PRD	_	_
+5	from	from	from	IN	IN	_	_	4	4	AMOD	AMOD	_	_
+6	the	the	the	DT	DT	_	_	9	9	NMOD	NMOD	_	_
+7	Arkansas	arkansas	arkansas	NNP	NNP	_	_	8	8	NAME	NAME	_	_
+8	Online	online	online	NNP	NNP	_	_	9	9	NMOD	NMOD	_	_
+9	archives	archive	archive	NNS	NNS	_	_	5	5	PMOD	PMOD	_	_
+10	.	.	.	.	.	_	_	2	2	P	P	_	_
+
+1	can	can	can	MD	MD	_	_	0	0	ROOT	ROOT	_	_	AM-MOD
+2	be	be	be	VB	VB	_	_	1	1	VC	VC	_	_	_
+3	purchased	purchase	purchase	VBN	VBN	_	_	2	2	VC	VC	Y	purchase.01	_
+4	individually	individually	individually	RB	RB	_	_	3	3	MNR	MNR	_	_	AM-MNR
+5	for	for	for	IN	IN	_	_	3	3	ADV	ADV	_	_	A3
+6	$	$	$	$	$	_	_	5	5	PMOD	PMOD	_	_	_
+7	2.95	2.95	2.95	CD	CD	_	_	6	6	NMOD	NMOD	_	_	_
+8	.	.	.	.	.	_	_	1	1	P	P	_	_	_
+
+1	here	here	here	RB	RB	_	_	0	0	ROOT	ROOT	_	_	_	_
+2	to	to	to	TO	TO	_	_	1	1	AMOD	AMOD	_	_	_	_
+3	search	search	search	VB	VB	_	_	2	2	IM	IM	Y	search.01	_	_
+4	for	for	for	IN	IN	_	_	3	3	ADV	ADV	_	_	A1	_
+5	this	this	this	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_
+6	story	story	story	NN	NN	_	_	4	4	PMOD	PMOD	Y	story.01	_	_
+7	in	in	in	IN	IN	_	_	6	6	LOC	LOC	_	_	_	A1
+8	the	the	the	DT	DT	_	_	9	9	NMOD	NMOD	_	_	_	_
+9	archives	archive	archive	NNS	NNS	_	_	7	7	PMOD	PMOD	_	_	_	_
+10	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_
+
+
+
+1	2017-01-19	2017-01-19	2017-01-19	CD	CD	_	_	0	0	ROOT	ROOT	_	_
+
+1	,	,	,	,	,	_	_	2	2	P	P	_	_	_
+2	15	15	15	CD	CD	_	_	0	0	ROOT	ROOT	_	_	_
+3	,	,	,	,	,	_	_	2	2	P	P	_	_	_
+4	shot	shot	shot	VBN	VBN	_	_	2	2	APPO	APPO	Y	shoot.03	_
+5	in	in	in	IN	IN	_	_	4	4	LOC	LOC	_	_	AM-LOC
+6	Englewood	englewood	englewood	NNP	NNP	_	_	5	5	PMOD	PMOD	_	_	_
+
+1	,	,	,	,	,	_	_	13	13	P	P	_	_	_	_	_
+2	15	15	15	CD	CD	_	_	13	13	PRD-TMP	PRD-TMP	_	_	A1	_	_
+3	,	,	,	,	,	_	_	2	2	P	P	_	_	_	_	_
+4	shot	shot	shot	VBN	VBN	_	_	2	2	APPO	APPO	Y	shoot.03	_	_	_
+5	in	in	in	IN	IN	_	_	4	4	LOC	LOC	_	_	AM-LOC	_	_
+6	Englewood	englewood	englewood	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_	_
+7	NEWLINE	newline	newline	NNP	NNP	_	_	5	5	PMOD	PMOD	_	_	_	_	_
+8	A	a	a	DT	DT	_	_	12	12	NMOD	NMOD	_	_	_	_	_
+9	15-year	15-year	15-year	CD	CD	_	_	11	11	HMOD	HMOD	_	_	_	_	_
+10	-	-	-	HYPH	HYPH	_	_	9	9	HYPH	HYPH	_	_	_	_	_
+11	old	old	old	JJ	JJ	_	_	12	12	NMOD	NMOD	_	_	_	_	_
+12	boy	boy	boy	NN	NN	_	_	13	13	SBJ	SBJ	_	_	_	A1	_
+13	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_	_
+14	shot	shot	shot	VBN	VBN	_	_	13	13	VC	VC	Y	shoot.02	_	_	_
+15	Thursday	thursday	thursday	NNP	NNP	_	_	16	16	NMOD	NMOD	_	_	_	_	_
+16	night	night	night	NN	NN	_	_	14	14	TMP	TMP	_	_	_	AM-TMP	_
+17	in	in	in	IN	IN	_	_	14	14	LOC	LOC	_	_	_	A3	_
+18	the	the	the	DT	DT	_	_	22	22	NMOD	NMOD	_	_	_	_	_
+19	South	south	south	NNP	NNP	_	_	20	20	NAME	NAME	_	_	_	_	_
+20	Side	side	side	NNP	NNP	_	_	21	21	NAME	NAME	_	_	_	_	_
+21	Englewood	englewood	englewood	NNP	NNP	_	_	22	22	NMOD	NMOD	_	_	_	_	A1
+22	neighborhood	neighborhood	neighborhood	NN	NN	_	_	17	17	PMOD	PMOD	Y	neighborhood.01	_	_	_
+23	.	.	.	.	.	_	_	13	13	P	P	_	_	_	_	_
+24	NEWLINE	newline	newline	NNP	NNP	_	_	23	23	POSTHON	POSTHON	_	_	_	_	_
+
+1	8:53	8:53	8:53	CD	CD	_	_	6	6	TMP	TMP	_	_	AM-TMP
+2	p.m.	p.m.	p.m.	RB	RB	_	_	1	1	NMOD	NMOD	_	_	_
+3	,	,	,	,	,	_	_	6	6	P	P	_	_	_
+4	the	the	the	DT	DT	_	_	5	5	NMOD	NMOD	_	_	_
+5	boy	boy	boy	NN	NN	_	_	6	6	SBJ	SBJ	_	_	A1
+6	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_
+7	shot	shot	shot	VBN	VBN	_	_	6	6	VC	VC	Y	shoot.02	_
+8	multiple	multiple	multiple	JJ	JJ	_	_	9	9	NMOD	NMOD	_	_	_
+9	times	times	times	NNS	NNS	_	_	7	7	OBJ	OBJ	_	_	A1
+10	in	in	in	IN	IN	_	_	7	7	LOC	LOC	_	_	A3
+11	the	the	the	DT	DT	_	_	12	12	NMOD	NMOD	_	_	_
+12	chest	chest	chest	NN	NN	_	_	10	10	PMOD	PMOD	_	_	_
+13	and	and	and	CC	CC	_	_	7	7	COORD	COORD	_	_	_
+14	abdomen	abdoman	abdoman	NNS	NNS	_	_	13	13	CONJ	CONJ	_	_	_
+15	in	in	in	IN	IN	_	_	7	7	LOC	LOC	_	_	A3
+16	the	the	the	DT	DT	_	_	18	18	NMOD	NMOD	_	_	_
+17	6900	6900	6900	CD	CD	_	_	18	18	NMOD	NMOD	_	_	_
+18	block	block	block	NN	NN	_	_	15	15	PMOD	PMOD	_	_	_
+19	of	of	of	IN	IN	_	_	18	18	NMOD	NMOD	_	_	_
+20	South	south	south	NNP	NNP	_	_	21	21	NAME	NAME	_	_	_
+21	Stewart	stewart	stewart	NNP	NNP	_	_	19	19	PMOD	PMOD	_	_	_
+22	,	,	,	,	,	_	_	7	7	P	P	_	_	_
+23	according	accord	accord	VBG	VBG	_	_	7	7	ADV	ADV	_	_	_
+24	to	to	to	TO	TO	_	_	23	23	PMOD	PMOD	_	_	_
+25	Chicago	chicago	chicago	NNP	NNP	_	_	26	26	NAME	NAME	_	_	_
+26	Police	police	police	NNP	NNP	_	_	24	24	PMOD	PMOD	_	_	_
+27	.	.	.	.	.	_	_	6	6	P	P	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_
+2	taken	take	take	VBN	VBN	_	_	1	1	VC	VC	Y	take.01	_	_
+3	to	to	to	TO	TO	_	_	2	2	DIR	DIR	_	_	AM-DIR	_
+4	Comer	comer	comer	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_
+5	Children	child	child	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_
+6	’s	’s	’s	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_
+7	Hospital	hospital	hospital	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_	_
+8	in	in	in	IN	IN	_	_	2	2	MNR	MNR	_	_	AM-MNR	_
+9	critical	critical	critical	JJ	JJ	_	_	10	10	NMOD	NMOD	_	_	_	A2
+10	condition	condition	condition	NN	NN	_	_	8	8	PMOD	PMOD	Y	condition.01	_	A2
+11	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_
+12	NEWLINE	newline	newline	NNP	NNP	_	_	1	1	SBJ	SBJ	_	_	A1	_
+
+1	details	details	details	NNS	NNS	_	_	2	2	SBJ	SBJ	_	_
+2	were	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_
+3	not	not	not	RB	RB	_	_	2	2	ADV	ADV	_	_
+4	immediately	immediately	immediately	RB	RB	_	_	5	5	AMOD	AMOD	_	_
+5	available	available	available	JJ	JJ	_	_	2	2	PRD	PRD	_	_
+6	.	.	.	.	.	_	_	2	2	P	P	_	_
+
+
+
+1	2017-01-20	2017-01-20	2017-01-20	CD	CD	_	_	0	0	ROOT	ROOT	_	_
+
+1	dies	die	die	NNS	NNS	_	_	6	6	TMP	TMP	_	_	A0	A1
+2	in	in	in	IN	IN	_	_	1	1	NMOD	NMOD	_	_	_	_
+3	shooting	shooting	shooting	NN	NN	_	_	2	2	PMOD	PMOD	_	_	_	_
+4	,	,	,	,	,	_	_	6	6	P	P	_	_	_	_
+5	man	man	man	NN	NN	_	_	6	6	SBJ	SBJ	_	_	A0	A2
+6	faces	face	face	VBZ	VBZ	_	_	0	0	ROOT	ROOT	Y	face.01	_	_
+7	involuntary	involuntary	involuntary	JJ	JJ	_	_	9	9	NMOD	NMOD	_	_	_	AM-MNR
+8	manslaughter	manslaughter	manslaughter	NN	NN	_	_	9	9	NMOD	NMOD	_	_	_	A3
+9	charge	charge	charge	NN	NN	_	_	6	6	OBJ	OBJ	Y	charge.01	A1	A1
+
+1	woman	woman	woman	NN	NN	_	_	16	16	SBJ	SBJ	_	_	A1	_	A1
+2	who	who	who	WP	WP	_	_	3	3	SBJ	SBJ	_	_	R-A1	_	_
+3	was	be	be	VBD	VBD	_	_	1	1	NMOD	NMOD	_	_	_	_	_
+4	shot	shot	shot	VBN	VBN	_	_	3	3	VC	VC	Y	shoot.02	_	_	_
+5	in	in	in	IN	IN	_	_	4	4	LOC	LOC	_	_	A3	_	_
+6	the	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_	_
+7	head	head	head	NN	NN	_	_	5	5	PMOD	PMOD	_	_	_	_	_
+8	in	in	in	IN	IN	_	_	4	4	LOC	LOC	_	_	A3	_	_
+9	a	a	a	DT	DT	_	_	12	12	NMOD	NMOD	_	_	_	_	_
+10	Twin	twin	twin	NNP	NNP	_	_	11	11	NAME	NAME	_	_	_	_	_
+11	Falls	falls	falls	NNP	NNP	_	_	12	12	NMOD	NMOD	_	_	_	A1	_
+12	apartment	apartment	apartment	NN	NN	_	_	8	8	PMOD	PMOD	Y	apartment.01	_	_	_
+13	on	on	on	IN	IN	_	_	12	12	NMOD	NMOD	_	_	_	A1	_
+14	Thursday	thursday	thursday	NNP	NNP	_	_	15	15	NMOD	NMOD	_	_	_	_	_
+15	night	night	night	NN	NN	_	_	13	13	PMOD	PMOD	_	_	_	_	_
+16	died	die	die	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	die.01	_	_	_
+17	from	from	from	IN	IN	_	_	16	16	ADV	ADV	_	_	_	_	AM-CAU
+18	the	the	the	DT	DT	_	_	19	19	NMOD	NMOD	_	_	_	_	_
+19	wound	wound	wound	NN	NN	_	_	17	17	PMOD	PMOD	_	_	_	_	_
+20	.	.	.	.	.	_	_	16	16	P	P	_	_	_	_	_
+21	NEWLINE	newline	newline	NNP	NNP	_	_	16	16	OBJ	OBJ	_	_	_	_	A1
+
+1	Twin	twin	twin	NN	NN	_	_	4	4	TITLE	TITLE	_	_	_
+2	Falls	falls	falls	NNP	NNP	_	_	4	4	NAME	NAME	_	_	_
+3	Police	police	police	NNP	NNP	_	_	4	4	NAME	NAME	_	_	_
+4	Department	department	department	NNP	NNP	_	_	5	5	SBJ	SBJ	_	_	A0
+5	identified	identify	identify	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	identify.01	_
+6	the	the	the	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_
+7	woman	woman	woman	NN	NN	_	_	5	5	OBJ	OBJ	_	_	A1
+8	as	as	as	IN	IN	_	_	5	5	ADV	ADV	_	_	A2
+9	20-year	20-year	20-year	JJ	JJ	_	_	11	11	HMOD	HMOD	_	_	_
+10	-	-	-	HYPH	HYPH	_	_	9	9	HYPH	HYPH	_	_	_
+11	old	old	old	JJ	JJ	_	_	13	13	NMOD	NMOD	_	_	_
+12	Katrina	katrina	katrina	NNP	NNP	_	_	13	13	NAME	NAME	_	_	_
+13	Budden	budden	budden	NNP	NNP	_	_	8	8	PMOD	PMOD	_	_	_
+14	.	.	.	.	.	_	_	5	5	P	P	_	_	_
+
+1	was	be	be	VBD	VBD	_	_	0	0	ROOT	ROOT	_	_	_	_
+2	taken	take	take	VBN	VBN	_	_	1	1	VC	VC	Y	take.01	_	_
+3	to	to	to	TO	TO	_	_	2	2	ADV	ADV	_	_	AM-DIR	_
+4	St.	st.	st.	NNP	NNP	_	_	5	5	TITLE	TITLE	_	_	_	_
+5	Luke	luke	luke	NNP	NNP	_	_	8	8	TITLE	TITLE	_	_	_	_
+6	's	's	's	POS	POS	_	_	5	5	SUFFIX	SUFFIX	_	_	_	_
+7	Magic	magic	magic	NNP	NNP	_	_	8	8	NAME	NAME	_	_	_	_
+8	Valley	valley	valley	NNP	NNP	_	_	3	3	PMOD	PMOD	_	_	_	_
+9	where	where	where	WRB	WRB	_	_	11	11	LOC	LOC	_	_	_	R-AM-LOC
+10	she	she	she	PRP	PRP	_	_	11	11	SBJ	SBJ	_	_	_	A1
+11	died	die	die	VBD	VBD	_	_	2	2	TMP	TMP	Y	die.01	AM-TMP	_
+12	from	from	from	IN	IN	_	_	11	11	ADV	ADV	_	_	_	AM-CAU
+13	the	the	the	DT	DT	_	_	14	14	NMOD	NMOD	_	_	_	_
+14	injury	injury	injury	NN	NN	_	_	12	12	PMOD	PMOD	_	_	_	_
+15	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_
+16	NEWLINE	newline	newline	NNP	NNP	_	_	1	1	SBJ	SBJ	_	_	A1	_
+
+1	Twin	twin	twin	NN	NN	_	_	4	4	TITLE	TITLE	_	_	_	_
+2	Falls	falls	falls	NNS	NNS	_	_	4	4	NAME	NAME	_	_	_	_
+3	Police	police	police	NNP	NNP	_	_	4	4	NAME	NAME	_	_	_	_
+4	Department	department	department	NNP	NNP	_	_	5	5	SBJ	SBJ	_	_	A0	_
+5	arrested	arrest	arrest	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	arrest.01	_	_
+6	Brandon	brandon	brandon	NNP	NNP	_	_	7	7	NAME	NAME	_	_	_	_
+7	Smithson	smithson	smithson	NNP	NNP	_	_	5	5	OBJ	OBJ	_	_	A1	_
+8	in	in	in	IN	IN	_	_	5	5	ADV	ADV	_	_	AM-MNR	_
+9	relation	relation	relation	NN	NN	_	_	8	8	PMOD	PMOD	Y	relation.02	_	_
+10	to	to	to	TO	TO	_	_	9	9	NMOD	NMOD	_	_	_	A2
+11	the	the	the	DT	DT	_	_	12	12	NMOD	NMOD	_	_	_	_
+12	incident	incident	incident	NN	NN	_	_	10	10	PMOD	PMOD	_	_	_	_
+13	.	.	.	.	.	_	_	5	5	P	P	_	_	_	_
+
+1	is	be	be	VBZ	VBZ	_	_	0	0	ROOT	ROOT	_	_	_
+2	being	be	be	VBG	VBG	_	_	1	1	VC	VC	_	_	_
+3	charged	charge	charge	VBN	VBN	_	_	2	2	VC	VC	Y	charge.05	_
+4	with	with	with	IN	IN	_	_	3	3	ADV	ADV	_	_	A2
+5	involuntary	involuntary	involuntary	JJ	JJ	_	_	6	6	NMOD	NMOD	_	_	_
+6	manslaughter	manslaughter	manslaughter	NN	NN	_	_	4	4	PMOD	PMOD	_	_	_
+7	.	.	.	.	.	_	_	1	1	P	P	_	_	_
+
+1	will	will	will	MD	MD	_	_	0	0	ROOT	ROOT	_	_	AM-MOD
+2	be	be	be	VB	VB	_	_	1	1	VC	VC	_	_	_
+3	arraigned	arraign	arraign	VBN	VBN	_	_	2	2	VC	VC	Y	arraign.01	_
+4	in	in	in	IN	IN	_	_	3	3	LOC	LOC	_	_	AM-LOC
+5	court	court	court	NN	NN	_	_	4	4	PMOD	PMOD	_	_	_
+6	on	on	on	IN	IN	_	_	3	3	TMP	TMP	_	_	AM-TMP
+7	Friday	friday	friday	NNP	NNP	_	_	6	6	PMOD	PMOD	_	_	_
+8	.	.	.	.	.	_	_	1	1	P	P	_	_	_
+9	NEWLINE	newline	newline	NNP	NNP	_	_	8	8	POSTHON	POSTHON	_	_	_
+
+1	Twin	twin	twin	NN	NN	_	_	4	4	TITLE	TITLE	_	_	_	_
+2	Falls	falls	falls	NNP	NNP	_	_	4	4	NAME	NAME	_	_	_	_
+3	County	county	county	NNP	NNP	_	_	4	4	NAME	NAME	_	_	_	_
+4	Coroner	coroner	coroner	NNP	NNP	_	_	5	5	SBJ	SBJ	_	_	A0	_
+5	scheduled	schedule	schedule	VBD	VBD	_	_	0	0	ROOT	ROOT	Y	schedule.01	_	_
+6	an	an	an	DT	DT	_	_	7	7	NMOD	NMOD	_	_	_	_
+7	autopsy	autopsy	autopsy	NN	NN	_	_	5	5	OBJ	OBJ	_	_	A1	_
+8	for	for	for	IN	IN	_	_	5	5	ADV	ADV	_	_	A3	_
+9	Monday	monday	monday	NNP	NNP	_	_	10	10	NMOD	NMOD	_	_	_	A1
+10	morning	morning	morning	NN	NN	_	_	8	8	PMOD	PMOD	Y	morning.02	_	_
+11	.	.	.	.	.	_	_	5	5	P	P	_	_	_	_
+12	NEWLINE	newline	newline	NNP	NNP	_	_	5	5	OBJ	OBJ	_	_	A1	_
+
+1	here	here	here	RB	RB	_	_	0	0	ROOT	ROOT	_	_	_	_
+2	to	to	to	TO	TO	_	_	1	1	AMOD	AMOD	_	_	_	_
+3	read	read	read	VB	VB	_	_	2	2	IM	IM	Y	read.01	_	_
+4	the	the	the	DT	DT	_	_	6	6	NMOD	NMOD	_	_	_	_
+5	original	original	original	JJ	JJ	_	_	6	6	NMOD	NMOD	_	_	_	_
+6	story	story	story	NN	NN	_	_	3	3	OBJ	OBJ	Y	story.01	A1	_
+7	.	.	.	.	.	_	_	1	1	P	P	_	_	_	_
+
+
+
+1	2017-01-20	2017-01-20	2017-01-20	CD	CD	_	_	0	0	ROOT	ROOT	_	_
+
+1	:	:	:	:	:	_	_	3	3	P	P	_	_	_	_	_
+2	Police	police	police	NN	NN	_	_	3	3	SBJ	SBJ	_	_	A0	_	_
+3	say	say	say	VBP	VBP	_	_	0	0	ROOT	ROOT	Y	say.01	_	_	_
+4	man	man	man	NN	NN	_	_	5	5	SBJ	SBJ	_	_	_	A0	_
+5	was	be	be	VBD	VBD	_	_	3	3	OBJ	OBJ	_	_	A1	_	_
+6	showing	show	show	VBG	VBG	_	_	5	5	VC	VC	Y	show.01	_	_	_
+7	gun	gun	gun	NN	NN	_	_	6	6	OBJ	OBJ	_	_	_	A1	_
+8	to	to	to	TO	TO	_	_	6	6	DTV	DTV	_	_	_	A2	_
+9	neighbors	neighbor	neighbor	NNS	NNS	_	_	8	8	PMOD	PMOD	_	_	_	_	_
+10	when	when	when	WRB	WRB	_	_	13	13	TMP	TMP	_	_	_	_	R-AM-TMP
+11	he	he	he	PRP	PRP	_	_	13	13	SBJ	SBJ	_	_	_	_	A0
+12	fatally	fatally	fatally	RB	RB	_	_	13	13	ADV	ADV	_	_	_	_	AM-MNR
+13	shot	shot	shot	VBD	VBD	_	_	6	6	TMP	TMP	Y	shoot.02	_	AM-TMP	_
+14	roommate	roommate	roommate	NN	NN	_	_	13	13	OBJ	OBJ	_	_	_	_	A1
+
+1	a	a	a	DT	DT	_	_	4	4	NMOD	NMOD	_	_
+2	subscriber	subscriber	subscriber	NN	NN	_	_	4	4	NMOD	NMOD	_	_
+3	?	?	?	.	.	_	_	4	4	P	P	_	_
+4	NEWLINE	newline	newline	NNP	NNP	_	_	0	0	ROOT	ROOT	_	_
+
+1	on	on	on	IN	IN	_	_	16	16	ADV	ADV	_	_	_	_	AM-ADV
+2	the	the	the	DT	DT	_	_	3	3	NMOD	NMOD	_	_	_	_	_
+3	button	button	button	NN	NN	_	_	1	1	PMOD	PMOD	_	_	_	_	_
+4	below	below	below	IN	IN	_	_	3	3	LOC	LOC	_	_	_	_	_
+5	to	to	to	TO	TO	_	_	4	4	PMOD	PMOD	_	_	_	_	_
+6	set	set	set	VB	VB	_	_	5	5	IM	IM	Y	set.03	_	_	_
+7	up	up	up	RP	RP	_	_	6	6	PRT	PRT	_	_	_	_	_
+8	your	your	your	PRP$	PRP$	_	_	9	9	NMOD	NMOD	_	_	_	A0	_
+9	account	account	account	NN	NN	_	_	6	6	OBJ	OBJ	Y	account.01	A1	_	_
+10	or	or	or	CC	CC	_	_	9	9	COORD	COORD	_	_	_	_	_
+11	log	log	log	NN	NN	_	_	10	10	CONJ	CONJ	_	_	_	_	_
+12	in	in	in	IN	IN	_	_	6	6	LOC	LOC	_	_	A2	_	_
+13	if	if	if	IN	IN	_	_	12	12	DEP	DEP	_	_	_	_	_
+14	you	you	you	PRP	PRP	_	_	16	16	SBJ	SBJ	_	_	_	_	A0
+15	already	already	already	RB	RB	_	_	16	16	TMP	TMP	_	_	_	_	AM-TMP
+16	have	have	have	VBP	VBP	_	_	0	0	ROOT	ROOT	Y	have.03	_	_	_
+17	one	one	one	CD	CD	_	_	16	16	OBJ	OBJ	_	_	_	_	A1
+18	.	.	.	.	.	_	_	16	16	P	P	_	_	_	_	_
+
+
+
+1	2017-01-19	2017-01-19	2017-01-19	CD	CD	_	_	0	0	ROOT	ROOT	_	_
+
+1	Falls	falls	falls	NNS	NNS	_	_	2	2	SBJ	SBJ	_	_	A2	_
+2	police	police	police	NN	NN	_	_	0	0	ROOT	ROOT	Y	police.01	A0	_
+3	investigate	investigate	investigate	NN	NN	_	_	2	2	OBJ	OBJ	_	_	A1	A1
+4	shooting	shoot	shoot	VBG	VBG	_	_	2	2	OBJ	OBJ	Y	shoot.01	_	_
+
+1	a	a	a	DT	DT	_	_	4	4	NMOD	NMOD	_	_
+2	subscriber	subscriber	subscriber	NN	NN	_	_	4	4	NMOD	NMOD	_	_
+3	?	?	?	.	.	_	_	4	4	P	P	_	_
+4	NEWLINE	newline	newline	NNP	NNP	_	_	0	0	ROOT	ROOT	_	_
+
+1	on	on	on	IN	IN	_	_	16	16	ADV	ADV	_	_	_	_	AM-ADV
+2	the	the	the	DT	DT	_	_	3	3	NMOD	NMOD	_	_	_	_	_
+3	button	button	button	NN	NN	_	_	1	1	PMOD	PMOD	_	_	_	_	_
+4	below	below	below	IN	IN	_	_	3	3	LOC	LOC	_	_	_	_	_
+5	to	to	to	TO	TO	_	_	4	4	PMOD	PMOD	_	_	_	_	_
+6	set	set	set	VB	VB	_	_	5	5	IM	IM	Y	set.03	_	_	_
+7	up	up	up	RP	RP	_	_	6	6	PRT	PRT	_	_	_	_	_
+8	your	your	your	PRP$	PRP$	_	_	9	9	NMOD	NMOD	_	_	_	A0	_
+9	account	account	account	NN	NN	_	_	6	6	OBJ	OBJ	Y	account.01	A1	_	_
+10	or	or	or	CC	CC	_	_	9	9	COORD	COORD	_	_	_	_	_
+11	log	log	log	NN	NN	_	_	10	10	CONJ	CONJ	_	_	_	_	_
+12	in	in	in	IN	IN	_	_	6	6	LOC	LOC	_	_	A2	_	_
+13	if	if	if	IN	IN	_	_	12	12	DEP	DEP	_	_	_	_	_
+14	you	you	you	PRP	PRP	_	_	16	16	SBJ	SBJ	_	_	_	_	A0
+15	already	already	already	RB	RB	_	_	16	16	TMP	TMP	_	_	_	_	AM-TMP
+16	have	have	have	VBP	VBP	_	_	0	0	ROOT	ROOT	Y	have.03	_	_	_
+17	one	one	one	CD	CD	_	_	16	16	OBJ	OBJ	_	_	_	_	A1
+18	.	.	.	.	.	_	_	16	16	P	P	_	_	_	_	_
+
