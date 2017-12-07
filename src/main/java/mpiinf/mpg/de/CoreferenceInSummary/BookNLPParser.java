@@ -144,9 +144,9 @@ public class BookNLPParser {
 	
 	public static void main(String[] args) throws IOException {
 		BookNLPParser parser = new BookNLPParser();
-		List<String> sentences = parser.parseBookNLPTokens("./data/harry_potter/1_philosophers_stone.tokens");
+		List<String> sentences = parser.parseBookNLPTokens("./data/harry_potter/2_chamber_of_secrets.tokens");
 		
-		BufferedWriter bw = new BufferedWriter(new FileWriter("./data/harry_potter/1_philosophers_stone.sentences"));
+		BufferedWriter bw = new BufferedWriter(new FileWriter("./data/harry_potter/2_chamber_of_secrets.sentences"));
 		for (String sent : sentences) {
 			bw.write(sent + "\n");
 		}
