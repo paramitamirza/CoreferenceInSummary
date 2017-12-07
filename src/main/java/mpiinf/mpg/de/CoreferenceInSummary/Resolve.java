@@ -1090,7 +1090,7 @@ public class Resolve {
 			// Get the list of story entities & write to file
 			
 			boolean addFamilyMembers = true;
-			wl.getEntities(wikiaUrl, title, addFamilyMembers, entityPath);
+//			wl.getEntities(wikiaUrl, title, addFamilyMembers, entityPath);
 						
 //	        for (String entId : entities.keySet()) {
 //	        	if (entities.get(entId) != null) {
@@ -1122,14 +1122,14 @@ public class Resolve {
 //			}
 //	        writeToConllFile(title, paragraphs);
 	        
-//	        //Run Mate tool: dependency parsing and semantic role labelling
-//	        String mateLemmatizerModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.lemmatizer.model";
-//			String mateTaggerModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.postagger.model";
-//			String mateParserModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.parser.model";
-//			String mateSrlModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.srl-4.1.srl.model";
-//				
-//			MateToolsParser mateTools = new MateToolsParser(mateLemmatizerModel, mateTaggerModel, mateParserModel, mateSrlModel);
-//			mateTools.runFullPipeline(new File("./data/" + title + ".conll"), new File("./data/" + title + ".srl"));
+	        //Run Mate tool: dependency parsing and semantic role labelling
+	        String mateLemmatizerModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.lemmatizer.model";
+			String mateTaggerModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.postagger.model";
+			String mateParserModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.parser.model";
+			String mateSrlModel = "./models/CoNLL2009-ST-English-ALL.anna-3.3.srl-4.1.srl.model";
+				
+			MateToolsParser mateTools = new MateToolsParser(mateLemmatizerModel, mateTaggerModel, mateParserModel, mateSrlModel);
+			mateTools.runFullPipeline(new File("./data/" + title + ".conll"), new File("./data/" + title + ".srl"));
 			
 		}
 	}
@@ -1141,20 +1141,20 @@ public class Resolve {
 		
 		String[] bookTitles = {
 				"Harry_Potter_and_the_Philosopher%27s_Stone",
-				"Harry_Potter_and_the_Chamber_of_Secrets",
-				"Harry_Potter_and_the_Prisoner_of_Azkaban",
-				"Harry_Potter_and_the_Goblet_of_Fire",
-				"Harry_Potter_and_the_Order_of_the_Phoenix",
-				"Harry_Potter_and_the_Half-Blood_Prince",
-				"Harry_Potter_and_the_Deathly_Hallows",
-				"Harry_Potter_and_the_Philosopher%27s_Stone_(film)",
-				"Harry_Potter_and_the_Chamber_of_Secrets_(film)",
-				"Harry_Potter_and_the_Prisoner_of_Azkaban_(film)",
-				"Harry_Potter_and_the_Goblet_of_Fire_(film)",
-				"Harry_Potter_and_the_Order_of_the_Phoenix_(film)",
-				"Harry_Potter_and_the_Half-Blood_Prince_(film)",
-				"Harry_Potter_and_the_Deathly_Hallows:_Part_1",
-				"Harry_Potter_and_the_Deathly_Hallows:_Part_2"
+//				"Harry_Potter_and_the_Chamber_of_Secrets",
+//				"Harry_Potter_and_the_Prisoner_of_Azkaban",
+//				"Harry_Potter_and_the_Goblet_of_Fire",
+//				"Harry_Potter_and_the_Order_of_the_Phoenix",
+//				"Harry_Potter_and_the_Half-Blood_Prince",
+//				"Harry_Potter_and_the_Deathly_Hallows",
+//				"Harry_Potter_and_the_Philosopher%27s_Stone_(film)",
+//				"Harry_Potter_and_the_Chamber_of_Secrets_(film)",
+//				"Harry_Potter_and_the_Prisoner_of_Azkaban_(film)",
+//				"Harry_Potter_and_the_Goblet_of_Fire_(film)",
+//				"Harry_Potter_and_the_Order_of_the_Phoenix_(film)",
+//				"Harry_Potter_and_the_Half-Blood_Prince_(film)",
+//				"Harry_Potter_and_the_Deathly_Hallows:_Part_1",
+//				"Harry_Potter_and_the_Deathly_Hallows:_Part_2"
 				};
 		
 //		sa.resolveSeries(wikiaUrl, bookTitles);

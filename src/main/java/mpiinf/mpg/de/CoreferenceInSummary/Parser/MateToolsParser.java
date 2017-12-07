@@ -65,15 +65,15 @@ public class MateToolsParser {
 	
 	public void runFullPipeline(File inputFile, File outputFile) throws Exception {
 		
-		PrintStream originalOutStream = System.out;
-		PrintStream originalErrStream = System.err;
-		PrintStream dummyStream    = new PrintStream(new OutputStream(){
-		    public void write(int b) {
-		        //NO-OP
-		    }
-		});
-		System.setOut(dummyStream);
-		System.setErr(dummyStream);
+//		PrintStream originalOutStream = System.out;
+//		PrintStream originalErrStream = System.err;
+//		PrintStream dummyStream    = new PrintStream(new OutputStream(){
+//		    public void write(int b) {
+//		        //NO-OP
+//		    }
+//		});
+//		System.setOut(dummyStream);
+//		System.setErr(dummyStream);
 		
 		String[] fullPipelineArgs = {"eng",
 				"-test", inputFile.getPath(),
@@ -85,8 +85,8 @@ public class MateToolsParser {
 				};
 		se.lth.cs.srl.CompletePipeline.main(fullPipelineArgs);
 		
-		System.setOut(originalOutStream);
-		System.setErr(originalErrStream);
+//		System.setOut(originalOutStream);
+//		System.setErr(originalErrStream);
 	}
 	
 	public List<String> runFullPipeline(File inputFile) throws Exception {
@@ -133,7 +133,12 @@ public class MateToolsParser {
 		try {
 			
 			MateToolsParser mateTools = new MateToolsParser(mateLemmatizerModel, mateTaggerModel, mateParserModel, mateSrlModel);
-			List<String> mateToolsColumns = mateTools.run(new File("./data/example_CoNLL/wsj_1014.conll"));
+//			List<String> mateToolsColumns = mateTools.run(new File("./data/example_CoNLL/wsj_1014.conll"));
+			List<String> mateToolsColumns = mateTools.runFullPipeline(new File("./data/1-81781.mate.conll"));
+			
+			BufferedWriter bw = new BufferedWriter(new FileWriter("./data/1-81781.mate.srl"));
+	        for (String s : mateToolsColumns) bw.write(s + "\n");
+	        bw.close();
 			for (String s : mateToolsColumns) System.out.println(s);
 			
 		} catch (Exception e) {
